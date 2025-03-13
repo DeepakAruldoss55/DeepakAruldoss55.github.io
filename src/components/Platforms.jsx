@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const Platforms = () => {
     
   return (
     <section id="platforms" className="platforms section">
-      <div className="container section-title" data-aos="fade-up">
+      <div className="container section-title" data-aos="slide-up">
         <h2>Platforms</h2>
         <p>Experienced in developing scalable solutions across various platforms, including e-commerce, ERP, CRM, payment systems, CMS, and third-party API integrations. Focused on building high-performance, secure, and automated systems tailored to business needs.</p>
       </div>
       <div className="container">
         <div className="row gy-4">
-          <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div className="platform-item item-cyan position-relative">
               <div className="icon">
                 <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +25,7 @@ const Platforms = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
             <div className="platform-item item-orange position-relative">
               <div className="icon">
                 <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@ const Platforms = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
             <div className="platform-item item-teal position-relative">
               <div className="icon">
               <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +55,7 @@ const Platforms = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
             <div className="platform-item item-red position-relative">
               <div className="icon">
                 <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +70,7 @@ const Platforms = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+          <div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
             <div className="platform-item item-indigo position-relative">
               <div className="icon">
                 <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +85,7 @@ const Platforms = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+          <div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="600">
             <div className="platform-item item-pink position-relative">
               <div className="icon">
                 <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">

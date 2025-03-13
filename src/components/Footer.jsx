@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const Footer = () => {
 
@@ -10,9 +10,9 @@ const Footer = () => {
                 <h3 className="sitename">Deepak Aruldoss</h3>
                 <p>Connect with me on social media.</p>
                 <div className="social-links d-flex justify-content-center">
-                    <a href="https://www.facebook.com/share/18az6SS6kn/" target="_blank"><i className="bi bi-facebook"></i></a>
-                    <a href="https://www.instagram.com/deepakarul55?igsh=YXFwMXhwczFhY2pl" target="_blank"><i className="bi bi-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/deepak-aruldoss-40426b218?utm_source=share&utm_campaign=share_via&utm_content=profile" target="_blank"><i className="bi bi-linkedin"></i></a>
+                    <a href="https://www.facebook.com/share/18az6SS6kn/" target="_blank" rel="noreferrer"><i className="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/deepakarul55?igsh=YXFwMXhwczFhY2pl" target="_blank" rel="noreferrer"><i className="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/deepak-aruldoss-40426b218?utm_source=share&utm_campaign=share_via&utm_content=profile" target="_blank" rel="noreferrer"><i className="bi bi-linkedin"></i></a>
                 </div>
                 <div className="container">
                     <div className="copyright">

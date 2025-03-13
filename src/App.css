@@ -915,6 +915,14 @@ img.img-fluid.deepak-aruldoss-img {
   margin-top: 40px;
 }
 
+.contact-us-cls {
+  width: 82%;
+  justify-self: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1)
+}
+
 .contact .info-item i {
   color: var(--accent-color);
   background: color-mix(in srgb, var(--accent-color), transparent 92%);

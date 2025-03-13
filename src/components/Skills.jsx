@@ -8,9 +8,9 @@ const Skills = () => {
 
     useEffect(() => {
         AOS.init({
-            duration: 1000, // Animation duration
+            duration: 1000,
             easing: "ease-in-out",
-            once: true, // Ensures animation runs only once
+            once: true,
         });
     }, []);
 
@@ -23,14 +23,16 @@ const Skills = () => {
             },
             { threshold: 0.3 }
         );
-
-        if (skillsRef.current) {
-            observer.observe(skillsRef.current);
+    
+        const currentRef = skillsRef.current;
+    
+        if (currentRef) {
+            observer.observe(currentRef);
         }
-
+    
         return () => {
-            if (skillsRef.current) {
-                observer.unobserve(skillsRef.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, []);
@@ -55,7 +57,7 @@ const Skills = () => {
                 <h2>Skills</h2>
                 <p>I am a fast learner with a strong ability to adapt to new technologies and frameworks efficiently. My passion for problem-solving and continuous improvement enables me to quickly grasp and implement technical skills in dynamic environments.</p>
             </div>
-            <div className="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+            <div className="container" data-aos="fade-up" data-aos-delay="100">
                 <div className="row skills-content skills-animation">
                     <div className="col-lg-6 skill-separate-section">
                         <div className="skill-header">Core Languages</div>

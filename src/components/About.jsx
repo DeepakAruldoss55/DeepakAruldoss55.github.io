@@ -82,9 +82,9 @@ const About = () => {
       </div>
 
       <div id="stats" className="stats section">
-        <div className="container" data-aos="fade-up" data-aos-delay="100">
+        <div className="container" data-aos="zoom-out" data-aos-delay="100">
           <div className="row gy-4">
-            <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="fade-up" data-aos-delay="200">
+            <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="zoom-out" data-aos-delay="200">
               <i className="bi bi-briefcase"></i>
               <div className="stats-item">
               <span data-purecounter-start="0" data-purecounter-end={experience.years} data-purecounter-duration="2" className="purecounter">{experience.years}y {experience.months}m</span>
@@ -92,7 +92,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="fade-up" data-aos-delay="300">
+            <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="zoom-out" data-aos-delay="200">
               <i className="bi bi-journal-richtext"></i>
               <div className="stats-item">
                 <span data-purecounter-start="0" data-purecounter-end="30" data-purecounter-duration="2" className="purecounter"></span>
@@ -100,7 +100,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="fade-up" data-aos-delay="400">
+            <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="zoom-out" data-aos-delay="200">
               <i className="bi bi-emoji-smile"></i>
               <div className="stats-item">
                 <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="2" className="purecounter"></span>
@@ -108,7 +108,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="fade-up" data-aos-delay="500">
+            <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="zoom-out" data-aos-delay="200">
               <i className="bi bi-award"></i>
               <div className="stats-item">
                 <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="2" className="purecounter"></span>

@@ -56,55 +56,57 @@ const Contact = () => {
             formData,
             'yXoQAl-S7xEexV7CC'
         )
-        .then(() => {
-            console.log("Email sent successfully!");
-            updateMessageCount();
-            setStatus({ loading: false, success: 'Your message has been sent!', error: null });
-            setFormData({ name: '', email: '', subject: '', message: '' });
-            setTimeout(() => setStatus({ loading: false, success: null, error: null }), 5000);
-        })
-        .catch((error) => {
-            console.error("Failed to send email:", error);
-            setStatus({ loading: false, success: null, error: 'Failed to send message. Try again later.' });
-        });
+            .then(() => {
+                console.log("Email sent successfully!");
+                updateMessageCount();
+                setStatus({ loading: false, success: 'Your message has been sent!', error: null });
+                setFormData({ name: '', email: '', subject: '', message: '' });
+                setTimeout(() => setStatus({ loading: false, success: null, error: null }), 5000);
+            })
+            .catch((error) => {
+                console.error("Failed to send email:", error);
+                setStatus({ loading: false, success: null, error: 'Failed to send message. Try again later.' });
+            });
     };
 
     return (
         <section id="contact" className="contact section">
-            <div className="container section-title" data-aos="fade-up">
-                <h2>Contact</h2>
-                <p>Get in touch with us for any inquiries or collaborations. We're here to help!</p>
-            </div>
+            <div className="contact-us-cls">
+                <div className="container section-title" data-aos="slide-up">
+                    <h2>Contact</h2>
+                    <p>Get in touch with us for any inquiries or collaborations. We're here to help!</p>
+                </div>
 
-            <div className="container d-flex justify-content-center">
-                <div className="col-lg-10">
-                    <form onSubmit={handleSubmit} className="php-email-form" data-aos="fade-up" data-aos-delay="200">
-                        <div className="row gy-4">
-                            <div className="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                                <input type="text" name="name" className="form-control" placeholder="Your Name" required value={formData.name} onChange={handleChange} />
+                <div className="container d-flex justify-content-center">
+                    <div className="col-lg-10">
+                        <form onSubmit={handleSubmit} className="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                            <div className="row gy-4">
+                                <div className="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                                    <input type="text" name="name" className="form-control" placeholder="Your Name" required value={formData.name} onChange={handleChange} />
+                                </div>
+
+                                <div className="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                                    <input type="email" className="form-control" name="email" placeholder="Your Email" required value={formData.email} onChange={handleChange} />
+                                </div>
+
+                                <div className="col-md-12" data-aos="fade-up" data-aos-delay="500">
+                                    <input type="text" className="form-control" name="subject" placeholder="Subject" required value={formData.subject} onChange={handleChange} />
+                                </div>
+
+                                <div className="col-md-12" data-aos="fade-up" data-aos-delay="600">
+                                    <textarea className="form-control" name="message" rows="6" placeholder="Message" required value={formData.message} onChange={handleChange}></textarea>
+                                </div>
+
+                                <div className="col-md-12 text-center" data-aos="fade-up" data-aos-delay="700">
+                                    {status.loading && <div className="loading">Sending...</div>}
+                                    {status.error && <div className="error-message">{status.error}</div>}
+                                    {status.success && <div className="sent-message">{status.success}</div>}
+
+                                    <button type="submit" disabled={status.loading} className="contact-us-button">Send Message</button>
+                                </div>
                             </div>
-
-                            <div className="col-md-6" data-aos="fade-up" data-aos-delay="400">
-                                <input type="email" className="form-control" name="email" placeholder="Your Email" required value={formData.email} onChange={handleChange} />
-                            </div>
-
-                            <div className="col-md-12" data-aos="fade-up" data-aos-delay="500">
-                                <input type="text" className="form-control" name="subject" placeholder="Subject" required value={formData.subject} onChange={handleChange} />
-                            </div>
-
-                            <div className="col-md-12" data-aos="fade-up" data-aos-delay="600">
-                                <textarea className="form-control" name="message" rows="6" placeholder="Message" required value={formData.message} onChange={handleChange}></textarea>
-                            </div>
-
-                            <div className="col-md-12 text-center" data-aos="fade-up" data-aos-delay="700">
-                                {status.loading && <div className="loading">Sending...</div>}
-                                {status.error && <div className="error-message">{status.error}</div>}
-                                {status.success && <div className="sent-message">{status.success}</div>}
-
-                                <button type="submit" disabled={status.loading} className="contact-us-button">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>

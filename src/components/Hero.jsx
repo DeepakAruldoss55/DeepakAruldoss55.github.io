@@ -6,12 +6,12 @@ const Hero = () => {
     <section id="hero" className="hero section light-background">
       <img src={`${process.env.PUBLIC_URL}/static/media/img/5651978.png`} alt="/"></img>
 
-      <div className="container aos-init aos-animate" data-aos="zoom-out">
+      <div className="container" data-aos="zoom-out">
         <div className="row justify-content-center">
           <div className="col-lg-9">
-            <h2>Deepak Aruldoss</h2>
-            <p className="my-designation">I'm <span className="typed">Senior Software Developer</span></p>
-            <div className="social-links">
+            <h2 data-aos="slide-left" data-aos-delay="100">Deepak Aruldoss</h2>
+            <p className="my-designation" data-aos="slide-right" data-aos-delay="200">I'm <span className="typed">Senior Software Developer</span></p>
+            <div className="social-links" data-aos="slide-left" data-aos-delay="300">
               <a href="https://www.linkedin.com/in/deepak-aruldoss-40426b218" target="_blank" rel="noreferrer"><i className="bi bi-linkedin"></i></a>
               <a href="https://wa.me/6383331367?text=Hi%20Deepak%2C%20I%20would%20like%20to%20connect!" target="_blank" rel="noreferrer"><i className="bi bi-whatsapp"></i></a>
               <a href="https://github.com/DeepakAruldoss55" target="_blank" rel="noreferrer"><i className="bi bi-github"></i></a>

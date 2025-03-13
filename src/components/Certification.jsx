@@ -14,7 +14,7 @@ const Certification = () => {
       loop: true,
       speed: 1000,
       autoplay: {
-        delay: 3000,
+        delay: 5000,
         disableOnInteraction: false,
       },
       slidesPerView: 1,

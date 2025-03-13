@@ -223,10 +223,10 @@ useEffect(() => {
     return (
       <section id="projects" className="projects-section">
         <div className="projects-container">
-        <div class="container section-title aos-init aos-animate" data-aos="fade-up">
+        <div className="container section-title" data-aos="fade-up">
           <h2>Projects</h2>
         </div>
-          <div className="projects-grid" data-aos="fade-up" data-aos-delay="100">
+          <div className="projects-grid" data-aos="fade-up" data-aos-delay="200">
             {projects.map((project, index) => (
               <div key={index} className="project-card">
                 <h3 className="project-title">{project.title}</h3>

@@ -30,7 +30,6 @@ const Navbar = () => {
         }
       });
     });
-    
 
     const onScroll = () => {
       let scrollPosition = window.scrollY;
@@ -65,7 +64,6 @@ const Navbar = () => {
   return (
     <header id="header" className={`header d-flex flex-column justify-content-center ${isMobileNavVisible ? "header-show" : ""}`}>
       <i className={`header-toggle d-xl-none bi ${isMobileNavVisible ? "bi-x" : "bi-list"}`} onClick={toggleMobileMenu}></i>
-
       <nav id="navmenu" className="navmenu">
         <ul>
           {location.pathname === "/" ? (

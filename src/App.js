@@ -9,6 +9,7 @@ import Certification from './components/Certification';
 import Platforms from './components/Platforms';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Gotop from './components/Gotop';
 import Projects from './components/Projects';
 
 import './App.css';
@@ -31,6 +32,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
         </Routes>
         <Footer />
+        <Gotop />
       </div>
     </Router>
   );
