@@ -620,6 +620,9 @@ section,
   padding: 0;
 }
 
+img.img-fluid.deepak-aruldoss-img {
+  border: solid 1px #d3cbcb;
+}
 .about .content ul li {
   margin-bottom: 20px;
   display: flex;

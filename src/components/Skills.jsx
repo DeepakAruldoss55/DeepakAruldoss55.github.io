@@ -1,8 +1,19 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Skills = () => {
     const [isVisible, setIsVisible] = useState(false);
     const skillsRef = useRef(null);
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // Animation duration
+            easing: "ease-in-out",
+            once: true, // Ensures animation runs only once
+        });
+    }, []);
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -26,12 +37,12 @@ const Skills = () => {
 
     useEffect(() => {
         if (isVisible) {
-            const progressBars = document.querySelectorAll('.progress-bar');
-            progressBars.forEach(bar => {
-                const percentage = bar.getAttribute('aria-valuenow');
-                bar.style.width = '0%';
+            const progressBars = document.querySelectorAll(".progress-bar");
+            progressBars.forEach((bar) => {
+                const percentage = bar.getAttribute("aria-valuenow");
+                bar.style.width = "0%";
                 setTimeout(() => {
-                    bar.style.transition = 'width 1.5s ease-in-out';
+                    bar.style.transition = "width 1.5s ease-in-out";
                     bar.style.width = `${percentage}%`;
                 }, 200);
             });
@@ -40,9 +51,9 @@ const Skills = () => {
 
     return (
         <section ref={skillsRef} id="skills" className="skills section">
-            <div className="container section-title aos-init aos-animate" data-aos="fade-up">
+            <div className="container section-title" data-aos="fade-up">
                 <h2>Skills</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                <p>I am a fast learner with a strong ability to adapt to new technologies and frameworks efficiently. My passion for problem-solving and continuous improvement enables me to quickly grasp and implement technical skills in dynamic environments.</p>
             </div>
             <div className="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
                 <div className="row skills-content skills-animation">

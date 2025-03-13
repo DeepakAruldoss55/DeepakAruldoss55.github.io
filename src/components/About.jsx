@@ -48,7 +48,9 @@ const About = () => {
           <div className="col-lg-8 content">
             <h2>Backend &amp; Web Developer</h2>
             <p className="fst-italic py-3">
-              Backend developer with 6+ years of experience in building scalable solutions, solving complex challenges, and optimizing performance. Adaptable and driven by innovation, I thrive in dynamic environments.
+            Backend developer with 6+ years of experience in building scalable solutions, solving complex challenges, and optimizing performance. 
+            I specialize in creating robust backend systems that enhance efficiency and drive business growth. My expertise spans CMS, ERP systems, 
+            e-commerce platforms like Shopware, and payment API integrations.
             </p>
             <div className="row">
               <div className="col-lg-6">
@@ -70,6 +72,11 @@ const About = () => {
                 </ul>
               </div>
             </div>
+            <p className="py-3">
+              Adaptable and driven by innovation, I thrive in dynamic environments. I enjoy tackling new challenges,
+              continuously improving processes, and leveraging the latest technologies to deliver high-quality
+              solutions.
+            </p>
           </div>
         </div>
       </div>
