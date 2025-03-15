@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation();
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
+  const headerRef = useRef(null);
 
   useEffect(() => {
     setIsMobileNavVisible(false);
@@ -61,8 +62,27 @@ const Navbar = () => {
     setIsMobileNavVisible(!isMobileNavVisible);
   };
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (headerRef.current && !headerRef.current.contains(event.target)) {
+        setIsMobileNavVisible(false);
+      }
+    };
+
+    if (isMobileNavVisible) {
+      document.addEventListener("click", handleClickOutside);
+    } else {
+      document.removeEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isMobileNavVisible]);
+
   return (
-    <header id="header" className={`header d-flex flex-column justify-content-center ${isMobileNavVisible ? "header-show" : ""}`}>
+    <header ref={headerRef} id="header" className={`header d-flex flex-column justify-content-center ${isMobileNavVisible ? "header-show" : ""}`}>
       <i className={`header-toggle d-xl-none bi ${isMobileNavVisible ? "bi-x" : "bi-list"}`} onClick={toggleMobileMenu}></i>
       <nav id="navmenu" className="navmenu">
         <ul>

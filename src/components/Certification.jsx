@@ -42,7 +42,7 @@ const Certification = () => {
                     <div className="certification-content">
                       <p>
                         <i className="bi bi-quote quote-icon-left"></i>
-                        Learn Shopware 6 development, from setup to plugins, templates, and events, and earn certification with a final exam.
+                        Shopware 6 development, from setup to plugins, templates, and events, and earn certification with a final exam.
                         <i className="bi bi-quote quote-icon-right"></i>
                       </p>
                       <h3>Shopware 6 Certified Developer</h3>

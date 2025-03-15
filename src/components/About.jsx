@@ -56,19 +56,18 @@ const About = () => {
               <div className="col-lg-6">
                 <ul>
                   <li><i className="bi bi-chevron-right"></i> <strong>Name:</strong> <span>Deepak Aruldoss</span></li>
-                  <li><i className="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>July 15</span></li>
+                  <li><i className="bi bi-chevron-right"></i> <strong>Designation:</strong> <span>Software Developer</span></li>
                   <li><i className="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor of Engineering</span></li>
                   <li><i className="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+91 6383331367</span></li>
-                  <li><i className="bi bi-chevron-right"></i> <strong>City:</strong> <span>Chennai, Tamil Nadu</span></li>
+                  <li><i className="bi bi-chevron-right"></i> <strong>Email:</strong> <span>adeepakplm55@gmail.com</span></li>
                 </ul>
               </div>
               <div className="col-lg-6">
                 <ul>
-                  <li><i className="bi bi-chevron-right"></i> <strong>Designation:</strong> <span>Software Developer</span></li>
-                  <li><i className="bi bi-chevron-right"></i> <strong>Email:</strong> <span>adeepakplm55@gmail.com</span></li>
-                  <li><i className="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.deep-hyperloop.in</span></li>
+                  <li><i className="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>July 15</span></li>
                   <li><i className="bi bi-chevron-right"></i> <strong>Languages:</strong> <span>Tamil &amp; English</span></li>
-                  <li><i className="bi bi-chevron-right"></i> <strong>Hobby:</strong> <span>Learning New Technologies</span></li>
+                  <li><i className="bi bi-chevron-right"></i> <strong>City:</strong> <span>Chennai, Tamil Nadu</span></li>
+                  <li><i className="bi bi-chevron-right"></i> <strong>Strength:</strong> <span>Positive Attitude</span></li>
                 </ul>
               </div>
             </div>
