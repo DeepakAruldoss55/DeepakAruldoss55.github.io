@@ -917,10 +917,10 @@ img.img-fluid.deepak-aruldoss-img {
 
 .contact-us-cls {
   width: 82%;
-  justify-self: center;
   padding-top: 20px;
   padding-bottom: 20px;
-  box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1)
+  box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
 }
 
 .contact .info-item i {

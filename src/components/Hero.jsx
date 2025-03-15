@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
   return (
     <section id="hero" className="hero section light-background">
-      <img src={`${process.env.PUBLIC_URL}/static/media/img/5651978.png`} alt="/"></img>
+      <img src={`${process.env.PUBLIC_URL}/static/media/img/5651978.webp`} alt="/"></img>
 
       <div className="container" data-aos="zoom-out">
         <div className="row justify-content-center">

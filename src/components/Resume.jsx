@@ -21,8 +21,7 @@ const Resume = () => {
               <h4>Deepak Aruldoss</h4>
               <p>
                 <em>
-                  Software Backend Developer with over 6 years of experience in CMS, ERP, and E-commerce solutions.
-                  Specialized in Shopware 5 & 6, Odoo ERP, and API integrations.
+                Software Backend Developer with experience in CMS, ERP, and e-commerce solutions, specializing in Shopware 5 & 6, Odoo ERP, and API integrations.
                 </em>
               </p>
               <ul>

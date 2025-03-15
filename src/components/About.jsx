@@ -40,7 +40,7 @@ const About = () => {
         <div className="row gy-4 justify-content-center">
           <div className="col-lg-3">
             <img
-              src={`${process.env.PUBLIC_URL}/static/media/img/deepak_aruldoss_about.jpg`}
+              src={`${process.env.PUBLIC_URL}/static/media/img/deepak_aruldoss_about.webp`}
               className="img-fluid deepak-aruldoss-img"
               alt="Deepak Aruldoss"
             />
@@ -48,7 +48,7 @@ const About = () => {
           <div className="col-lg-8 content">
             <h2>Backend &amp; Web Developer</h2>
             <p className="fst-italic py-3">
-            Backend developer with 6+ years of experience in building scalable solutions, solving complex challenges, and optimizing performance. 
+            Backend developer with {experience.years}+ years of experience in building scalable solutions, solving complex challenges, and optimizing performance. 
             I specialize in creating robust backend systems that enhance efficiency and drive business growth. My expertise spans CMS, ERP systems, 
             e-commerce platforms like Shopware, and payment API integrations.
             </p>
