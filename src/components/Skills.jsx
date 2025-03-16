@@ -155,23 +155,23 @@ const Skills = () => {
                     <div className="col-lg-6 skill-separate-section">
                         <div className="skill-header">Frontend Technologies</div>
                         <div className="progress">
-                            <span className="skill"><span>HTML</span> <i className="val">80%</i></span>
+                            <span className="skill"><span>HTML</span> <i className="val">85%</i></span>
                             <div className="progress-bar-wrap">
-                                <div className="progress-bar html-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div className="progress-bar html-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
 
                         <div className="progress">
-                            <span className="skill"><span>Twig Template Engine</span> <i className="val">80%</i></span>
+                            <span className="skill"><span>Twig Template Engine</span> <i className="val">85%</i></span>
                             <div className="progress-bar-wrap">
-                                <div className="progress-bar twig-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div className="progress-bar twig-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
 
                         <div className="progress">
-                            <span className="skill"><span>Smarty Template Engine</span> <i className="val">80%</i></span>
+                            <span className="skill"><span>Smarty Template Engine</span> <i className="val">85%</i></span>
                             <div className="progress-bar-wrap">
-                                <div className="progress-bar smarty-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div className="progress-bar smarty-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
 
