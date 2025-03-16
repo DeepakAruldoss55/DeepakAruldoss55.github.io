@@ -150,8 +150,7 @@ const projects = [
     "Optimization: Enhanced performance through optimized code and efficient asset loading for faster page speeds and better usability.",
     "Quality Assurance: Performed comprehensive testing to ensure compatibility across browsers and devices, addressing any bugs or inconsistencies.",
     "Deployment and Support: Deployed the theme to the client’s production environment and provided post-deployment support for fine-tuning and updates."
-  ],
-  link: "https://mfs.brandcrock.com"
+  ]
 },
 {
   title: "Geocoding API Integration for Nearby Events",
@@ -181,8 +180,7 @@ const projects = [
     "Sponsor Ticket Implementation: Introduced a unique feature that allows sponsors to purchase and allocate tickets for specific events, enabling targeted promotional activities and boosting event participation.",
     "Enhanced User Experience: Focused on creating a seamless end-to-end experience for both event organizers and attendees, ensuring ease of use and reliability.",
     "Testing and Optimization: Conducted extensive testing to ensure the module’s functionality, performance, and compatibility with other Odoo features."
-  ],
-  link: "https://mfs.brandcrock.com/appointment"
+  ]
 },
 {
   title: "Controller of Examinations System",
