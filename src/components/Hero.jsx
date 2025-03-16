@@ -14,16 +14,16 @@ const Hero = () => {
             </p>
             <div className="social-links" data-aos="slide-left" data-aos-delay="300">
               <a href="https://www.linkedin.com/in/deepak-aruldoss-40426b218" target="_blank" rel="noreferrer">
-                <i className="bi bi-linkedin" aria-label="LinkedIn"></i>
+                <i className="bi bi-linkedin" aria-label="LinkedIn" title="LinkedIn"></i>
               </a>
               <a href="https://wa.me/6383331367?text=Hi%20Deepak%2C%20I%20would%20like%20to%20connect!" target="_blank" rel="noreferrer">
-                <i className="bi bi-whatsapp" aria-label="WhatsApp"></i>
+                <i className="bi bi-whatsapp" aria-label="WhatsApp" title="Connect WhatsApp"></i>
               </a>
               <a href="https://github.com/DeepakAruldoss55" target="_blank" rel="noreferrer">
-                <i className="bi bi-github" aria-label="GitHub"></i>
+                <i className="bi bi-github" aria-label="GitHub" title="GitHub"></i>
               </a>
               <a href={`${process.env.PUBLIC_URL}/static/media/resume/Deepak_Aruldoss_2025.pdf`} target="_blank" rel="noreferrer">
-                <i className="bi bi-download" aria-label="Download Resume"></i>
+                <i className="bi bi-download" aria-label="Download Resume" title="Download Resume"></i>
               </a>
             </div>
             <div className="col-md-12 pt-4">
