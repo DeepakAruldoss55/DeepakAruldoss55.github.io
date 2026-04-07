@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://DeepakAruldoss55.github.io/portfolio_react/",
+  "homepage": "https://DeepakAruldoss55.github.io/",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "aos": "^2.3.4",
