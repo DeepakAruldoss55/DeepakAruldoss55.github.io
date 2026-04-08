@@ -76,21 +76,21 @@ const Certification = () => {
                           {cert.description}
                           <i className="bi bi-quote quote-icon-right text-primary ms-2"></i>
                         </p>
-                        <div className="d-flex align-items-center gap-3">
-                          <div className="p-2 rounded-circle bg-primary-subtle">
-                            <i className="bi bi-calendar-check text-primary"></i>
+                        <div className="d-inline-flex align-items-center gap-3 glass-v2 px-4 py-2 rounded-pill shadow-sm" style={{ border: '1px solid rgba(59, 130, 246, 0.3)' }}>
+                          <div className="d-flex align-items-center justify-content-center rounded-circle bg-primary-subtle" style={{ width: '32px', height: '32px', flexShrink: 0 }}>
+                            <i className="bi bi-calendar-check text-primary" style={{ fontSize: '0.9rem' }}></i>
                           </div>
-                          <h4 className="text-primary mb-0 fw-600">{cert.date}</h4>
+                          <h4 className="text-white mb-0 fw-700" style={{ fontSize: '1rem', letterSpacing: '0.5px' }}>{cert.date}</h4>
                         </div>
                       </div>
                     </div>
                     <div className="col-lg-5 text-center">
                       <div className="cert-image-container position-relative">
                         <div className="cert-glow"></div>
-                        <img 
-                          src={`${process.env.PUBLIC_URL}${cert.image}`} 
-                          className="img-fluid certification-img rounded-3 shadow-lg" 
-                          alt={cert.alt} 
+                        <img
+                          src={`${process.env.PUBLIC_URL}${cert.image}`}
+                          className="img-fluid certification-img rounded-3 shadow-lg"
+                          alt={cert.alt}
                           style={{ transition: 'transform 0.5s ease', cursor: 'zoom-in' }}
                         />
                       </div>

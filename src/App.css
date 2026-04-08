@@ -229,3 +229,83 @@ h6 {
     padding: 0 24px;
   }
 }
+
+/* --------------------------------------------------------------
+   # Ecosystem Expertise: Lighting Effects
+   -------------------------------------------------------------- */
+.platform-card-v2 {
+  position: relative;
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.platform-card-v2::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(59, 130, 246, 0.15),
+    transparent 40%
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.platform-card-v2:hover::before {
+  opacity: 1;
+}
+
+.platform-card-v2:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.shine-effect {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+}
+
+.platform-card-v2:hover .shine-effect {
+  animation: shine-sweep 1.5s infinite;
+}
+
+@keyframes shine-sweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.platform-card-v2 .icon-box {
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.platform-card-v2:hover .icon-box {
+  background: var(--primary) !important;
+  transform: rotate(10deg) scale(1.1);
+  box-shadow: 0 0 30px var(--primary-glow);
+}
+
+.platform-card-v2:hover .icon-box i {
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+}

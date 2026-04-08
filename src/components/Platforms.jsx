@@ -34,6 +34,16 @@ const platformsData = [
 ];
 
 const Platforms = () => {
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+  };
+
   return (
     <section id="platforms" className="platforms section">
       <div className="container section-title" data-aos="fade-up">
@@ -44,7 +54,11 @@ const Platforms = () => {
         <div className="row g-4">
           {platformsData.map((platform, idx) => (
             <div key={idx} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay={idx * 150}>
-              <div className="platform-card glass-v2 h-100 p-5 text-center" style={{ borderRadius: '32px' }}>
+              <div 
+                className="platform-card-v2 h-100 p-5 text-center" 
+                onMouseMove={handleMouseMove}
+              >
+                <div className="shine-effect"></div>
                 <div 
                   className="icon-box mx-auto mb-4" 
                   style={{ 

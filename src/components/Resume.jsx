@@ -34,7 +34,7 @@ const Resume = () => {
                   date: "Jan 2023 - Present",
                   color: "var(--primary)",
                   points: [
-                    "Designed, developed, and maintained scalable backend services using Node.js, React with TypeScript for an enterprise CRM platform.",
+                    "Designed, developed, and maintained scalable backend services using Node.js with TypeScript for an enterprise CRM platform.",
                     "Architected and implemented RESTful APIs to support core CRM features and complex third-party integrations.",
                     "Engineered backend APIs consumed by React frontend components, ensuring seamless integration and high performance.",
                     "Integrated diverse third-party systems and external services, prioritizing reliability, security, and performance.",

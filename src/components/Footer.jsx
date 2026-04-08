@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -10,7 +11,9 @@ const Footer = () => {
                     <div className="row g-5">
                         {/* Brand Column */}
                         <div className="col-lg-4 text-center text-lg-start">
-                            <h2 className="text-gradient fw-900 mb-3" style={{ fontSize: '2.5rem' }}>DA.</h2>
+                            <Link to="/" className="text-decoration-none">
+                                <h2 className="text-gradient fw-900 mb-3" style={{ fontSize: '2.5rem' }}>DA.</h2>
+                            </Link>
                             <p className="text-white-50 mb-4" style={{ lineHeight: '1.8' }}>
                                 Engineering high-performance, scalable backend ecosystems with a focus on deep technical integration and automation.
                             </p>
@@ -21,12 +24,12 @@ const Footer = () => {
                             <h4 className="text-white mb-4 fw-bold">Quick Navigation</h4>
                             <div className="footer-links d-flex flex-column gap-3">
                                 {[
-                                    { name: "About Profile", id: "about" },
-                                    { name: "Technical Skills", id: "skills" },
-                                    { name: "Professional Journey", id: "resume" },
-                                    { name: "Projects Showcase", id: "projects" }
+                                    { name: "About Profile", path: "/#about" },
+                                    { name: "Technical Skills", path: "/#skills" },
+                                    { name: "Professional Journey", path: "/#resume" },
+                                    { name: "Projects Showcase", path: "/projects" }
                                 ].map((link, i) => (
-                                    <a key={i} href={`#${link.id}`} className="text-white-50 text-decoration-none hover-primary transition-smooth">
+                                    <a key={i} href={link.path} className="text-white-50 text-decoration-none hover-primary transition-smooth">
                                         {link.name}
                                     </a>
                                 ))}
