@@ -41,6 +41,12 @@ const generateClientResponse = (query, chatHistory = []) => {
   const lastBotMsg = chatHistory.length > 0 ? (chatHistory[chatHistory.length - 1].content || "").toLowerCase() : "";
   const lastUserMsg = chatHistory.length > 1 ? (chatHistory[chatHistory.length - 2].content || "").toLowerCase() : "";
 
+  // 0. HARMFUL / VULGAR / PROFANITY MODERATION FILTER
+  const vulgarPattern = /\b(fuck|fucking|fucker|shit|bitch|asshole|bastard|dick|pussy|cock|cunt|slut|whore|nigger|faggot|porn|nude|kill yourself)\b/i;
+  if (vulgarPattern.test(q)) {
+    return "I keep our conversation focused on Deepak’s professional portfolio, software engineering work, and technical projects. Let me know if you’d like to know more about his skills, experience, or background!";
+  }
+
   // 1. URGENCY / MOBILE NUMBER STEP 4 (Confirmed urgency)
   const isUrgent = /urgent|emergency|asap|today|right now|immediately|quick call|priority/.test(q);
   const askedPhoneRecently = /mobile|phone|call|number/.test(lastUserMsg) || /phone number|mobile number/.test(lastBotMsg);
