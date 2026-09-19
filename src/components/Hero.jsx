@@ -8,7 +8,7 @@ const Hero = () => {
         <div className="row align-items-center g-5">
           <div className="col-lg-7 text-start">
             <h1 className="text-gradient mb-4" style={{ fontSize: 'calc(2.5rem + 4vw)', lineHeight: 1.1 }}>
-              Senior Full Stack <br /> Engineer
+              Senior Full Stack <br /> Developer
             </h1>
             <p className="hero-subtitle mb-5">
               Engineering high-performance, scalable web systems with React, Node.js, and TypeScript. Focused on architectural excellence, performance optimization, and modern user experiences.

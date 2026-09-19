@@ -5,15 +5,57 @@ const Navbar = () => {
   const location = useLocation();
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
   const headerRef = useRef(null);
+
+  const navItems = [
+    { id: "hero", label: "Home", href: "#hero" },
+    { id: "about", label: "About", href: "#about" },
+    { id: "skills", label: "Skills", href: "#skills" },
+    { id: "resume", label: "Journey", href: "#resume" },
+    { id: "platforms", label: "Expertise", href: "#platforms" },
+    { id: "contact", label: "Contact", href: "#contact" }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      if (location.pathname !== "/") return;
+
+      // Bottom of page check -> activate Contact
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 60
+      ) {
+        setActiveSection("contact");
+        return;
+      }
+
+      const sectionIds = ["hero", "about", "skills", "resume", "platforms", "contact"];
+      const scrollPos = window.scrollY + 220; // Header & view offset
+
+      let current = "hero";
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPos >= top) {
+            current = id;
+          }
+        }
+      }
+      setActiveSection(current);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [location.pathname]);
 
   useEffect(() => {
     setIsMobileNavVisible(false);
@@ -21,6 +63,23 @@ const Navbar = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileNavVisible(!isMobileNavVisible);
+  };
+
+  const handleNavClick = (e, id) => {
+    setIsMobileNavVisible(false);
+    setActiveSection(id);
+    const el = document.getElementById(id);
+    if (el) {
+      e.preventDefault();
+      const headerOffset = 90;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      window.history.pushState(null, "", `#${id}`);
+    }
   };
 
   return (
@@ -47,14 +106,17 @@ const Navbar = () => {
       <nav id="navmenu" className={`navmenu ${isMobileNavVisible ? 'mobile-show' : ''}`}>
         <ul className="d-flex align-items-center gap-2 mb-0">
           {location.pathname === "/" ? (
-            <>
-              <li><a href="#hero" className="nav-link active">Home</a></li>
-              <li><a href="#about" className="nav-link">About</a></li>
-              <li><a href="#skills" className="nav-link">Skills</a></li>
-              <li><a href="#resume" className="nav-link">Journey</a></li>
-              <li><a href="#platforms" className="nav-link">Expertise</a></li>
-              <li><a href="#contact" className="nav-link">Contact</a></li>
-            </>
+            navItems.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={item.href}
+                  className={`nav-link ${activeSection === item.id ? "active" : ""}`}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
           ) : (
             <li>
               <Link to="/" className="nav-link btn glass-v2 px-4 py-2" style={{ borderRadius: '12px' }}>

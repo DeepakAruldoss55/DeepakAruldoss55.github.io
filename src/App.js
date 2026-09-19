@@ -12,6 +12,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Gotop from './components/Gotop';
 import Projects from './components/Projects';
+import Chatbot from './components/Chatbot';
 
 import './App.css';
 
@@ -63,6 +64,7 @@ function App() {
         </Routes>
         <Footer />
         <Gotop />
+        <Chatbot />
       </div>
     </Router>
   );

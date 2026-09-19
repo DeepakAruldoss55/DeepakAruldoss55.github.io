@@ -1,0 +1,8 @@
+{
+  "venvPath": "./rag-backend",
+  "venv": "venv",
+  "extraPaths": [
+    "./rag-backend",
+    "./rag-backend/venv/lib/python3.10/site-packages"
+  ]
+}

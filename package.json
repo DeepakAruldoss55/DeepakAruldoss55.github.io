@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://DeepakAruldoss55.github.io/",
+  "proxy": "http://127.0.0.1:8000",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "aos": "^2.3.4",
@@ -19,6 +20,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "backend": "cd rag-backend && ./venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000 --reload",
+    "dev": "concurrently -n \"REACT,FASTAPI\" -c \"cyan,magenta\" \"react-scripts start\" \"npm run backend\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build && cp build/index.html build/404.html",
@@ -44,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^10.0.5",
     "gh-pages": "^6.3.0"
   }
 }

@@ -9,13 +9,29 @@
 # production
 /build
 
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# environment & secrets
+.env
+.env.*
+!.env.example
+rag-backend/.env
+rag-backend/.env.*
+!rag-backend/.env.example
 
+# Python backend runtime
+rag-backend/venv/
+rag-backend/__pycache__/
+rag-backend/chroma_db/
+chroma_db/
+*.pyc
+__pycache__/
+
+# IDE & workspace artifacts
+.vscode/
+.gemini/
+implementation_plan.md
+walkthrough.md
+
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
