@@ -5,6 +5,10 @@ const getApiEndpoints = () => {
   if (process.env.REACT_APP_RAG_API_URL) {
     return [process.env.REACT_APP_RAG_API_URL];
   }
+  if (typeof window !== "undefined" && window.location.protocol === "https:" && !window.location.hostname.includes("localhost")) {
+    // On HTTPS static hosting (e.g. GitHub Pages) with no cloud API URL set
+    return [];
+  }
   const currentHost = typeof window !== "undefined" && window.location.hostname ? window.location.hostname : "localhost";
   return [
     "", // Relative URL (uses package.json "proxy": "http://127.0.0.1:8000" in CRA dev server)
@@ -12,6 +16,145 @@ const getApiEndpoints = () => {
     "http://127.0.0.1:8000",
     "http://localhost:8000"
   ];
+};
+
+// Dynamic experience calculator
+const getExperience = () => {
+  const now = new Date();
+  const start = new Date(2018, 6); // July 2018
+  let years = now.getFullYear() - start.getFullYear();
+  let months = now.getMonth() - start.getMonth();
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+  return {
+    full: `${years} years and ${months} months`,
+    decimal: `${years}.${months} years`
+  };
+};
+
+// Client-side intelligent fallback engine for static GitHub Pages hosting
+const generateClientResponse = (query, chatHistory = []) => {
+  const q = query.toLowerCase().trim();
+  const exp = getExperience();
+  const lastBotMsg = chatHistory.length > 0 ? (chatHistory[chatHistory.length - 1].content || "").toLowerCase() : "";
+  const lastUserMsg = chatHistory.length > 1 ? (chatHistory[chatHistory.length - 2].content || "").toLowerCase() : "";
+
+  // 1. URGENCY / MOBILE NUMBER STEP 4 (Confirmed urgency)
+  const isUrgent = /urgent|emergency|asap|today|right now|immediately|quick call|priority/.test(q);
+  const askedPhoneRecently = /mobile|phone|call|number/.test(lastUserMsg) || /phone number|mobile number/.test(lastBotMsg);
+
+  if (isUrgent && (askedPhoneRecently || /mobile|phone|call|number/.test(q))) {
+    return (
+      "I’ve noted the urgency. You can reach Deepak directly at:\n\n" +
+      "- **Mobile:** **+91 6383331367**\n" +
+      "- **Email:** **adeepakplm55@gmail.com**\n\n" +
+      "Feel free to call or drop a quick note with your details!"
+    );
+  }
+
+  // 2. MOBILE NUMBER REQUEST STEP 3 (Asks for phone number)
+  if (/mobile|phone|contact number|cell|call him|give.*number|share.*number/.test(q)) {
+    return (
+      "I understand you’d like his phone number. Deepak is most responsive over email at **adeepakplm55@gmail.com**. " +
+      "Could you let me know why you need his mobile number, or is this an urgent matter?"
+    );
+  }
+
+  // 3. VALID REASON SHARED STEP 2 (Job / Freelance / Project / Hiring after contact inquiry)
+  const isContactInquiryContext = /connect with deepak|discuss with deepak|what you’d like to connect/.test(lastBotMsg);
+  const isValidReason = /job|hire|freelance|project|contract|opportunity|opening|interview|consulting|collaborat/.test(q);
+
+  if (isValidReason && (isContactInquiryContext || /email|mail/.test(q))) {
+    return (
+      "That sounds great! You can reach Deepak directly via email at **adeepakplm55@gmail.com** with details about the opportunity or project."
+    );
+  }
+
+  // 4. INITIAL CONTACT INQUIRY STEP 1 (Asking how to contact without purpose)
+  if (/how to contact|how can i reach|want to talk|contact deepak|reach deepak|talk to deepak|get in touch/.test(q)) {
+    return "I’d be happy to help! Could you please let me know what you’d like to connect with Deepak about?";
+  }
+
+  // 5. TECHNICAL SKILLS & STACK
+  if (/skill|tech stack|technology|technologies|framework|node|react|typescript|backend|frontend/.test(q)) {
+    return (
+      `Deepak is a Senior Full Stack Developer & Backend Architect with **${exp.decimal}** of professional experience:\n\n` +
+      "• **Core Stack:** Node.js with TypeScript, React (Vite) with TypeScript, Express.js\n" +
+      "• **Databases & DevOps:** MySQL, MongoDB, Docker containerization, Linux (Ubuntu)\n" +
+      "• **Backend & E-Commerce:** PHP (Symfony, Laravel, Shopware 5 & 6)\n" +
+      "• **AI & Emerging Tech:** Actively engineering Retrieval-Augmented Generation (RAG) pipelines, LLMs, and vector databases."
+    );
+  }
+
+  // 6. EXPERIENCE & COMPANIES
+  if (/experience|company|companies|work|career|history|background|first company|novalnet|brandcrock|apple g/.test(q)) {
+    if (/first company/.test(q)) {
+      return "Deepak's first company was **Apple G Web Technology Pvt Ltd**, where he started his career as a Software Developer in July 2018.";
+    }
+    return (
+      `Deepak has **${exp.full}** of professional software development experience across 3 companies:\n\n` +
+      "1. **Brandcrock India Pvt. Ltd** (Jan 2023 – Present) — *Senior Software Developer*\n" +
+      "   Leading scalable Node.js/TypeScript microservices architecture and enterprise CRM platform.\n\n" +
+      "2. **Novalnet e-Solutions Pvt Ltd** (Oct 2021 – Dec 2022) — *Software Developer*\n" +
+      "   Payment gateway integrations and e-commerce payment modules.\n\n" +
+      "3. **Apple G Web Technology Pvt Ltd** (Jul 2018 – Oct 2021) — *Software Developer*\n" +
+      "   Full-stack web development and RESTful API engineering."
+    );
+  }
+
+  // 7. CERTIFICATIONS & AWARDS
+  if (/certif|award|honor|spot award|shopware certified|uptop/.test(q)) {
+    return (
+      "Here are Deepak's key certifications & honors:\n\n" +
+      "• **Technical Excellence Spot Award (Jan 2025):** Awarded by Brandcrock India for engineering high-performance Node.js/TypeScript microservices.\n" +
+      "• **Shopware 6 Certified Developer (May 2023):** Certified mastery of Shopware 6 plugin architecture & Symfony core.\n" +
+      "• **UpTop AI/ML Certification (In Progress):** Deepening expertise in AI/ML, LLM application engineering, and RAG systems.\n" +
+      "• **CIICP (March 2015):** Computer hardware maintenance & networking setup."
+    );
+  }
+
+  // 8. SHOPWARE PLUGINS
+  if (/shopware|plugin|plugins/.test(q)) {
+    return (
+      "Deepak is an official **Shopware 6 Certified Developer** and has built multiple store plugins including:\n\n" +
+      "• **Customer Discount Request Plugin** (Custom quote negotiations)\n" +
+      "• **Customer Membership Program** (Tiered customer loyalty)\n" +
+      "• **Ticket System** (In-store support & issue tracking)\n" +
+      "• **Order Status Analytics** (Fulfillment & dashboard metrics)"
+    );
+  }
+
+  // 9. CI/CD & SHELL SCRIPTING CLARIFICATION
+  if (/ci\/cd|cicd|devops|pipeline|shell script|bash script/.test(q)) {
+    return (
+      "Deepak's core strength is focused on **Full Stack & Backend Architecture** (Node.js, TypeScript, React, PHP, databases). " +
+      "While he uses Docker and standard Linux server commands comfortably, he does not specialize in dedicated CI/CD DevOps pipelines or advanced shell scripting."
+    );
+  }
+
+  // 10. GREETINGS & INTRO
+  if (/^hi|^hello|^hey|^hai|^greetings|^good (morning|afternoon|evening)/.test(q)) {
+    return (
+      "Hey there! 👋 I’m **Sara**, Deepak’s AI companion. " +
+      "How can I help you today? Feel free to ask me anything about Deepak's projects, technical skills, or experience!"
+    );
+  }
+
+  // 11. WHO IS DEEPAK / SARA
+  if (/who are you|who is sara|what are you/.test(q)) {
+    return (
+      "I'm **Sara**, an AI companion on Deepak Aruldoss's portfolio! " +
+      "I can tell you all about Deepak's software engineering background, full-stack tech stack, Shopware plugins, and recent projects."
+    );
+  }
+
+  // DEFAULT CONVERSATIONAL RESPONSE
+  return (
+    "I’m here to help with anything about Deepak's experience, technical stack, or projects! " +
+    "Feel free to ask about his work at Brandcrock, skills in Node.js & React, or Shopware plugins."
+  );
 };
 
 const INITIAL_MESSAGE = {
@@ -83,16 +226,15 @@ const Chatbot = () => {
     setInput("");
     setIsLoading(true);
 
-    try {
-      // Build history for context
-      const history = newMessages
-        .filter((m) => m.role !== "system")
-        .slice(-6)
-        .map((m) => ({
-          role: m.role === "bot" ? "assistant" : "user",
-          content: m.content
-        }));
+    const history = newMessages
+      .filter((m) => m.role !== "system")
+      .slice(-6)
+      .map((m) => ({
+        role: m.role === "bot" ? "assistant" : "user",
+        content: m.content
+      }));
 
+    try {
       const endpoints = getApiEndpoints();
       let responseData = null;
       let lastError = null;
@@ -136,14 +278,13 @@ const Chatbot = () => {
         }
       ]);
     } catch (err) {
-      console.warn("RAG Backend fetch error:", err);
+      // If backend is unavailable (e.g., on static GitHub Pages), generate intelligent client response
+      const clientReply = generateClientResponse(textToSend, history);
       setMessages((prev) => [
         ...prev,
         {
           role: "bot",
-          content:
-            "⚠️ *Unable to reach the assistant service right now.*\n\n" +
-            "Please feel free to explore the portfolio sections or connect with Deepak directly at **adeepakplm55@gmail.com**!"
+          content: clientReply
         }
       ]);
     } finally {
