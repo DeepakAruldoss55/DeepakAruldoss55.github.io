@@ -1,6 +1,9 @@
 # Contact Information & FAQs for Deepak Aruldoss
 
 ## Contact Details
+- **LinkedIn**: https://www.linkedin.com/in/deepak-aruldoss-40426b218/
+- **GitHub**: https://github.com/DeepakAruldoss55
+- **Portfolio Website**: https://deepakaruldoss55.github.io/
 - **Email (Primary)**: adeepakplm55@gmail.com
 - **Mobile / Phone (High Priority / Direct Calls)**: +91 6383331367
 - **Location**: Chennai, Tamil Nadu, India
@@ -8,14 +11,23 @@
 
 ## Frequently Asked Questions (FAQs)
 
+### Q: What is Deepak's LinkedIn account or profile?
+A: You can connect with Deepak on LinkedIn at **https://www.linkedin.com/in/deepak-aruldoss-40426b218/**
+
+### Q: What is Deepak's GitHub profile?
+A: Deepak's GitHub profile is **https://github.com/DeepakAruldoss55**
+
+### Q: What is Deepak's portfolio website?
+A: Deepak's portfolio website is **https://deepakaruldoss55.github.io/**
+
 ### Q: What is Deepak's current experience level?
-A: Deepak started his software engineering career in July 2018 (over 8 years / 8.2 years of pure production experience), currently working as a Senior Software Developer focusing on Node.js, TypeScript, React, and scalable backend ecosystems.
+A: Deepak started his software engineering career in July 2018 and has 8.3 years (8 years and 3 months) of pure production experience as a Senior Software Developer focusing on Node.js, TypeScript, React, and scalable backend ecosystems.
 
 ### Q: What companies has Deepak worked at, and what was his first company?
 A: Deepak has worked at 3 companies:
-1. **First Company**: **Apple G Web Technology Pvt Ltd** (Software Developer, July 2018 – October 2021) — Where he started his career developing client websites, CMS/ERP solutions, and RESTful APIs.
-2. **Second Company**: **Novalnet e-Solutions Pvt Ltd** (Software Developer, October 2021 – December 2022) — E-commerce modules and payment integrations.
-3. **Third / Current Company**: **Brandcrock India Pvt. Ltd** (Senior Software Developer, January 2023 – Present) — Enterprise CRM and scalable Node.js/TypeScript backend services.
+1. **First Company**: **Apple G Web Technology Pvt Ltd** (Software Engineer, July 2018 – October 2021 · 3 yrs 4 mos) — Client websites, RESTful APIs, CMS/ERP platforms (PHP, Zend, Ext JS, MySQL).
+2. **Second Company**: **Novalnet e-Solutions** (Software Engineer, October 2021 – December 2022 · 1 yr 3 mos) — E-commerce payment modules and gateway integrations (Shopware 5/6, Symfony, Vue.js, MySQL).
+3. **Third / Most Recent Company**: **BrandCrock India Pvt Ltd** (Senior Software Engineer, January 2023 – October 27, 2026 · 3 yrs 10 mos) — Enterprise CRM and scalable Node.js/TypeScript backend services (Node.js, React, TypeScript, Express, MongoDB, MySQL, Docker, Python).
 
 ### Q: What are Deepak's core backend technologies?
 A: Node.js (with TypeScript), Express.js, PHP (Symfony/Laravel/Shopware), Python, MySQL, and MongoDB.
@@ -32,7 +44,7 @@ A: Deepak has only basic/fundamental knowledge of standard Linux commands for op
 ### Q: What certifications and awards has Deepak earned?
 A: Deepak has earned the following certifications and honors:
 1. **Shopware 6 Certified Developer** (May 2023) — Architectural mastery of Shopware 6 and Symfony components.
-2. **Technical Excellence - Spot Award Winner** (January 2025, Brandcrock India Pvt. Ltd) — Outstanding technical leadership and high-performance Node.js/TypeScript microservices.
+2. **Technical Excellence - Spot Award Winner** (January 2025, BrandCrock India Pvt Ltd) — Outstanding technical excellence and high-performance Node.js/TypeScript microservices.
 3. **UpTop AI/ML Certification** (Ongoing / In Progress) — Specialized learning in Artificial Intelligence, Machine Learning, LLMs, and Generative AI.
 4. **Canada India Institutional Cooperation Project** (March 2015) — Computer hardware maintenance and basic network setup during polytechnic studies.
 

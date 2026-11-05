@@ -11,26 +11,18 @@ const getApiEndpoints = () => {
   }
   const currentHost = typeof window !== "undefined" && window.location.hostname ? window.location.hostname : "localhost";
   return [
-    "", // Relative URL (uses package.json "proxy": "http://127.0.0.1:8000" in CRA dev server)
     `http://${currentHost}:8000`,
     "http://127.0.0.1:8000",
-    "http://localhost:8000"
+    "http://localhost:8000",
+    ""
   ];
 };
 
-// Dynamic experience calculator
+// Experience calculator (July 2018 – October 27, 2026)
 const getExperience = () => {
-  const now = new Date();
-  const start = new Date(2018, 6); // July 2018
-  let years = now.getFullYear() - start.getFullYear();
-  let months = now.getMonth() - start.getMonth();
-  if (months < 0) {
-    years -= 1;
-    months += 12;
-  }
   return {
-    full: `${years} years and ${months} months`,
-    decimal: `${years}.${months} years`
+    full: "8 years and 3 months",
+    decimal: "8.3 years"
   };
 };
 
@@ -78,43 +70,161 @@ const generateClientResponse = (query, chatHistory = []) => {
     );
   }
 
+  // 3b. PUBLIC PROFESSIONAL PROFILES (LinkedIn, GitHub, Portfolio)
+  if (/linkedin|linked in/.test(q)) {
+    return "You can connect with Deepak on LinkedIn at **https://www.linkedin.com/in/deepak-aruldoss-40426b218/**";
+  }
+  if (/github|git hub|repo/.test(q)) {
+    return "You can check out Deepak's code and repositories on GitHub at **https://github.com/DeepakAruldoss55**";
+  }
+  if (/portfolio url|portfolio link|website/.test(q)) {
+    return "Deepak's personal portfolio website is **https://deepakaruldoss55.github.io/**";
+  }
+
   // 4. INITIAL CONTACT INQUIRY STEP 1 (Asking how to contact without purpose)
   if (/how to contact|how can i reach|want to talk|contact deepak|reach deepak|talk to deepak|get in touch/.test(q)) {
     return "I’d be happy to help! Could you please let me know what you’d like to connect with Deepak about?";
   }
 
-  // 5. TECHNICAL SKILLS & STACK
-  if (/skill|tech stack|technology|technologies|framework|node|react|typescript|backend|frontend/.test(q)) {
+  // 5. COMPANY SPECIFIC INTENTS: Apple G
+  if (/apple g|appleg/.test(q)) {
+    // 5a. Duration / Tenure
+    if (/how many years|how many year|how long|duration|period|tenure|time/.test(q)) {
+      return "Deepak worked at **Apple G Web Technology Pvt Ltd** for **3 years and 4 months** (July 2018 – October 2021) as a Software Engineer.";
+    }
+    // 5b. Skills / Tech Stack
+    if (/skill|tech|stack|language|framework/.test(q)) {
+      return (
+        "Deepak's skill set at **Apple G Web Technology Pvt Ltd** included:\n\n" +
+        "• **Backend:** PHP, Zend Framework, Web Application Development\n" +
+        "• **Frontend:** Ext JS, HTML5\n" +
+        "• **Databases & APIs:** MySQL, RESTful APIs\n" +
+        "• **Environment:** Ubuntu (Linux)"
+      );
+    }
+    // 5c. Role / Designation
+    if (/role|designation|position|title/.test(q)) {
+      return "At **Apple G Web Technology Pvt Ltd**, Deepak worked as a **Software Engineer**.";
+    }
+    // 5d. Responsibilities / Work done
+    if (/responsibilit|work|do|project|achieve|accomplish/.test(q)) {
+      return (
+        "At **Apple G Web Technology Pvt Ltd**, Deepak's key responsibilities were:\n\n" +
+        "• Developed and enhanced client-facing websites and built RESTful APIs for mobile apps.\n" +
+        "• Designed tailored CMS and ERP platforms for manufacturing clients.\n" +
+        "• Resolved critical production bugs and performance bottlenecks."
+      );
+    }
+    // 5e. General Apple G overview
+    return "Deepak worked at **Apple G Web Technology Pvt Ltd** from **July 2018 to October 2021** (3 years and 4 months) as a **Software Engineer** in Chennai, India.";
+  }
+
+  // 6. COMPANY SPECIFIC INTENTS: Novalnet
+  if (/novalnet/.test(q)) {
+    if (/how many years|how many year|how long|duration|period|tenure|time/.test(q)) {
+      return "Deepak worked at **Novalnet e-Solutions** for **1 year and 3 months** (October 2021 – December 2022) as a Software Engineer.";
+    }
+    if (/skill|tech|stack|language|framework/.test(q)) {
+      return (
+        "Deepak's skill set at **Novalnet e-Solutions** included:\n\n" +
+        "• **E-Commerce & Frameworks:** Shopware 5, Shopware 6, Symfony Framework, Zend, Laravel\n" +
+        "• **Frontend & Templating:** Twig, Ext JS, jQuery, JavaScript, Vue.js\n" +
+        "• **Backend & Database:** Doctrine (PHP), Object-Oriented Programming (OOP), REST APIs, MySQL\n" +
+        "• **Environment:** Ubuntu (Linux)"
+      );
+    }
+    if (/role|designation|position|title/.test(q)) {
+      return "At **Novalnet e-Solutions**, Deepak worked as a **Software Engineer**.";
+    }
+    if (/responsibilit|work|do|project|achieve|accomplish/.test(q)) {
+      return (
+        "At **Novalnet e-Solutions**, Deepak's key responsibilities were:\n\n" +
+        "• Developed custom e-commerce modules and specialized payment plugins.\n" +
+        "• Integrated and configured secure Novalnet payment gateways and webhook handling.\n" +
+        "• Built an internal Archive Management System using Node.js and TypeScript with RBAC."
+      );
+    }
+    return "Deepak worked at **Novalnet e-Solutions** from **October 2021 to December 2022** (1 year and 3 months) as a **Software Engineer** in Chennai, India.";
+  }
+
+  // 7. COMPANY SPECIFIC INTENTS: BrandCrock
+  if (/brandcrock/.test(q)) {
+    if (/how many years|how many year|how long|duration|period|tenure|time|when did.*leave|left/.test(q)) {
+      return "Deepak worked at **BrandCrock India Pvt Ltd** for **3 years and 10 months** (**January 2023 – October 27, 2026**) as a Senior Software Engineer.";
+    }
+    if (/skill|tech|stack|language|framework/.test(q)) {
+      return (
+        "Deepak's skill set at **BrandCrock India Pvt Ltd** included:\n\n" +
+        "• **Frontend & Languages:** React.js, TypeScript, Embedded JavaScript (EJS), JSON\n" +
+        "• **Backend & Frameworks:** Node.js, Express.js, Python, FastAPI, REST APIs\n" +
+        "• **AI & Emerging Tech:** Generative AI, RAG, LLM Integration, Prompt Engineering\n" +
+        "• **Databases & ORM:** MySQL, MongoDB, Object-Relational Mapping (ORM)\n" +
+        "• **Domain & Systems:** CRM (Customer Relationship Management), POS (Point of Sale) Systems\n" +
+        "• **DevOps & Tools:** Docker, Git, GitHub, Ubuntu (Linux)"
+      );
+    }
+    if (/role|designation|position|title/.test(q)) {
+      return "At **BrandCrock India Pvt Ltd**, Deepak worked as a **Senior Software Engineer** (January 2023 – October 27, 2026).";
+    }
+    if (/responsibilit|work|do|project|achieve|accomplish/.test(q)) {
+      return (
+        "At **BrandCrock India Pvt Ltd** (Jan 2023 – Oct 27, 2026), Deepak's key responsibilities were:\n\n" +
+        "• Designed and maintained scalable backend services using Node.js and TypeScript for an enterprise CRM platform.\n" +
+        "• Architected RESTful APIs to enhance core CRM features and facilitate complex third-party integrations.\n" +
+        "• Collaborated on code reviews and technical standards to maintain high application quality.\n" +
+        "• Won the Technical Excellence Spot Award (Jan 2025)."
+      );
+    }
+    return "Deepak worked at **BrandCrock India Pvt Ltd** from **January 2023 to October 27, 2026** (3 years and 10 months) as a **Senior Software Engineer** in Chennai, India.";
+  }
+
+  // 8a. AI / GENERATIVE AI / RAG / LLM SPECIFIC INTENT
+  if (/\b(ai|artificial intelligence|generative ai|genai|rag|llm|llms|prompt engineering|fastapi)\b/.test(q)) {
     return (
-      `Deepak is a Senior Full Stack Developer & Backend Architect with **${exp.decimal}** of professional experience:\n\n` +
-      "• **Core Stack:** Node.js with TypeScript, React (Vite) with TypeScript, Express.js\n" +
-      "• **Databases & DevOps:** MySQL, MongoDB, Docker containerization, Linux (Ubuntu)\n" +
-      "• **Backend & E-Commerce:** PHP (Symfony, Laravel, Shopware 5 & 6)\n" +
-      "• **AI & Emerging Tech:** Actively engineering Retrieval-Augmented Generation (RAG) pipelines, LLMs, and vector databases."
+      "Deepak has foundational, beginner-stage knowledge (**30%–40% proficiency**) in AI-driven technologies and their practical integration into modern web applications:\n\n" +
+      "• **Generative AI (40%):** Integrating generative AI capabilities into modern web workflows\n" +
+      "• **RAG Pipelines (40%):** Retrieval-Augmented Generation with vector databases (ChromaDB) & embeddings\n" +
+      "• **LLM Integration (35%):** Connecting cloud & local LLMs with backend services\n" +
+      "• **Prompt Engineering (40%):** Structured system prompts, context grounding, and guardrails\n" +
+      "• **Python & FastAPI (70%):** Building backend APIs and microservices to serve AI & web workflows"
     );
   }
 
-  // 6. EXPERIENCE & COMPANIES
-  if (/experience|company|companies|work|career|history|background|first company|novalnet|brandcrock|apple g/.test(q)) {
-    if (/first company/.test(q)) {
-      return "Deepak's first company was **Apple G Web Technology Pvt Ltd**, where he started his career as a Software Developer in July 2018.";
+  // 8b. GENERAL TECHNICAL SKILLS & STACK
+  if (/skill|tech stack|technology|technologies|framework|node|react|typescript|backend|frontend|python|php/.test(q)) {
+    return (
+      `Deepak is a Senior Full Stack Developer with **${exp.decimal}** (${exp.full}) of professional experience:\n\n` +
+      "• **Modern Stack & Frameworks:** Node.js with TypeScript (90%), React (Vite) with TypeScript (80%), Express.js (90%), EJS (75%)\n" +
+      "• **Data & Infrastructure:** MySQL & Relational Databases (90%), MongoDB (70%), Docker & Containerization (75%), Linux (Ubuntu) & Git (70%)\n" +
+      "• **Backend & Ecosystems:** PHP (Symfony/Laravel) (90%), Python & FastAPI (70%), API & System Integration (95%), E-commerce Architecture (92%)\n" +
+      "• **AI & Generative Tech (Beginner Stage, 30–40%):** Generative AI (40%), RAG Pipelines (40%), LLM Integration (35%), Prompt Engineering (40%)"
+    );
+  }
+
+  // 9. EXPERIENCE & COMPANIES
+  if (/experience|company|companies|work|career|history|background|first company/.test(q)) {
+    if (/first company|1st company/.test(q)) {
+      return "Deepak's first company was **Apple G Web Technology Pvt Ltd**, where he started his career as a Software Engineer in July 2018.";
+    }
+    if (/how many years|total experience|years of experience/.test(q)) {
+      return `Deepak has **${exp.decimal}** (${exp.full}) of professional software development experience (July 2018 – October 2026).`;
     }
     return (
-      `Deepak has **${exp.full}** of professional software development experience across 3 companies:\n\n` +
-      "1. **Brandcrock India Pvt. Ltd** (Jan 2023 – Present) — *Senior Software Developer*\n" +
-      "   Leading scalable Node.js/TypeScript microservices architecture and enterprise CRM platform.\n\n" +
-      "2. **Novalnet e-Solutions Pvt Ltd** (Oct 2021 – Dec 2022) — *Software Developer*\n" +
+      `Deepak has **${exp.full}** (${exp.decimal}) of professional software development experience across 3 companies:\n\n` +
+      "1. **BrandCrock India Pvt Ltd** (Jan 2023 – Oct 27, 2026 · 3 yrs 10 mos) — *Senior Software Engineer*\n" +
+      "   Engineered scalable Node.js/TypeScript microservices architecture and enterprise CRM platform.\n\n" +
+      "2. **Novalnet e-Solutions** (Oct 2021 – Dec 2022 · 1 yr 3 mos) — *Software Engineer*\n" +
       "   Payment gateway integrations and e-commerce payment modules.\n\n" +
-      "3. **Apple G Web Technology Pvt Ltd** (Jul 2018 – Oct 2021) — *Software Developer*\n" +
-      "   Full-stack web development and RESTful API engineering."
+      "3. **Apple G Web Technology Pvt Ltd** (Jul 2018 – Oct 2021 · 3 yrs 4 mos) — *Software Engineer*\n" +
+      "   Full-stack web development, RESTful APIs, PHP/Zend, and Ext JS."
     );
   }
 
-  // 7. CERTIFICATIONS & AWARDS
+  // 10. CERTIFICATIONS & AWARDS
   if (/certif|award|honor|spot award|shopware certified|uptop/.test(q)) {
     return (
       "Here are Deepak's key certifications & honors:\n\n" +
-      "• **Technical Excellence Spot Award (Jan 2025):** Awarded by Brandcrock India for engineering high-performance Node.js/TypeScript microservices.\n" +
+      "• **Technical Excellence Spot Award (Jan 2025):** Awarded by BrandCrock India for engineering high-performance Node.js/TypeScript microservices.\n" +
       "• **Shopware 6 Certified Developer (May 2023):** Certified mastery of Shopware 6 plugin architecture & Symfony core.\n" +
       "• **UpTop AI/ML Certification (In Progress):** Deepening expertise in AI/ML, LLM application engineering, and RAG systems.\n" +
       "• **CIICP (March 2015):** Computer hardware maintenance & networking setup."
@@ -177,6 +287,7 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
   const chatWindowRef = useRef(null);
+  const inputRef = useRef(null);
 
   // Auto-scroll to bottom of chat
   useEffect(() => {
@@ -184,6 +295,16 @@ const Chatbot = () => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, isOpen, isLoading]);
+
+  // Auto-focus input when opened or after Sara finishes responding
+  useEffect(() => {
+    if (isOpen && !isLoading) {
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 60);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, isLoading]);
 
   // Prevent background page scrolling when interacting with chat window
   useEffect(() => {
@@ -506,6 +627,7 @@ const Chatbot = () => {
             }}
           >
             <input
+              ref={inputRef}
               type="text"
               placeholder="Type your message..."
               value={input}

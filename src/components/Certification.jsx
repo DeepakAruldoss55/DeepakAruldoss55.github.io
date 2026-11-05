@@ -17,7 +17,7 @@ const certifications = [
   {
     title: "Technical Excellence - Spot Award Winner",
     date: "January 2025",
-    description: "Honored for exceptional technical leadership and architectural contributions. Specifically recognized for engineering highly scalable Node.js & TypeScript backends and optimizing production workflows.",
+    description: "Honored for exceptional technical excellence and architectural contributions. Specifically recognized for engineering highly scalable Node.js & TypeScript backends and optimizing production workflows.",
     image: "/static/media/img/Certificate/Deepak_Aruldoss_sport_award.webp",
     alt: "Spot Award 2025"
   },

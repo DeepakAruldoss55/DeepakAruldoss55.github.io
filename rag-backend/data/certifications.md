@@ -6,8 +6,8 @@
 
 ## 2. Technical Excellence - Spot Award Winner
 - **Date Issued**: January 2025
-- **Organization**: Brandcrock India Pvt. Ltd
-- **Description**: Awarded for outstanding technical leadership, engineering highly scalable Node.js & TypeScript microservices, and optimizing enterprise CRM backend architecture.
+- **Organization**: BrandCrock India Pvt Ltd
+- **Description**: Awarded for outstanding technical excellence, engineering highly scalable Node.js & TypeScript microservices, and optimizing enterprise CRM backend architecture.
 
 ## 3. UpTop AI/ML Certification
 - **Status**: Ongoing / Currently In Progress

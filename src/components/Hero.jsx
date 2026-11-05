@@ -11,7 +11,7 @@ const Hero = () => {
               Senior Full Stack <br /> Developer
             </h1>
             <p className="hero-subtitle mb-5">
-              Engineering high-performance, scalable web systems with React, Node.js, and TypeScript. Focused on architectural excellence, performance optimization, and modern user experiences.
+              Engineering high-performance, scalable web systems with React, Node.js, and TypeScript, along with hands-on exposure to integrating AI-driven capabilities into modern web applications.
             </p>
             <div className="d-flex flex-wrap gap-4 align-items-center">
               <Link to="/projects" className="btn btn-premium px-5 py-4">

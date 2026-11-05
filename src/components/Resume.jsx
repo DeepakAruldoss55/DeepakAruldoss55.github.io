@@ -28,27 +28,23 @@ const Resume = () => {
             <div className="resume-timeline-v3">
               {[
                 {
-                  title: "Senior Software Developer",
-                  company: "Brandcrock India Pvt. Ltd",
-                  location: "Chennai, India",
-                  date: "Jan 2023 - Present",
+                  title: "Senior Software Engineer",
+                  company: "BrandCrock India Pvt Ltd",
+                  location: "Chennai, Tamil Nadu, India",
+                  date: "Jan 2023 - Oct 2026 · 3 yrs 10 mos",
                   color: "var(--primary)",
                   points: [
-                    "Designed, developed, and maintained scalable backend services using Node.js with TypeScript for an enterprise CRM platform.",
-                    "Architected and implemented RESTful APIs to support core CRM features and complex third-party integrations.",
-                    "Engineered backend APIs consumed by React frontend components, ensuring seamless integration and high performance.",
-                    "Integrated diverse third-party systems and external services, prioritizing reliability, security, and performance.",
-                    "Optimized backend performance through strategic code refactoring, query optimization, and advanced caching.",
-                    "Improved overall code quality and maintainability by enforcing Industry best practices and clean architecture principles.",
-                    "Actively mentored the CRM development team, providing technical guidance and conducting rigorous code reviews.",
-                    "Ensured high standards of security, scalability, and performance across the entire application ecosystem."
+                    "Designed and maintained scalable backend services using Node.js and TypeScript for an enterprise CRM platform.",
+                    "Architected RESTful APIs to enhance core CRM features and facilitate complex third-party integrations.",
+                    "Collaborated on code reviews and technical standards, ensuring high quality across the application.",
+                    "Optimized backend performance through strategic code refactoring, query indexing, and caching."
                   ]
                 },
                 {
-                  title: "Software Developer",
-                  company: "Novalnet e-Solutions Pvt Ltd",
-                  location: "Chennai, India",
-                  date: "Oct 2021 - Dec 2022",
+                  title: "Software Engineer",
+                  company: "Novalnet e-Solutions",
+                  location: "Chennai, Tamil Nadu, India",
+                  date: "Oct 2021 - Dec 2022 · 1 yr 3 mos",
                   color: "var(--secondary)",
                   points: [
                     "Developed custom e-commerce modules and specialized payment plugins, adhering to global development standards.",
@@ -59,16 +55,16 @@ const Resume = () => {
                   ]
                 },
                 {
-                  title: "Software Developer",
+                  title: "Software Engineer",
                   company: "Apple G Web Technology Pvt Ltd",
-                  location: "Chennai, India",
-                  date: "Jul 2018 - Oct 2021",
+                  location: "Chennai, Tamil Nadu, India",
+                  date: "Jul 2018 - Oct 2021 · 3 yrs 4 mos",
                   color: "#00d2ff",
                   points: [
-                    "Developed and enhanced client-facing websites and built robust RESTful APIs to support mobile application ecosystems.",
-                    "Designed and implemented tailored CMS and ERP infrastructures for large-scale manufacturing clients.",
-                    "Resolved critical production bugs and performance bottlenecks, ensuring high application stability and reliability.",
-                    "Analyzed complex business and technical requirements to deliver effective, scalable software solutions for diverse clients."
+                    "Developed and enhanced client-facing websites, ensuring a seamless user experience.",
+                    "Built robust RESTful APIs to support mobile application ecosystems, facilitating efficient data exchange.",
+                    "Designed tailored CMS and ERP infrastructures for large-scale manufacturing clients, optimizing their operational processes.",
+                    "Resolved critical production bugs and performance bottlenecks, maintaining high application stability and reliability."
                   ]
                 }
               ].map((item, i) => (

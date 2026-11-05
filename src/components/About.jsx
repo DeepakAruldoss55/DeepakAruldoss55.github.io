@@ -2,25 +2,10 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 
 const About = () => {
-  const [experience, setExperience] = useState({ years: 0, months: 0 });
+  const [experience] = useState({ years: 8, months: 3 });
 
   useEffect(() => {
     AOS.init({ duration: 1200, easing: "ease-out-back", once: true });
-
-    const startYear = 2018;
-    const startMonth = 7;
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-    const currentMonth = currentDate.getMonth() + 1;
-
-    let totalYears = currentYear - startYear;
-    let totalMonths = currentMonth - startMonth;
-
-    if (totalMonths < 0) {
-      totalYears -= 1;
-      totalMonths += 12;
-    }
-    setExperience({ years: totalYears, months: totalMonths });
   }, []);
 
   return (
@@ -46,7 +31,7 @@ const About = () => {
             <div className="col-lg-7">
               <h3 className="glow-text text-gradient mb-4" style={{ fontSize: '2.5rem' }}>Expertise & Strategy</h3>
               <p className="description mb-4 lead" style={{ color: '#fff', opacity: 1, fontWeight: 500 }}>
-                Architecting enterprise-scale applications with {experience.years}+ years of expertise in Node.js, React, and TypeScript. Focused on high-performance backend ecosystems and modern UI development.
+                Architecting enterprise-scale applications with {experience.years}+ years of expertise in Node.js, React, and TypeScript. Focused on high-performance backend ecosystems, modern UI development, and practical AI integration.
               </p>
               
               <div className="info-grid row g-4 mt-2">

@@ -1,17 +1,23 @@
 # Deepak Aruldoss - Personal Bio & Summary
 
 - **Full Name**: Deepak Aruldoss
-- **Current Title**: Senior Software Developer / Strategic Full Stack Developer & Backend Architect
+- **Current Title**: Senior Software Engineer / Strategic Full Stack Developer & Backend Architect
 - **Location**: Chennai, India
 - **Email**: adeepakplm55@gmail.com
 - **Degree**: Bachelor of Engineering (B.E.) in Computer Science and Engineering
-- **Total Experience**: Career started in July 2018 (8+ years / over 8 years of pure production experience)
+- **Total Experience**: 8.3 years (8 years and 3 months of pure production experience, July 2018 – October 2026)
 - **Primary Focus**: Architecting enterprise-scale applications, high-performance backend ecosystems, RESTful APIs, ERP/CRM systems, and modern UI development.
 - **Key Metrics & Achievements**:
-  - Pure production experience since July 2018 (8+ years / 8y 2m).
+  - Pure production experience: 8.3 years (8y 3m, July 2018 – October 2026).
   - 30+ successfully delivered client & enterprise projects.
   - 10+ global clients served across Europe, North America, and Asia.
-  - Spot Award Winner (January 2025) for exceptional technical leadership and scalable backend architecture.
+  - Spot Award Winner (January 2025) for exceptional technical excellence and scalable backend architecture.
+## Languages Known & Communication
+- **Spoken Languages**: English, Tamil
+- **Proficiency**: Fluent in English and Tamil.
 
 ## Professional Summary
-Deepak Aruldoss is a Strategic Full Stack Developer with extensive expertise architecting high-performance backend ecosystems, e-commerce architectures, and enterprise CRM/ERP platforms since July 2018 (8+ years). He specializes in Node.js, TypeScript, React, Express, PHP (Symfony/Laravel), and modern database systems. Deepak excels in environments that challenge technical boundaries, continually refining processes and adopting cutting-edge technologies to deliver robust, scalable systems.
+Senior Software Engineer with 8.2 years of experience specializing in Node.js and TypeScript, building scalable CRM and payment-driven platforms. Strong background in designing secure, high-performance REST APIs, integrating third-party services, and optimizing backend systems for reliability and scale. Experienced in full-stack architecture, technical decision-making, and owning production systems end-to-end.
+
+
+

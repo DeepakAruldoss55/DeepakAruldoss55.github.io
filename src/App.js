@@ -8,7 +8,6 @@ import Skills from './components/Skills';
 import Resume from './components/Resume';
 import Certification from './components/Certification';
 import Platforms from './components/Platforms';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Gotop from './components/Gotop';
 import Projects from './components/Projects';
@@ -58,7 +57,6 @@ function App() {
             <Resume />
             <Certification />
             <Platforms />
-            <Contact />
           </>} />
           <Route path="/projects" element={<Projects />} />
         </Routes>

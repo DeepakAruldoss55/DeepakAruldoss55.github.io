@@ -1,3 +1,6 @@
+# npm rebuild
+# npm run dev
+
 # Deepak Aruldoss - Personal Portfolio & "Sara" AI RAG Companion 🚀
 
 Welcome to the official repository for **Deepak Aruldoss's** developer portfolio and **Sara AI** — a real-time Generative AI conversational assistant built with **Retrieval-Augmented Generation (RAG)**, **ChromaDB**, and **FastAPI**.

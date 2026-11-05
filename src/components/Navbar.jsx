@@ -13,8 +13,7 @@ const Navbar = () => {
     { id: "about", label: "About", href: "#about" },
     { id: "skills", label: "Skills", href: "#skills" },
     { id: "resume", label: "Journey", href: "#resume" },
-    { id: "platforms", label: "Expertise", href: "#platforms" },
-    { id: "contact", label: "Contact", href: "#contact" }
+    { id: "platforms", label: "Expertise", href: "#platforms" }
   ];
 
   useEffect(() => {
@@ -23,16 +22,16 @@ const Navbar = () => {
 
       if (location.pathname !== "/") return;
 
-      // Bottom of page check -> activate Contact
+      // Bottom of page check -> activate Expertise
       if (
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 60
       ) {
-        setActiveSection("contact");
+        setActiveSection("platforms");
         return;
       }
 
-      const sectionIds = ["hero", "about", "skills", "resume", "platforms", "contact"];
+      const sectionIds = ["hero", "about", "skills", "resume", "platforms"];
       const scrollPos = window.scrollY + 220; // Header & view offset
 
       let current = "hero";
