@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
 import AOS from "aos";
 
@@ -222,6 +223,70 @@ const Projects = () => {
       </div>
 
       <div className="container">
+        {/* Featured Flagship DeepShop AI Banner */}
+        <div
+          className="glass-v2 p-4 p-lg-5 mb-5 rounded-5 position-relative overflow-hidden"
+          data-aos="fade-up"
+          style={{
+            border: "1px solid rgba(59, 130, 246, 0.4)",
+            background: "radial-gradient(circle at 85% 20%, rgba(59, 130, 246, 0.2), rgba(15, 23, 42, 0.85) 65%)"
+          }}
+        >
+          <div className="row align-items-center g-4">
+            <div className="col-lg-7">
+              <div className="d-flex flex-wrap gap-2 mb-3">
+                <span className="badge rounded-pill px-3 py-2 text-info" style={{ background: "rgba(34, 211, 238, 0.12)", border: "1px solid rgba(34, 211, 238, 0.35)" }}>
+                  <i className="bi bi-stars me-1"></i> Featured Flagship Showcase
+                </span>
+                <span className="badge rounded-pill px-3 py-2 text-white" style={{ background: "rgba(59, 130, 246, 0.2)", border: "1px solid rgba(59, 130, 246, 0.4)" }}>
+                  React 18 • Node.js • FastAPI • ChromaDB
+                </span>
+              </div>
+              <h3 className="text-white fw-bold mb-3" style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}>
+                DeepShop — AI-Powered E-Commerce & Enterprise ERP Suite
+              </h3>
+              <p className="text-white-50 mb-4" style={{ fontSize: "1.02rem", lineHeight: 1.75 }}>
+                Explore the dedicated engineering showcase featuring a full 5:47 interactive video walkthrough, 7 timestamped chapters, a 384-dimensional ChromaDB Customer RAG Concierge, an Executive Store Health Score (77/100) BI Engine, a Multi-Turn AI Business Copilot, and a 7-module Enterprise ERP suite.
+              </p>
+              <div className="d-flex flex-wrap gap-3">
+                <Link to="/deep-shop" className="btn btn-premium px-4 py-3 rounded-4 d-inline-flex align-items-center gap-2">
+                  <i className="bi bi-play-circle-fill fs-5"></i> Open Dedicated Demo Page
+                </Link>
+                <a
+                  href="https://github.com/DeepakAruldoss55/eshop-ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn glass-v2 text-white px-4 py-3 rounded-4 fw-bold d-inline-flex align-items-center gap-2"
+                  style={{ border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)" }}
+                >
+                  <i className="bi bi-github fs-5"></i> GitHub Repository
+                </a>
+              </div>
+            </div>
+            <div className="col-lg-5">
+              <Link to="/deep-shop" className="d-block text-decoration-none position-relative rounded-4 overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.15)" }}>
+                <img
+                  src={`${process.env.PUBLIC_URL}/static/media/deep-shop/ai-analytics-dashboard.jpg`}
+                  alt="DeepShop AI Analytics & ERP Suite"
+                  className="img-fluid w-100"
+                  style={{ maxHeight: "260px", objectFit: "cover", objectPosition: "top" }}
+                />
+                <div
+                  className="position-absolute top-50 start-50 translate-middle rounded-circle d-flex align-items-center justify-content-center"
+                  style={{
+                    width: "64px",
+                    height: "64px",
+                    background: "rgba(59, 130, 246, 0.9)",
+                    boxShadow: "0 0 30px rgba(59, 130, 246, 0.8)"
+                  }}
+                >
+                  <i className="bi bi-play-fill text-white fs-2 ms-1"></i>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+
         <div className="row g-4">
           {projects.map((project, index) => (
             <div key={index} className="col-lg-6 col-xl-4">
@@ -253,6 +318,25 @@ const Projects = () => {
                     </div>
                   )}
                 </div>
+
+                {project.internalLink && (
+                  <div className="mt-auto pt-5 d-flex flex-column gap-2">
+                    <Link to={project.internalLink} className="btn btn-premium w-100 py-3 rounded-3" style={{ fontSize: '0.9rem' }}>
+                      {project.ctaLabel || "Watch Demo"} <i className="bi bi-play-circle-fill ms-2"></i>
+                    </Link>
+                    {project.githubLink && (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn glass-v2 text-white w-100 py-2 rounded-3 fw-bold"
+                        style={{ fontSize: '0.85rem', border: '1px solid rgba(255,255,255,0.18)' }}
+                      >
+                        <i className="bi bi-github me-2"></i>View Source on GitHub
+                      </a>
+                    )}
+                  </div>
+                )}
 
                 {project.link && (
                   <div className="mt-auto pt-5">

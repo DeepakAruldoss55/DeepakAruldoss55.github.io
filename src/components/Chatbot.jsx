@@ -178,6 +178,18 @@ const generateClientResponse = (query, chatHistory = []) => {
     return "Deepak worked at **BrandCrock India Pvt Ltd** from **January 2023 to October 27, 2026** (3 years and 10 months) as a **Senior Software Engineer** in Chennai, India.";
   }
 
+  // 8a-0. DEEPSHOP / ESHOP AI E-COMMERCE & ERP PROJECT INTENT
+  if (/\b(deepshop|deep shop|eshop|e-shop|ai ecommerce|ai e-commerce|demo video)\b/.test(q)) {
+    return (
+      "**DeepShop** is Deepak's flagship AI-powered E-Commerce & Enterprise ERP ecosystem (featured with a full interactive video walkthrough on the **/deep-shop** page):\n\n" +
+      "• **Frontend Storefront & 7-Module Admin ERP:** Built with **Vite + React 18 + TypeScript + Tailwind CSS**, featuring instant department/tag filtering, cart & checkout, Fiscal P&L Statement, Operating Expenses Ledger, and CRM management.\n" +
+      "• **Core Commerce Backend:** **Node.js (v20) + Express + TypeScript** architected with a generic domain repository layer and real-time inventory & shipment tracking.\n" +
+      "• **Customer RAG AI Concierge:** **Python + FastAPI + ChromaDB** with a custom **384-dimensional hybrid semantic embedder**, live order/shipment status injection, and interactive in-chat product cards (`[SUGGEST_PRODUCT]`).\n" +
+      "• **Merchant BI & Multi-Turn AI Business Copilot:** Computes a 5-pillar **AI Store Health Score (0–100)**, flags SKU price anomalies & dead-stock capital lockup, and provides a stateful multi-turn Business Copilot with 3-tier LLM failover (Groq → OpenRouter → Deterministic Responder).\n" +
+      "• **GitHub Repository:** **https://github.com/DeepakAruldoss55/eshop-ai**"
+    );
+  }
+
   // 8a. AI / GENERATIVE AI / RAG / LLM SPECIFIC INTENT
   if (/\b(ai|artificial intelligence|generative ai|genai|rag|llm|llms|prompt engineering|fastapi)\b/.test(q)) {
     return (

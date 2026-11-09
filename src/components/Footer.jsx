@@ -27,7 +27,8 @@ const Footer = () => {
                                     { name: "About Profile", path: "/#about" },
                                     { name: "Technical Skills", path: "/#skills" },
                                     { name: "Professional Journey", path: "/#resume" },
-                                    { name: "Projects Showcase", path: "/projects" }
+                                    { name: "Projects Showcase", path: "/projects" },
+                                    { name: "DeepShop AI Demo", path: "/deep-shop" }
                                 ].map((link, i) => (
                                     <Link key={i} to={link.path} className="text-white-50 text-decoration-none hover-primary transition-smooth">
                                         {link.name}

@@ -11,13 +11,14 @@ import Platforms from './components/Platforms';
 import Footer from './components/Footer';
 import Gotop from './components/Gotop';
 import Projects from './components/Projects';
+import DeepShop from './components/DeepShop';
 import Chatbot from './components/Chatbot';
 
 import './App.css';
 
 // Global Scroll to Hash Handler
 const ScrollToHash = () => {
-  const { hash } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     if (hash) {
@@ -30,7 +31,7 @@ const ScrollToHash = () => {
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [hash]);
+  }, [pathname, hash]);
 
   return null;
 };
@@ -59,6 +60,8 @@ function App() {
             <Platforms />
           </>} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/deep-shop" element={<DeepShop />} />
+          <Route path="/deepshop" element={<DeepShop />} />
         </Routes>
         <Footer />
         <Gotop />

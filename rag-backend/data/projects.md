@@ -1,6 +1,17 @@
 # Portfolio Projects & Case Studies by Deepak Aruldoss
 
-Deepak has engineered over 30+ production projects across Enterprise Systems, E-commerce plugins, ERPs, and APIs:
+Deepak has engineered over 30+ production projects across Enterprise Systems, AI-powered E-commerce & ERP suites, Shopware plugins, and APIs:
+
+### 0. DeepShop — AI-Powered E-Commerce & Enterprise ERP Suite (Flagship Showcase at `/deep-shop`)
+- **Platform**: React 18, TypeScript, Vite, Tailwind CSS, Node.js (v20), Express, Python, FastAPI, ChromaDB, Multi-Tier LLMs (Groq / OpenRouter)
+- **Domain**: AI E-Commerce, RAG Concierge & Enterprise ERP Business Intelligence
+- **GitHub Link**: https://github.com/DeepakAruldoss55/eshop-ai
+- **Role**: Full-Stack & Applied AI Engineer
+- **Details**:
+  - **Customer Storefront (`client/`)**: Responsive React 18 + TypeScript storefront with 6 departments, instant tag/search filtering, product quick-view modal, slide-over cart drawer with free-shipping progress, multi-step checkout pipeline, and live GPS carrier tracking timeline.
+  - **Core Commerce & ERP Backend (`server/`)**: Node.js + Express + TypeScript REST API engineered with a generic domain repository pattern (`Repository<T>`) and atomic transactional persistence across 7 core domain entities (`categories`, `products`, `customers`, `customer_addresses`, `orders`, `shipping`, `expenses`).
+  - **Customer RAG AI Concierge (`ai-service/`)**: FastAPI + ChromaDB microservice using a custom 384-dimensional hybrid semantic embedder (`LightweightSemanticEmbeddingFunction` with 8.0x exact ID boosting, word bigrams, character 4-gram typo tolerance, and 15 e-commerce concept clusters), live order/shipping cache synchronization, and interactive UI tag extraction (`[SUGGEST_PRODUCT]`, `[ACTION]`).
+  - **7-Module Admin ERP & AI Business Copilot**: Features Fiscal P&L Income Statement (`OVW-01`), AI Store Health Score (77/100) & Executive KPIs (`AI-01`), SKU price-anomaly & dead-stock capital lockup detection, CRM LTV buyer segmentation, and a stateful multi-turn AI Business Copilot (`ask_advisor`) backed by a 3-tier LLM failover cascade (Groq Pool → OpenRouter → Offline Deterministic Engine).
 
 ### 1. Enterprise CRM Infrastructure
 - **Platform**: Node.js, TypeScript, React
