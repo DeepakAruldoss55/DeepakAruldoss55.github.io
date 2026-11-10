@@ -15,7 +15,7 @@ section {
   position: relative;
   z-index: 1;
   scroll-margin-top: 35px;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Typography Overhaul */
