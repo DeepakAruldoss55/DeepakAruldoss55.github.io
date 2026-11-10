@@ -29,13 +29,21 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--bg-darker);
   color: var(--text-main);
   overflow-x: hidden;
+  max-width: 100%;
   line-height: 1.6;
+}
+
+#root,
+.App {
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* --- Aurora Background System --- */

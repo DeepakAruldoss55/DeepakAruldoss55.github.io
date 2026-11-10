@@ -7,8 +7,8 @@ const Footer = () => {
     return (
         <footer id="footer" className="footer section py-5 mt-5">
             <div className="container">
-                <div className="glass-v2 p-5 mb-0" style={{ borderRadius: '40px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <div className="row g-5">
+                <div className="glass-v2 p-4 p-md-5 mb-0" style={{ borderRadius: '40px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div className="row g-4 g-lg-5">
                         {/* Brand Column */}
                         <div className="col-lg-4 text-center text-lg-start">
                             <Link to="/" className="text-decoration-none">

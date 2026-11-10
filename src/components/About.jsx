@@ -17,9 +17,9 @@ const About = () => {
 
       <div className="container" data-aos="fade-up" data-aos-delay="200">
         <div className="glass-v2 card-v2" style={{ border: '1px solid rgba(255,255,255,0.15)' }}>
-          <div className="row g-5 align-items-center">
+          <div className="row g-4 g-lg-5 align-items-center">
             <div className="col-lg-5 text-center">
-              <div className="profile-img-container p-3 glass-v2 mx-auto" style={{ border: 'none', background: 'rgba(255,255,255,0.05)', boxSizing: 'content-box', maxWidth: '360px', borderRadius: '40px' }}>
+              <div className="profile-img-container p-3 glass-v2 mx-auto" style={{ border: 'none', background: 'rgba(255,255,255,0.05)', width: '100%', maxWidth: '392px', borderRadius: '40px' }}>
                 <img
                   src={`${process.env.PUBLIC_URL}/static/media/img/deepak_aruldoss_about.jpeg`}
                   className="img-fluid"
@@ -29,7 +29,7 @@ const About = () => {
               </div>
             </div>
             <div className="col-lg-7">
-              <h3 className="glow-text text-gradient mb-3" style={{ fontSize: '2.5rem' }}>Expertise & Strategy</h3>
+              <h3 className="glow-text text-gradient mb-3" style={{ fontSize: 'clamp(1.85rem, 4vw, 2.5rem)' }}>Expertise & Strategy</h3>
               <p className="description mb-4 lead" style={{ color: '#fff', opacity: 1, fontWeight: 500 }}>
                 Architecting enterprise-scale applications with {experience.years}+ years of expertise in Node.js, React, and TypeScript. Focused on high-performance backend ecosystems, modern UI development, and practical AI integration.
               </p>
@@ -43,10 +43,10 @@ const About = () => {
                 ].map((item, i) => (
                   <div key={i} className="col-md-6" data-aos="fade-up" data-aos-delay={300 + (i * 100)}>
                     <div className="d-flex align-items-center p-3 glass-v2 hover-glow" style={{ background: 'rgba(0,0,0,0.2)', border: 'none', borderRadius: '16px' }}>
-                       <i className={`bi bi-${item.icon} text-primary fs-4 me-3`}></i>
-                        <div className="text-start">
+                       <i className={`bi bi-${item.icon} text-primary fs-4 me-3 flex-shrink-0`}></i>
+                        <div className="text-start" style={{ minWidth: 0, overflowWrap: 'anywhere' }}>
                            <span className="text-white-50 small d-block mb-1">{item.label}</span>
-                           <span className="text-white fw-bold" style={{ letterSpacing: '0.5px' }}>{item.val}</span>
+                           <span className="text-white fw-bold d-block text-break" style={{ letterSpacing: '0.5px' }}>{item.val}</span>
                         </div>
                     </div>
                   </div>

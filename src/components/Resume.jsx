@@ -68,7 +68,7 @@ const Resume = () => {
                   ]
                 }
               ].map((item, i) => (
-                <div key={i} className="resume-card-v3 glass-v2 mb-5 p-5 position-relative hover-glow" data-aos="fade-up" data-aos-delay={i * 150}>
+                <div key={i} className="resume-card-v3 glass-v2 mb-5 p-4 p-md-5 position-relative hover-glow" data-aos="fade-up" data-aos-delay={i * 150}>
                   <div className="card-accent" style={{ background: item.color }}></div>
                   <div className="row align-items-start">
                     <div className="col-md-4 mb-4 mb-md-0">
