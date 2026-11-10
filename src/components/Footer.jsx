@@ -39,12 +39,20 @@ const Footer = () => {
                         {/* Social Column */}
                         <div className="col-lg-4 text-center text-lg-end">
                             <h4 className="text-white mb-4 fw-bold">Connect</h4>
-                            <div className="social-links d-flex justify-content-center justify-content-lg-end gap-3 mb-4">
-                                <a href="https://www.facebook.com/share/18az6SS6kn/" target="_blank" rel="noreferrer" title="Facebook" className="glass-v2 p-3 rounded-circle d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}><i className="bi bi-facebook fs-5"></i></a>
-                                <a href="https://www.instagram.com/deepakarul55?igsh=YXFwMXhwczFhY2pl" target="_blank" rel="noreferrer" title="Instagram" className="glass-v2 p-3 rounded-circle d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}><i className="bi bi-instagram fs-5"></i></a>
+                            <div className="social-links d-flex justify-content-center justify-content-lg-end gap-3 mb-3">
+                                <a href="mailto:adeepakplm55@gmail.com" title="adeepakplm55@gmail.com" className="glass-v2 p-3 rounded-circle d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}><i className="bi bi-envelope fs-5"></i></a>
+                                <a href="tel:+916383331367" title="+91 6383331367" className="glass-v2 p-3 rounded-circle d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}><i className="bi bi-telephone fs-5"></i></a>
                                 <a href="https://www.linkedin.com/in/deepak-aruldoss-40426b218" target="_blank" rel="noreferrer" title="LinkedIn" className="glass-v2 p-3 rounded-circle d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}><i className="bi bi-linkedin fs-5"></i></a>
                             </div>
-                            <p className="text-white-50 small">Professional Software Architecture</p>
+                            <div className="d-flex flex-column gap-1 mb-2">
+                                <a href="mailto:adeepakplm55@gmail.com" className="text-white-50 text-decoration-none hover-primary transition-smooth small">
+                                    <i className="bi bi-envelope text-primary me-2"></i>adeepakplm55@gmail.com
+                                </a>
+                                <a href="tel:+916383331367" className="text-white-50 text-decoration-none hover-primary transition-smooth small">
+                                    <i className="bi bi-telephone text-primary me-2"></i>+91 6383331367
+                                </a>
+                            </div>
+                            <p className="text-white-50 small mb-0">Professional Software Architecture</p>
                         </div>
                     </div>
 
