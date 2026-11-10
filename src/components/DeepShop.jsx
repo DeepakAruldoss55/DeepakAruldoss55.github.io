@@ -458,10 +458,10 @@ const DeepShop = () => {
     ARCHITECTURE_TABS.find((t) => t.id === activeArchTab) || ARCHITECTURE_TABS[0];
 
   return (
-    <section id="deep-shop-showcase" className="section" style={{ paddingTop: "140px" }}>
+    <section id="deep-shop-showcase" className="section" style={{ paddingTop: "96px" }}>
       <div className="container">
         {/* Top Breadcrumb & Navigation Pill */}
-        <div className="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4" data-aos="fade-down">
+        <div className="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3" data-aos="fade-down">
           <div className="d-flex align-items-center gap-2 flex-wrap">
             <Link
               to="/projects"

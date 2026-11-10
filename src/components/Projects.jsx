@@ -216,7 +216,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" className="section">
+    <section id="projects" className="section" style={{ paddingTop: "130px" }}>
       <div className="container section-title" data-aos="fade-up">
         <h2 className="text-gradient fw-900" style={{ fontSize: '3.5rem' }}>Portfolio Case Studies</h2>
         <p className="section-subtitle">Showcasing engineered solutions across e-commerce, ERP, and API-driven architectures.</p>

@@ -47,7 +47,7 @@ const Platforms = () => {
   return (
     <section id="platforms" className="platforms section">
       <div className="container section-title" data-aos="fade-up">
-        <h2 className="text-gradient fw-900" style={{ fontSize: '3.5rem' }}>Ecosystem Expertise</h2>
+        <h2 className="text-gradient fw-900" style={{ fontSize: '2.5rem' }}>Ecosystem Expertise</h2>
         <p className="section-subtitle">Specialized technical solutions across diverse enterprise platforms and automation layers.</p>
       </div>
       <div className="container">
@@ -55,27 +55,27 @@ const Platforms = () => {
           {platformsData.map((platform, idx) => (
             <div key={idx} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay={idx * 150}>
               <div 
-                className="platform-card-v2 h-100 p-5 text-center" 
+                className="platform-card-v2 h-100 p-4 text-center" 
                 onMouseMove={handleMouseMove}
               >
                 <div className="shine-effect"></div>
                 <div 
-                  className="icon-box mx-auto mb-4" 
+                  className="icon-box mx-auto mb-3" 
                   style={{ 
-                    width: '80px', 
-                    height: '80px', 
+                    width: '64px', 
+                    height: '64px', 
                     background: 'rgba(59,130,246,0.1)',
-                    borderRadius: '20px',
+                    borderRadius: '18px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     border: '1px solid rgba(59,130,246,0.2)'
                   }}
                 >
-                  <i className={`${platform.icon} text-gradient fs-1`}></i>
+                  <i className={`${platform.icon} text-gradient fs-2`}></i>
                 </div>
-                <h3 className="text-white mb-3 fw-bold">{platform.title}</h3>
-                <p className="text-white small mb-0" style={{ lineHeight: '1.7', opacity: 0.9 }}>{platform.description}</p>
+                <h3 className="text-white mb-2 fw-bold" style={{ fontSize: '1.35rem' }}>{platform.title}</h3>
+                <p className="text-white small mb-0" style={{ lineHeight: '1.6', opacity: 0.9 }}>{platform.description}</p>
               </div>
             </div>
           ))}

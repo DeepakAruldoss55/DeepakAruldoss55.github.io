@@ -52,26 +52,26 @@ const Certification = () => {
   }, []);
 
   return (
-    <section id="certifications" className="certifications section py-5">
+    <section id="certifications" className="certifications section">
       <div className="container section-title" data-aos="fade-up">
-        <h2 className="text-gradient fw-900" style={{ fontSize: '3.5rem' }}>Professional Certifications</h2>
+        <h2 className="text-gradient fw-900" style={{ fontSize: '2.5rem' }}>Professional Certifications</h2>
         <p className="section-subtitle">A record of specialized expertise and industry-standard technical validation.</p>
       </div>
 
       <div className="container" data-aos="fade-up" data-aos-delay="200">
-        <div className="cert-swiper swiper glass-v2 p-4 p-md-5 rounded-5" style={{ overflow: 'hidden' }}>
+        <div className="cert-swiper swiper glass-v2 p-4 rounded-5" style={{ overflow: 'hidden' }}>
           <div className="swiper-wrapper">
             {certifications.map((cert, index) => (
               <div key={index} className="swiper-slide">
-                <div className="certification-item py-2">
-                  <div className="row gy-5 align-items-center">
+                <div className="certification-item py-1">
+                  <div className="row gy-4 align-items-center">
                     <div className="col-lg-7">
                       <div className="certification-content px-lg-4">
-                        <div className="badge glass-v2 text-primary px-3 py-2 mb-4" style={{ fontSize: '0.8rem', letterSpacing: '1px' }}>
+                        <div className="badge glass-v2 text-primary px-3 py-2 mb-3" style={{ fontSize: '0.8rem', letterSpacing: '1px' }}>
                           VALIDATED EXPERTISE
                         </div>
-                        <h3 className="text-white mb-3 fw-bold" style={{ fontSize: '2.2rem', lineHeight: '1.2' }}>{cert.title}</h3>
-                        <p className="text-white-50 mb-4 lead" style={{ lineHeight: '1.8' }}>
+                        <h3 className="text-white mb-2 fw-bold" style={{ fontSize: '1.9rem', lineHeight: '1.2' }}>{cert.title}</h3>
+                        <p className="text-white-50 mb-3" style={{ lineHeight: '1.7', fontSize: '1rem' }}>
                           <i className="bi bi-quote quote-icon-left text-primary me-2"></i>
                           {cert.description}
                           <i className="bi bi-quote quote-icon-right text-primary ms-2"></i>
@@ -91,7 +91,7 @@ const Certification = () => {
                           src={`${process.env.PUBLIC_URL}${cert.image}`}
                           className="img-fluid certification-img rounded-3 shadow-lg"
                           alt={cert.alt}
-                          style={{ transition: 'transform 0.5s ease', cursor: 'zoom-in' }}
+                          style={{ transition: 'transform 0.5s ease', cursor: 'zoom-in', maxHeight: '260px', objectFit: 'contain' }}
                         />
                       </div>
                     </div>
@@ -101,7 +101,7 @@ const Certification = () => {
             ))}
           </div>
 
-          <div className="swiper-pagination mt-5 position-relative"></div>
+          <div className="swiper-pagination mt-4 position-relative"></div>
         </div>
       </div>
     </section>

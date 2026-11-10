@@ -10,24 +10,12 @@ const Hero = () => {
             <h1 className="text-gradient mb-4" style={{ fontSize: 'calc(2.5rem + 4vw)', lineHeight: 1.1 }}>
               Senior Full Stack <br /> Developer
             </h1>
-            <p className="hero-subtitle mb-5">
+            <p className="hero-subtitle mb-4">
               Engineering high-performance, scalable web systems with React, Node.js, and TypeScript, along with hands-on exposure to integrating AI-driven capabilities into modern web applications.
             </p>
             <div className="d-flex flex-wrap gap-4 align-items-center">
               <Link to="/projects" className="btn btn-premium px-5 py-4">
                 Explore Projects <i className="bi bi-arrow-right ms-2"></i>
-              </Link>
-              <Link
-                to="/deep-shop"
-                className="btn glass-v2 text-white px-4 py-4 fw-bold d-inline-flex align-items-center gap-2"
-                style={{
-                  borderRadius: "20px",
-                  border: "1px solid rgba(59, 130, 246, 0.45)",
-                  background: "rgba(59, 130, 246, 0.12)",
-                  fontSize: "1.05rem"
-                }}
-              >
-                <i className="bi bi-play-circle-fill text-info fs-5"></i> DeepShop AI Demo
               </Link>
               <div className="social-links d-flex gap-3">
                 <a href="https://www.linkedin.com/in/deepak-aruldoss-40426b218" target="_blank" rel="noreferrer">

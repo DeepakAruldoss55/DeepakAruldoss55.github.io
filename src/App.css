@@ -6,7 +6,7 @@
 
 :root {
   --nav-height: 80px;
-  --section-padding: 120px 0;
+  --section-padding: 80px 0;
 }
 
 /* Base Layout */
@@ -14,7 +14,7 @@ section {
   padding: var(--section-padding);
   position: relative;
   z-index: 1;
-  scroll-margin-top: 100px;
+  scroll-margin-top: 35px;
 }
 
 /* Typography Overhaul */
@@ -32,12 +32,12 @@ h6 {
 
 .section-title {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .section-title h2 {
   font-size: 4rem;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .section-subtitle {
@@ -106,7 +106,8 @@ h6 {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 100px;
+  padding-bottom: 24px;
   position: relative;
   overflow: hidden;
 }
@@ -121,7 +122,7 @@ h6 {
 .hero .hero-subtitle {
   font-size: 1.75rem;
   color: var(--text-muted);
-  margin-bottom: 48px;
+  margin-bottom: 36px;
   max-width: 600px;
 }
 
@@ -168,7 +169,7 @@ h6 {
    # Cards & Components
    -------------------------------------------------------------- */
 .card-v2 {
-  padding: 48px;
+  padding: 36px 44px;
   border-radius: var(--card-radius);
 }
 

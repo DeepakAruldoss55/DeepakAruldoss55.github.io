@@ -10,7 +10,7 @@ const Resume = () => {
   return (
     <section id="resume" className="resume section">
       <div className="container section-title" data-aos="fade-up">
-        <h2 className="text-gradient fw-900" style={{ fontSize: '3.5rem' }}>Professional Journey</h2>
+        <h2 className="text-gradient fw-900" style={{ fontSize: '2.5rem' }}>Professional Journey</h2>
         <p className="section-subtitle">A chronological record of engineering excellence and academic foundation.</p>
       </div>
 
