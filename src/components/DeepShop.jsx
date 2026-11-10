@@ -53,7 +53,7 @@ const VIDEO_CHAPTERS = [
     id: "ch-rag-concierge",
     time: 145,
     timeLabel: "02:25",
-    durationLabel: "50s",
+    durationLabel: "41s",
     badge: "Customer RAG AI",
     title: "DeepShop AI Concierge — Hybrid Vector Search & Interactive Cards",
     description:
@@ -66,9 +66,9 @@ const VIDEO_CHAPTERS = [
   },
   {
     id: "ch-ai-analytics",
-    time: 195,
-    timeLabel: "03:15",
-    durationLabel: "40s",
+    time: 186,
+    timeLabel: "03:06",
+    durationLabel: "49s",
     badge: "Merchant BI (AI-01)",
     title: "AI Store Health Score (77/100), Executive KPIs & Action Plan",
     description:
@@ -134,7 +134,7 @@ const SCREENSHOT_GALLERY = [
     title: "AI Store Health Score (77/100) & Executive BI Dashboard",
     caption:
       "Real-time statistical intelligence synthesizing Gross Sales, Net EBIT, 30-day revenue forecasts, prioritized AI Action Plans, and the AI Business Copilot.",
-    jumpTime: 195
+    jumpTime: 186
   },
   {
     src: "/static/media/deep-shop/erp-expenses-crm.jpg",
@@ -143,6 +143,77 @@ const SCREENSHOT_GALLERY = [
     caption:
       "Granular operating expense distribution, customer LTV segmentation (VIP, One-Time, Inactive), and SKU-level sell-through diagnostics.",
     jumpTime: 295
+  }
+];
+
+const AI_TELEMETRY_LOGS = [
+  {
+    stage: "EMBEDDER",
+    color: "#22d3ee",
+    text: "Projected query into 384-Dim L2 space (8.0× ID boost + 15 domain clusters)"
+  },
+  {
+    stage: "CHROMADB",
+    color: "#3b82f6",
+    text: "Retrieved top-6 semantic vector chunks from deepshop_knowledge (sim: 0.94)"
+  },
+  {
+    stage: "LIVE-SYNC",
+    color: "#a855f7",
+    text: "Synchronized dynamic inventory stock & active carrier checkpoint TRK-DPS-*"
+  },
+  {
+    stage: "GROQ-LPU",
+    color: "#10b981",
+    text: "Streaming grounded response + hydrating [SUGGEST_PRODUCT] UI cards"
+  },
+  {
+    stage: "BI-ENGINE",
+    color: "#f59e0b",
+    text: "Computed 5-pillar Store Health Score (77/100) & 30-day EBIT forecast"
+  }
+];
+
+const AI_NEURAL_NODES = [
+  {
+    step: "01",
+    title: "Natural Language Intent",
+    subtitle: "Storefront Chat & Merchant Prompt",
+    icon: "bi-chat-dots-fill",
+    color: "#22d3ee",
+    metric: "Regex + Context"
+  },
+  {
+    step: "02",
+    title: "384-Dim Hybrid Embedder",
+    subtitle: "Bigrams + 4-Grams + 15 Clusters",
+    icon: "bi-bezier2",
+    color: "#3b82f6",
+    metric: "8.0× ID Salience"
+  },
+  {
+    step: "03",
+    title: "ChromaDB Vector Store",
+    subtitle: "Real-Time Dynamic Chunk Sync",
+    icon: "bi-database-fill-gear",
+    color: "#8b5cf6",
+    metric: "38 Live Chunks"
+  },
+  {
+    step: "04",
+    title: "3-Tier LLM Failover Pool",
+    subtitle: "Groq LPU → OpenRouter → Offline",
+    icon: "bi-cpu-fill",
+    color: "#ec4899",
+    metric: "100% Uptime SLA"
+  },
+  {
+    step: "05",
+    title: "Generative UI & BI Action",
+    subtitle: "Product Cards & Executive KPIs",
+    icon: "bi-stars",
+    color: "#10b981",
+    metric: "77/100 Health Dial"
   }
 ];
 
@@ -370,6 +441,7 @@ const TECH_STACK_GROUPS = [
 const DeepShop = () => {
   const videoRef = useRef(null);
   const videoContainerRef = useRef(null);
+  const neuralCanvasRef = useRef(null);
   const [activeChapterId, setActiveChapterId] = useState(VIDEO_CHAPTERS[0].id);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(347);
@@ -378,10 +450,171 @@ const DeepShop = () => {
   const [isTheaterMode, setIsTheaterMode] = useState(false);
   const [activeArchTab, setActiveArchTab] = useState(ARCHITECTURE_TABS[0].id);
   const [selectedScreenshot, setSelectedScreenshot] = useState(null);
+  const [telemetryIdx, setTelemetryIdx] = useState(0);
+  const [activePipelineStep, setActivePipelineStep] = useState(0);
 
   useEffect(() => {
     AOS.init({ duration: 1000, easing: "ease-out-cubic", once: true });
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  // Cycle AI Telemetry logs & neural pipeline step
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTelemetryIdx((prev) => (prev + 1) % AI_TELEMETRY_LOGS.length);
+      setActivePipelineStep((prev) => (prev + 1) % AI_NEURAL_NODES.length);
+    }, 2400);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Interactive AI Neural Network Synaptic Canvas Animation
+  useEffect(() => {
+    const canvas = neuralCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationFrameId;
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const handleResize = () => {
+      if (!canvas) return;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+
+    const mouse = { x: -9999, y: -9999 };
+    const handleMouseMove = (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+    const handleMouseLeave = () => {
+      mouse.x = -9999;
+      mouse.y = -9999;
+    };
+
+    window.addEventListener("resize", handleResize, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    window.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+
+    const palette = ["#22d3ee", "#3b82f6", "#8b5cf6", "#38bdf8"];
+    const nodeCount = Math.min(52, Math.max(28, Math.floor(width / 34)));
+    const nodes = Array.from({ length: nodeCount }, (_, idx) => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.65,
+      vy: (Math.random() - 0.5) * 0.65,
+      radius: 1.8 + (idx % 3) * 0.9,
+      color: palette[idx % palette.length],
+      pulseOffset: Math.random() * Math.PI * 2
+    }));
+
+    // Synaptic data packets traveling between connected nodes
+    const packets = Array.from({ length: 14 }, () => ({
+      fromIdx: Math.floor(Math.random() * nodeCount),
+      toIdx: Math.floor(Math.random() * nodeCount),
+      progress: Math.random(),
+      speed: 0.012 + Math.random() * 0.015
+    }));
+
+    let tick = 0;
+    const render = () => {
+      tick += 0.03;
+      ctx.clearRect(0, 0, width, height);
+
+      // Update & draw nodes
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        n.x += n.vx;
+        n.y += n.vy;
+
+        if (n.x < 0 || n.x > width) n.vx *= -1;
+        if (n.y < 0 || n.y > height) n.vy *= -1;
+
+        // Draw synaptic connections
+        for (let j = i + 1; j < nodes.length; j++) {
+          const m = nodes[j];
+          const dx = n.x - m.x;
+          const dy = n.y - m.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 165) {
+            const alpha = (1 - dist / 165) * 0.22;
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(m.x, m.y);
+            ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+
+        // Interactive cursor synapse
+        const mdx = n.x - mouse.x;
+        const mdy = n.y - mouse.y;
+        const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+        if (mDist < 210) {
+          const alpha = (1 - mDist / 210) * 0.45;
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = `rgba(34, 211, 238, ${alpha})`;
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        }
+
+        // Pulsing neural node halo
+        const pulse = 0.65 + 0.35 * Math.sin(tick + n.pulseOffset);
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.radius * 2.6 * pulse, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(34, 211, 238, 0.08)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+        ctx.fillStyle = n.color;
+        ctx.fill();
+      }
+
+      // Draw traveling neural data packets along edges
+      for (let p of packets) {
+        p.progress += p.speed;
+        if (p.progress >= 1) {
+          p.fromIdx = p.toIdx;
+          p.toIdx = Math.floor(Math.random() * nodes.length);
+          p.progress = 0;
+        }
+        const a = nodes[p.fromIdx];
+        const b = nodes[p.toIdx];
+        if (a && b) {
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 280) {
+            const px = a.x + dx * p.progress;
+            const py = a.y + dy * p.progress;
+            ctx.beginPath();
+            ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+            ctx.fillStyle = "#22d3ee";
+            ctx.shadowColor = "#22d3ee";
+            ctx.shadowBlur = 10;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+    };
   }, []);
 
   const handleTimeUpdate = () => {
@@ -456,24 +689,63 @@ const DeepShop = () => {
     VIDEO_CHAPTERS.find((c) => c.id === activeChapterId) || VIDEO_CHAPTERS[0];
   const currentArch =
     ARCHITECTURE_TABS.find((t) => t.id === activeArchTab) || ARCHITECTURE_TABS[0];
+  const currentLog = AI_TELEMETRY_LOGS[telemetryIdx];
 
   return (
-    <section id="deep-shop-showcase" className="section" style={{ paddingTop: "96px" }}>
-      <div className="container">
-        {/* Top Breadcrumb & Navigation Pill */}
-        <div className="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3" data-aos="fade-down">
+    <section
+      id="deep-shop-showcase"
+      className="section position-relative overflow-hidden"
+      style={{ paddingTop: "110px" }}
+    >
+      {/* Interactive AI Synaptic Neural Network Background Canvas */}
+      <canvas
+        ref={neuralCanvasRef}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          pointerEvents: "none",
+          zIndex: 0,
+          opacity: 0.85
+        }}
+      />
+
+      {/* Holographic Cyber Grid & Ambient Neural Glow */}
+      <div className="ai-cyber-grid-overlay" />
+
+      <div className="container position-relative" style={{ zIndex: 2 }}>
+        {/* Top Breadcrumb & AI Telemetry Status Pill */}
+        <div className="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4" data-aos="fade-down">
           <div className="d-flex align-items-center gap-2 flex-wrap">
             <Link
               to="/projects"
               className="btn glass-v2 text-white px-3 py-2 rounded-pill small fw-bold text-decoration-none"
               style={{ border: "1px solid rgba(255,255,255,0.15)" }}
             >
-              <i className="bi bi-arrow-left me-2 text-primary"></i>All Case Studies
+              <i className="bi bi-arrow-left me-2 text-info"></i>Back to Case Studies
             </Link>
-            <span className="badge rounded-pill px-3 py-2" style={{ background: "rgba(59,130,246,0.15)", border: "1px solid rgba(59,130,246,0.4)", color: "#60a5fa" }}>
-              <i className="bi bi-stars me-1"></i> Flagship AI + Full-Stack Architecture
+            <span
+              className="badge rounded-pill px-3 py-2 d-inline-flex align-items-center gap-2"
+              style={{
+                background: "rgba(34, 211, 238, 0.12)",
+                border: "1px solid rgba(34, 211, 238, 0.45)",
+                color: "#67e8f9",
+                boxShadow: "0 0 20px rgba(34, 211, 238, 0.2)"
+              }}
+            >
+              <span className="ai-pulse-dot" />
+              <i className="bi bi-cpu-fill"></i> Applied AI + RAG Microservice Architecture
             </span>
-            <span className="badge rounded-pill px-3 py-2" style={{ background: "rgba(139,92,246,0.15)", border: "1px solid rgba(139,92,246,0.4)", color: "#c4b5fd" }}>
+            <span
+              className="badge rounded-pill px-3 py-2"
+              style={{
+                background: "rgba(139,92,246,0.15)",
+                border: "1px solid rgba(139,92,246,0.4)",
+                color: "#c4b5fd"
+              }}
+            >
               React 18 • Node.js • FastAPI • ChromaDB
             </span>
           </div>
@@ -482,68 +754,121 @@ const DeepShop = () => {
             <a
               href="#video-demo"
               className="btn btn-sm glass-v2 text-white px-3 py-2 rounded-pill small fw-semibold"
-              style={{ border: "1px solid rgba(255,255,255,0.12)" }}
+              style={{ border: "1px solid rgba(34,211,238,0.25)" }}
             >
-              <i className="bi bi-play-circle-fill text-primary me-1"></i> Demo Video
+              <i className="bi bi-play-circle-fill text-info me-1"></i> Demo Video
             </a>
             <a
               href="#system-architecture"
               className="btn btn-sm glass-v2 text-white px-3 py-2 rounded-pill small fw-semibold"
-              style={{ border: "1px solid rgba(255,255,255,0.12)" }}
+              style={{ border: "1px solid rgba(139,92,246,0.3)" }}
             >
-              <i className="bi bi-diagram-3-fill text-info me-1"></i> Architecture
+              <i className="bi bi-diagram-3-fill text-primary me-1"></i> AI Blueprint
             </a>
             <a
               href="https://github.com/DeepakAruldoss55/eshop-ai"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-sm glass-v2 text-white px-3 py-2 rounded-pill small fw-semibold"
-              style={{ border: "1px solid rgba(59,130,246,0.4)", background: "rgba(59,130,246,0.15)" }}
+              style={{ border: "1px solid rgba(59,130,246,0.45)", background: "rgba(59,130,246,0.18)" }}
             >
               <i className="bi bi-github me-1"></i> GitHub Repo
             </a>
           </div>
         </div>
 
-        {/* Hero Banner Card */}
+        {/* AI Holographic Hero Banner Card */}
         <div
-          className="glass-v2 p-4 p-md-5 mb-5 position-relative overflow-hidden"
+          className="ai-hero-card glass-v2 p-4 p-md-5 mb-4 position-relative overflow-hidden"
           data-aos="fade-up"
           style={{
             borderRadius: "36px",
-            border: "1px solid rgba(59, 130, 246, 0.3)",
+            border: "1px solid rgba(34, 211, 238, 0.35)",
             background:
-              "radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.18), rgba(15, 23, 42, 0.85) 60%)"
+              "radial-gradient(circle at 88% 15%, rgba(34, 211, 238, 0.16), rgba(59, 130, 246, 0.12) 40%, rgba(2, 6, 23, 0.9) 80%)"
           }}
         >
-          <div className="row align-items-center g-4">
-            <div className="col-lg-8">
-              <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-3" style={{ background: "rgba(34, 211, 238, 0.1)", border: "1px solid rgba(34, 211, 238, 0.3)" }}>
+          {/* Animated Laser Scanline Sweep */}
+          <div className="ai-scanline-beam" />
+
+          <div className="row align-items-center g-4 position-relative" style={{ zIndex: 2 }}>
+            <div className="col-lg-7">
+              <div
+                className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-3"
+                style={{
+                  background: "rgba(34, 211, 238, 0.12)",
+                  border: "1px solid rgba(34, 211, 238, 0.4)",
+                  boxShadow: "0 0 25px rgba(34, 211, 238, 0.2)"
+                }}
+              >
                 <span className="spinner-grow spinner-grow-sm text-info" style={{ width: "8px", height: "8px" }}></span>
-                <span className="text-info small fw-bold text-uppercase" style={{ letterSpacing: "1px", fontSize: "0.75rem" }}>
-                  Next-Level Full-Stack & Applied AI Engineering Showcase
+                <span className="text-info small fw-bold text-uppercase" style={{ letterSpacing: "1.2px", fontSize: "0.75rem" }}>
+                  Autonomous RAG Concierge • Executive BI Engine • Multi-Turn AI Copilot
                 </span>
               </div>
 
-              <h1 className="text-gradient fw-900 mb-3" style={{ fontSize: "clamp(2.2rem, 4vw, 3.6rem)", lineHeight: 1.1 }}>
+              <h1 className="text-gradient fw-900 mb-3" style={{ fontSize: "clamp(2.2rem, 3.8vw, 3.4rem)", lineHeight: 1.1 }}>
                 DeepShop — AI-Powered E-Commerce & Enterprise ERP Suite
               </h1>
 
-              <p className="text-white mb-4" style={{ fontSize: "1.1rem", opacity: 0.92, lineHeight: 1.75 }}>
-                An end-to-end, production-grade commercial ecosystem uniting a{" "}
+              <p className="text-white mb-4" style={{ fontSize: "1.06rem", opacity: 0.92, lineHeight: 1.75 }}>
+                An end-to-end, AI-native commercial ecosystem uniting a{" "}
                 <strong className="text-info">React 18 + TypeScript Storefront</strong>, a{" "}
                 <strong className="text-primary">Domain-Driven Node.js/Express Microservice</strong>, a{" "}
                 <strong style={{ color: "#c4b5fd" }}>7-Module Enterprise Admin ERP</strong>, and a{" "}
                 <strong className="text-info">Dual-Engine FastAPI + ChromaDB AI Microservice</strong>{" "}
-                featuring a Customer RAG Shopping Concierge and a Multi-Turn Merchant Business Copilot.
+                featuring a 384-Dimensional Hybrid RAG Shopping Concierge and a Stateful Merchant Business Copilot.
               </p>
+
+              {/* Live Animated AI Telemetry Stream Bar */}
+              <div
+                className="p-3 rounded-4 mb-4 d-flex align-items-center justify-content-between gap-3"
+                style={{
+                  background: "rgba(2, 6, 23, 0.82)",
+                  border: "1px solid rgba(34, 211, 238, 0.3)",
+                  boxShadow: "inset 0 0 20px rgba(34, 211, 238, 0.08)"
+                }}
+              >
+                <div className="d-flex align-items-center gap-2 overflow-hidden">
+                  <span
+                    className="badge font-monospace px-2 py-1 flex-shrink-0"
+                    style={{
+                      background: `${currentLog.color}22`,
+                      border: `1px solid ${currentLog.color}`,
+                      color: currentLog.color,
+                      fontSize: "0.72rem"
+                    }}
+                  >
+                    <i className="bi bi-lightning-charge-fill me-1"></i>
+                    {currentLog.stage}
+                  </span>
+                  <span
+                    key={telemetryIdx}
+                    className="text-white small font-monospace text-truncate ai-log-fade"
+                    style={{ fontSize: "0.82rem" }}
+                  >
+                    {currentLog.text}
+                  </span>
+                </div>
+
+                {/* Animated 8-Bar Neural Equalizer */}
+                <div className="d-none d-sm-flex align-items-end gap-1 flex-shrink-0" style={{ height: "18px" }}>
+                  {[0, 1, 2, 3, 4, 5, 6, 7].map((bar) => (
+                    <span
+                      key={bar}
+                      className="ai-wave-bar"
+                      style={{ animationDelay: `${bar * 0.12}s` }}
+                    />
+                  ))}
+                </div>
+              </div>
 
               <div className="d-flex flex-wrap gap-3 align-items-center">
                 <button
                   type="button"
                   onClick={() => seekToSeconds(0)}
                   className="btn btn-premium px-4 py-3 rounded-4 d-inline-flex align-items-center gap-2"
-                  style={{ fontSize: "1rem" }}
+                  style={{ fontSize: "0.98rem" }}
                 >
                   <i className="bi bi-play-fill fs-5"></i> Watch Full Walkthrough (05:47)
                 </button>
@@ -551,7 +876,11 @@ const DeepShop = () => {
                   type="button"
                   onClick={() => seekToSeconds(145)}
                   className="btn glass-v2 text-white px-4 py-3 rounded-4 fw-bold"
-                  style={{ border: "1px solid rgba(34, 211, 238, 0.4)", background: "rgba(34, 211, 238, 0.08)" }}
+                  style={{
+                    border: "1px solid rgba(34, 211, 238, 0.45)",
+                    background: "rgba(34, 211, 238, 0.1)",
+                    boxShadow: "0 0 20px rgba(34, 211, 238, 0.15)"
+                  }}
                 >
                   <i className="bi bi-robot text-info me-2"></i>Jump to AI RAG & Copilot Demo
                 </button>
@@ -567,35 +896,71 @@ const DeepShop = () => {
               </div>
             </div>
 
-            {/* Key Architectural Pillars Summary Box */}
-            <div className="col-lg-4">
+            {/* Right Column: Animated AI Neural Reactor Core + Metrics */}
+            <div className="col-lg-5">
               <div
-                className="p-4 rounded-4"
+                className="p-4 rounded-4 position-relative overflow-hidden"
                 style={{
-                  background: "rgba(2, 6, 23, 0.65)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)"
+                  background: "rgba(2, 6, 23, 0.78)",
+                  border: "1px solid rgba(34, 211, 238, 0.28)",
+                  boxShadow: "0 0 40px rgba(59, 130, 246, 0.2)"
                 }}
               >
-                <h5 className="text-white fw-bold mb-3 d-flex align-items-center gap-2">
-                  <i className="bi bi-layers-half text-primary"></i> Core System Metrics
-                </h5>
+                {/* Animated Holographic AI Core Reactor */}
+                <div className="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom border-white border-opacity-10">
+                  <div className="d-flex align-items-center gap-3">
+                    <div className="ai-orbital-core">
+                      <div className="ai-ring ai-ring-outer" />
+                      <div className="ai-ring ai-ring-middle" />
+                      <div className="ai-ring ai-ring-inner" />
+                      <div className="ai-core-center">
+                        <i className="bi bi-cpu-fill text-info fs-4"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="d-flex align-items-center gap-2">
+                        <span className="ai-pulse-dot" />
+                        <span className="text-info fw-bold small text-uppercase" style={{ letterSpacing: "1px", fontSize: "0.72rem" }}>
+                          Neural Core Online
+                        </span>
+                      </div>
+                      <h5 className="text-white fw-bold mb-0" style={{ fontSize: "1.15rem" }}>
+                        Dual-Pipeline AI Engine
+                      </h5>
+                      <span className="text-white-50 font-monospace" style={{ fontSize: "0.75rem" }}>
+                        FastAPI • ChromaDB • Groq LPU
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-end d-none d-sm-block">
+                    <span className="badge rounded-pill px-3 py-2 font-monospace" style={{ background: "rgba(16, 185, 129, 0.15)", border: "1px solid rgba(16, 185, 129, 0.4)", color: "#34d399" }}>
+                      77/100 BI Health
+                    </span>
+                  </div>
+                </div>
+
                 <div className="row g-3">
                   {[
-                    { value: "3 Services", label: "React • Express • FastAPI", icon: "bi-boxes" },
-                    { value: "384-Dim", label: "Hybrid Vector Embeddings", icon: "bi-bezier2" },
-                    { value: "3-Tier LLM", label: "Groq • OpenRouter • Offline", icon: "bi-shield-check" },
-                    { value: "7 Modules", label: "Full ERP, P&L & CRM Suite", icon: "bi-bar-chart-steps" }
+                    { value: "384-Dim", label: "Hybrid Vector Embeddings", icon: "bi-bezier2", color: "#22d3ee" },
+                    { value: "3-Tier LLM", label: "Groq • OpenRouter • Offline", icon: "bi-cpu-fill", color: "#3b82f6" },
+                    { value: "3 Services", label: "React • Express • FastAPI", icon: "bi-boxes", color: "#8b5cf6" },
+                    { value: "7 Modules", label: "Full ERP, P&L & CRM Suite", icon: "bi-bar-chart-steps", color: "#10b981" }
                   ].map((stat, idx) => (
                     <div key={idx} className="col-6">
                       <div
-                        className="p-3 rounded-3 h-100"
+                        className="p-3 rounded-3 h-100 ai-metric-tile position-relative overflow-hidden"
                         style={{
                           background: "rgba(255,255,255,0.03)",
-                          border: "1px solid rgba(255,255,255,0.07)"
+                          border: `1px solid ${stat.color}33`
                         }}
                       >
-                        <i className={`bi ${stat.icon} text-info d-block mb-1 fs-5`}></i>
-                        <div className="text-white fw-bold" style={{ fontSize: "1.05rem" }}>
+                        <div className="d-flex align-items-center justify-content-between mb-1">
+                          <i className={`bi ${stat.icon} fs-5`} style={{ color: stat.color }}></i>
+                          <span className="font-monospace text-white-50" style={{ fontSize: "0.65rem" }}>
+                            AI-0{idx + 1}
+                          </span>
+                        </div>
+                        <div className="text-white fw-bold" style={{ fontSize: "1.08rem" }}>
                           {stat.value}
                         </div>
                         <div className="text-white-50" style={{ fontSize: "0.75rem" }}>
@@ -610,12 +975,97 @@ const DeepShop = () => {
           </div>
         </div>
 
+        {/* Live Animated 5-Stage AI Neural Execution Pipeline */}
+        <div className="mb-5" data-aos="fade-up" data-aos-delay="100">
+          <div
+            className="glass-v2 p-3 p-md-4 rounded-4 position-relative overflow-hidden"
+            style={{
+              border: "1px solid rgba(59, 130, 246, 0.28)",
+              background: "rgba(2, 6, 23, 0.72)"
+            }}
+          >
+            <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+              <div className="d-flex align-items-center gap-2">
+                <i className="bi bi-broadcast-pin text-info fs-5"></i>
+                <span className="text-white fw-bold small text-uppercase" style={{ letterSpacing: "1.2px" }}>
+                  Live Autonomous RAG & Merchant Intelligence Signal Flow
+                </span>
+              </div>
+              <span className="text-info small font-monospace">
+                Active Stage: 0{activePipelineStep + 1} / 05 • Real-Time Vector & Ledger Grounding
+              </span>
+            </div>
+
+            <div className="row g-3 position-relative">
+              {AI_NEURAL_NODES.map((node, idx) => {
+                const isActiveNode = idx === activePipelineStep;
+                return (
+                  <div key={node.step} className="col-md-6 col-xl">
+                    <div
+                      onClick={() => setActivePipelineStep(idx)}
+                      className="p-3 rounded-4 h-100 position-relative transition-smooth"
+                      style={{
+                        cursor: "pointer",
+                        background: isActiveNode
+                          ? `linear-gradient(135deg, ${node.color}22, rgba(15, 23, 42, 0.9))`
+                          : "rgba(255, 255, 255, 0.025)",
+                        border: isActiveNode
+                          ? `1px solid ${node.color}`
+                          : "1px solid rgba(255, 255, 255, 0.08)",
+                        boxShadow: isActiveNode ? `0 0 25px ${node.color}33` : "none",
+                        transform: isActiveNode ? "translateY(-3px)" : "none"
+                      }}
+                    >
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span
+                          className="badge rounded-pill font-monospace"
+                          style={{
+                            background: `${node.color}22`,
+                            color: node.color,
+                            border: `1px solid ${node.color}55`,
+                            fontSize: "0.7rem"
+                          }}
+                        >
+                          STAGE {node.step}
+                        </span>
+                        <i
+                          className={`bi ${node.icon} fs-5`}
+                          style={{
+                            color: node.color,
+                            filter: isActiveNode ? `drop-shadow(0 0 8px ${node.color})` : "none"
+                          }}
+                        ></i>
+                      </div>
+                      <h6 className="text-white fw-bold mb-1" style={{ fontSize: "0.95rem" }}>
+                        {node.title}
+                      </h6>
+                      <p className="text-white-50 mb-2" style={{ fontSize: "0.75rem", lineHeight: 1.4 }}>
+                        {node.subtitle}
+                      </p>
+                      <div className="d-flex align-items-center justify-content-between pt-2 border-top border-white border-opacity-10">
+                        <span className="font-monospace" style={{ fontSize: "0.7rem", color: node.color }}>
+                          {node.metric}
+                        </span>
+                        {isActiveNode && (
+                          <span className="d-inline-flex align-items-center gap-1 text-info font-monospace" style={{ fontSize: "0.68rem" }}>
+                            <span className="ai-pulse-dot" /> ACTIVE
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
         {/* Interactive Video Player + Timestamped Chapter Navigator */}
         <div id="video-demo" ref={videoContainerRef} className="mb-5" data-aos="fade-up">
           <div className="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
             <div>
-              <span className="text-primary fw-bold text-uppercase small d-block mb-1" style={{ letterSpacing: "1.5px" }}>
-                Interactive Product & Engineering Walkthrough
+              <span className="text-info fw-bold text-uppercase small d-block mb-1" style={{ letterSpacing: "1.5px" }}>
+                <i className="bi bi-stars me-1"></i> Interactive Product & AI Engineering Walkthrough
               </span>
               <h2 className="text-white fw-bold mb-0" style={{ fontSize: "2.2rem" }}>
                 Live System Demo Video & Scene Chapters
@@ -644,7 +1094,7 @@ const DeepShop = () => {
                 type="button"
                 onClick={() => setIsTheaterMode(!isTheaterMode)}
                 className="btn btn-sm glass-v2 text-white px-3 py-2 rounded-pill fw-semibold"
-                style={{ border: "1px solid rgba(255,255,255,0.15)" }}
+                style={{ border: "1px solid rgba(34,211,238,0.3)" }}
               >
                 <i className={`bi ${isTheaterMode ? "bi-fullscreen-exit" : "bi-aspect-ratio"} me-2 text-info`}></i>
                 {isTheaterMode ? "Standard View" : "Theater Mode"}
@@ -656,11 +1106,11 @@ const DeepShop = () => {
             {/* Video Column */}
             <div className={isTheaterMode ? "col-12" : "col-lg-8"}>
               <div
-                className="glass-v2 p-3 p-md-4 h-100 d-flex flex-column"
+                className="glass-v2 p-3 p-md-4 h-100 d-flex flex-column position-relative overflow-hidden"
                 style={{
                   borderRadius: "28px",
-                  border: "1px solid rgba(59, 130, 246, 0.35)",
-                  boxShadow: "0 25px 70px rgba(0, 0, 0, 0.65)"
+                  border: "1px solid rgba(34, 211, 238, 0.35)",
+                  boxShadow: "0 25px 70px rgba(0, 0, 0, 0.65), 0 0 35px rgba(34, 211, 238, 0.12)"
                 }}
               >
                 {/* Video Window Top Bar */}
@@ -670,11 +1120,12 @@ const DeepShop = () => {
                     <span className="d-inline-block rounded-circle bg-warning" style={{ width: "10px", height: "10px" }}></span>
                     <span className="d-inline-block rounded-circle bg-success" style={{ width: "10px", height: "10px" }}></span>
                     <span className="text-white-50 small ms-2 font-monospace">
-                      deepshop.mp4 • 1080p Full HD
+                      deepshop.mp4 • 1080p AI Demo Stream
                     </span>
                   </div>
                   <div className="d-flex align-items-center gap-2">
-                    <span className="badge bg-primary bg-opacity-25 text-info border border-info border-opacity-25 px-3 py-1 rounded-pill">
+                    <span className="badge bg-primary bg-opacity-25 text-info border border-info border-opacity-25 px-3 py-1 rounded-pill d-inline-flex align-items-center gap-2">
+                      <span className="ai-pulse-dot" />
                       Now Showing: {activeChapter.badge}
                     </span>
                     <span className="text-white-50 small font-monospace">
@@ -686,7 +1137,7 @@ const DeepShop = () => {
                 {/* HTML5 Video Player */}
                 <div
                   className="position-relative rounded-4 overflow-hidden bg-black"
-                  style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+                  style={{ border: "1px solid rgba(34,211,238,0.2)" }}
                 >
                   <video
                     ref={videoRef}
@@ -714,8 +1165,8 @@ const DeepShop = () => {
                 <div
                   className="mt-3 p-3 p-md-4 rounded-4"
                   style={{
-                    background: "rgba(15, 23, 42, 0.75)",
-                    border: "1px solid rgba(59, 130, 246, 0.25)"
+                    background: "rgba(15, 23, 42, 0.78)",
+                    border: "1px solid rgba(34, 211, 238, 0.25)"
                   }}
                 >
                   <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
@@ -750,8 +1201,8 @@ const DeepShop = () => {
                         key={i}
                         className="badge rounded-pill px-3 py-2 fw-normal text-white"
                         style={{
-                          background: "rgba(59, 130, 246, 0.12)",
-                          border: "1px solid rgba(59, 130, 246, 0.25)",
+                          background: "rgba(34, 211, 238, 0.1)",
+                          border: "1px solid rgba(34, 211, 238, 0.28)",
                           fontSize: "0.78rem",
                           textTransform: "none",
                           letterSpacing: "0.2px"
@@ -772,20 +1223,20 @@ const DeepShop = () => {
                 className="glass-v2 p-4 h-100 d-flex flex-column"
                 style={{
                   borderRadius: "28px",
-                  border: "1px solid rgba(255,255,255,0.1)"
+                  border: "1px solid rgba(59, 130, 246, 0.25)"
                 }}
               >
                 <div className="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-white border-opacity-10">
                   <div>
                     <h4 className="text-white fw-bold mb-0" style={{ fontSize: "1.2rem" }}>
-                      <i className="bi bi-collection-play-fill text-primary me-2"></i>
+                      <i className="bi bi-collection-play-fill text-info me-2"></i>
                       Demo Chapters
                     </h4>
                     <span className="text-white-50 small">
                       Click any timestamp to jump directly to that feature
                     </span>
                   </div>
-                  <span className="badge bg-white bg-opacity-10 text-white rounded-pill px-3 py-2">
+                  <span className="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 rounded-pill px-3 py-2">
                     7 Scenes
                   </span>
                 </div>
@@ -804,11 +1255,12 @@ const DeepShop = () => {
                         className="text-start p-3 rounded-4 transition-smooth w-100"
                         style={{
                           background: isActive
-                            ? "linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(139, 92, 246, 0.2))"
+                            ? "linear-gradient(135deg, rgba(34, 211, 238, 0.22), rgba(139, 92, 246, 0.22))"
                             : "rgba(255, 255, 255, 0.03)",
                           border: isActive
-                            ? "1px solid rgba(59, 130, 246, 0.6)"
+                            ? "1px solid rgba(34, 211, 238, 0.65)"
                             : "1px solid rgba(255, 255, 255, 0.07)",
+                          boxShadow: isActive ? "0 0 20px rgba(34, 211, 238, 0.2)" : "none",
                           cursor: "pointer"
                         }}
                       >
@@ -816,7 +1268,7 @@ const DeepShop = () => {
                           <span
                             className="badge rounded-pill px-2 py-1 font-monospace"
                             style={{
-                              background: isActive ? "#3b82f6" : "rgba(255,255,255,0.08)",
+                              background: isActive ? "#0ea5e9" : "rgba(255,255,255,0.08)",
                               color: "#fff",
                               fontSize: "0.72rem"
                             }}
@@ -857,7 +1309,7 @@ const DeepShop = () => {
           <div className="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-2">
             <div>
               <span className="text-info fw-bold text-uppercase small d-block mb-1" style={{ letterSpacing: "1.5px" }}>
-                Interface & Module Snapshots
+                <i className="bi bi-cpu me-1"></i> Interface & AI Module Snapshots
               </span>
               <h2 className="text-white fw-bold mb-0" style={{ fontSize: "2.2rem" }}>
                 Four Core Pillars in Action
@@ -872,8 +1324,8 @@ const DeepShop = () => {
             {SCREENSHOT_GALLERY.map((shot, i) => (
               <div key={i} className="col-md-6" data-aos="zoom-in-up" data-aos-delay={i * 100}>
                 <div
-                  className="glass-v2 p-3 rounded-4 h-100 d-flex flex-column"
-                  style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+                  className="glass-v2 p-3 rounded-4 h-100 d-flex flex-column ai-snapshot-card"
+                  style={{ border: "1px solid rgba(34, 211, 238, 0.2)" }}
                 >
                   <div
                     className="position-relative rounded-3 overflow-hidden mb-3"
@@ -883,7 +1335,7 @@ const DeepShop = () => {
                     <img
                       src={`${process.env.PUBLIC_URL}${shot.src}`}
                       alt={shot.title}
-                      className="img-fluid w-100"
+                      className="img-fluid w-100 ai-snapshot-img"
                       style={{ height: "250px", objectFit: "cover", objectPosition: "top" }}
                     />
                     <div
@@ -891,7 +1343,7 @@ const DeepShop = () => {
                       style={{
                         background: "rgba(15, 23, 42, 0.85)",
                         backdropFilter: "blur(8px)",
-                        border: "1px solid rgba(59, 130, 246, 0.4)"
+                        border: "1px solid rgba(34, 211, 238, 0.45)"
                       }}
                     >
                       {shot.badge}
@@ -899,7 +1351,7 @@ const DeepShop = () => {
                     <div
                       className="position-absolute bottom-0 end-0 m-3 px-3 py-1 rounded-pill small fw-bold text-white"
                       style={{
-                        background: "rgba(59, 130, 246, 0.9)"
+                        background: "linear-gradient(135deg, #0ea5e9, #6366f1)"
                       }}
                     >
                       <i className="bi bi-arrows-fullscreen me-1"></i> Enlarge
@@ -938,8 +1390,8 @@ const DeepShop = () => {
         {/* Deep-Dive System Architecture & Execution Pipelines */}
         <div id="system-architecture" className="mb-5 pt-4" data-aos="fade-up">
           <div className="text-center mb-5">
-            <span className="text-primary fw-bold text-uppercase small d-block mb-2" style={{ letterSpacing: "1.5px" }}>
-              Under The Hood • Technical Blueprint
+            <span className="text-info fw-bold text-uppercase small d-block mb-2" style={{ letterSpacing: "1.5px" }}>
+              <i className="bi bi-diagram-3-fill me-1"></i> Under The Hood • AI & Microservice Blueprint
             </span>
             <h2 className="text-gradient fw-900 mb-3" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
               System Architecture & Pipeline Execution Flows
@@ -961,13 +1413,13 @@ const DeepShop = () => {
                   className="btn px-4 py-3 rounded-4 fw-bold d-flex align-items-center gap-2 transition-smooth"
                   style={{
                     background: active
-                      ? "linear-gradient(135deg, var(--primary), var(--secondary))"
+                      ? "linear-gradient(135deg, #0ea5e9, #6366f1)"
                       : "rgba(30, 41, 59, 0.55)",
                     color: "#fff",
                     border: active
-                      ? "1px solid rgba(255,255,255,0.3)"
+                      ? "1px solid rgba(34, 211, 238, 0.6)"
                       : "1px solid rgba(255,255,255,0.1)",
-                    boxShadow: active ? "0 10px 30px rgba(59, 130, 246, 0.35)" : "none"
+                    boxShadow: active ? "0 10px 30px rgba(34, 211, 238, 0.3)" : "none"
                   }}
                 >
                   <i className={`bi ${tab.icon}`}></i>
@@ -979,10 +1431,10 @@ const DeepShop = () => {
 
           {/* Active Architecture Tab Content Card */}
           <div
-            className="glass-v2 p-4 p-lg-5"
+            className="glass-v2 p-4 p-lg-5 position-relative overflow-hidden"
             style={{
               borderRadius: "32px",
-              border: "1px solid rgba(59, 130, 246, 0.25)"
+              border: "1px solid rgba(34, 211, 238, 0.3)"
             }}
           >
             <div className="mb-4">
@@ -1001,8 +1453,8 @@ const DeepShop = () => {
                   <div
                     className="p-3 rounded-4 h-100"
                     style={{
-                      background: "rgba(2, 6, 23, 0.6)",
-                      border: "1px solid rgba(255, 255, 255, 0.08)"
+                      background: "rgba(2, 6, 23, 0.65)",
+                      border: "1px solid rgba(34, 211, 238, 0.18)"
                     }}
                   >
                     <span className="text-info small fw-bold text-uppercase d-block mb-1" style={{ fontSize: "0.72rem", letterSpacing: "0.8px" }}>
@@ -1021,32 +1473,35 @@ const DeepShop = () => {
 
             {/* Pipeline / Architecture Diagram Block */}
             <div
-              className="p-3 p-md-4 rounded-4 mb-4"
+              className="p-3 p-md-4 rounded-4 mb-4 position-relative overflow-hidden"
               style={{
                 background: "#020617",
-                border: "1px solid rgba(59, 130, 246, 0.3)"
+                border: "1px solid rgba(34, 211, 238, 0.35)",
+                boxShadow: "inset 0 0 30px rgba(34, 211, 238, 0.06)"
               }}
             >
               <div className="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom border-white border-opacity-10">
-                <span className="text-info small fw-bold font-monospace">
-                  <i className="bi bi-terminal-fill me-2"></i>
+                <span className="text-info small fw-bold font-monospace d-flex align-items-center gap-2">
+                  <span className="ai-pulse-dot" />
+                  <i className="bi bi-terminal-fill"></i>
                   {currentArch.codeTitle}
                 </span>
-                <span className="badge bg-primary bg-opacity-25 text-primary small">
-                  Production Pipeline
+                <span className="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 small font-monospace">
+                  AI Production Pipeline
                 </span>
               </div>
-              <pre
-                className="mb-0 text-white font-monospace"
-                style={{
-                  fontSize: "0.82rem",
-                  lineHeight: 1.55,
-                  overflowX: "auto",
-                  color: "#e2e8f0"
-                }}
-              >
-                {currentArch.codeDiagram}
-              </pre>
+              <div className="text-center" style={{ overflowX: "auto" }}>
+                <pre
+                  className="mb-0 text-white font-monospace d-inline-block text-start"
+                  style={{
+                    fontSize: "0.84rem",
+                    lineHeight: 1.55,
+                    color: "#e2e8f0"
+                  }}
+                >
+                  {currentArch.codeDiagram}
+                </pre>
+              </div>
             </div>
 
             {/* Key Engineering Highlights */}
@@ -1057,11 +1512,11 @@ const DeepShop = () => {
                     className="p-4 rounded-4 h-100"
                     style={{
                       background: "rgba(255, 255, 255, 0.03)",
-                      border: "1px solid rgba(255, 255, 255, 0.08)"
+                      border: "1px solid rgba(34, 211, 238, 0.15)"
                     }}
                   >
                     <h5 className="text-white fw-bold mb-2 d-flex align-items-center gap-2">
-                      <i className="bi bi-check-circle-fill text-primary"></i>
+                      <i className="bi bi-check-circle-fill text-info"></i>
                       {pt.heading}
                     </h5>
                     <p className="text-white-50 small mb-0" style={{ lineHeight: 1.7 }}>
@@ -1090,7 +1545,7 @@ const DeepShop = () => {
               <div key={idx} className="col-lg-4" data-aos="fade-up" data-aos-delay={idx * 150}>
                 <div
                   className="glass-v2 p-4 rounded-4 h-100"
-                  style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+                  style={{ border: `1px solid ${grp.color}44` }}
                 >
                   <div className="d-flex align-items-center gap-3 mb-3">
                     <div
@@ -1099,7 +1554,8 @@ const DeepShop = () => {
                         width: "48px",
                         height: "48px",
                         background: `${grp.color}22`,
-                        border: `1px solid ${grp.color}55`
+                        border: `1px solid ${grp.color}55`,
+                        boxShadow: `0 0 20px ${grp.color}33`
                       }}
                     >
                       <i className={`bi ${grp.icon} fs-4`} style={{ color: grp.color }}></i>
@@ -1112,7 +1568,7 @@ const DeepShop = () => {
                   <ul className="list-unstyled mb-0 d-flex flex-column gap-2">
                     {grp.items.map((item, i) => (
                       <li key={i} className="text-white-50 small d-flex align-items-start gap-2">
-                        <i className="bi bi-chevron-right text-primary mt-1" style={{ fontSize: "0.75rem" }}></i>
+                        <i className="bi bi-chevron-right text-info mt-1" style={{ fontSize: "0.75rem" }}></i>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -1125,12 +1581,12 @@ const DeepShop = () => {
 
         {/* Bottom CTA Banner */}
         <div
-          className="glass-v2 p-4 p-md-5 text-center rounded-5"
+          className="glass-v2 p-4 p-md-5 text-center rounded-5 position-relative overflow-hidden"
           data-aos="zoom-in"
           style={{
-            border: "1px solid rgba(59, 130, 246, 0.3)",
+            border: "1px solid rgba(34, 211, 238, 0.35)",
             background:
-              "linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.12))"
+              "linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.12))"
           }}
         >
           <h3 className="text-white fw-bold mb-2" style={{ fontSize: "1.8rem" }}>
@@ -1151,7 +1607,7 @@ const DeepShop = () => {
             <Link
               to="/projects"
               className="btn glass-v2 text-white px-4 py-3 rounded-4 fw-bold"
-              style={{ border: "1px solid rgba(59, 130, 246, 0.4)", background: "rgba(59, 130, 246, 0.12)" }}
+              style={{ border: "1px solid rgba(34, 211, 238, 0.45)", background: "rgba(34, 211, 238, 0.12)" }}
             >
               <i className="bi bi-grid-fill me-2"></i> View All Portfolio Projects
             </Link>
@@ -1179,12 +1635,12 @@ const DeepShop = () => {
         >
           <div
             className="glass-v2 p-3 p-md-4 rounded-4 position-relative"
-            style={{ maxWidth: "1100px", width: "100%", border: "1px solid rgba(59,130,246,0.4)" }}
+            style={{ maxWidth: "1100px", width: "100%", border: "1px solid rgba(34,211,238,0.45)" }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="d-flex justify-content-between align-items-center mb-3">
               <div>
-                <span className="badge bg-primary me-2">{selectedScreenshot.badge}</span>
+                <span className="badge bg-info text-dark fw-bold me-2">{selectedScreenshot.badge}</span>
                 <strong className="text-white">{selectedScreenshot.title}</strong>
               </div>
               <button
@@ -1219,6 +1675,172 @@ const DeepShop = () => {
           </div>
         </div>
       )}
+
+      {/* AI Animations & Holographic Keyframes */}
+      <style>{`
+        .ai-cyber-grid-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 620px;
+          background-image:
+            linear-gradient(to right, rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(34, 211, 238, 0.06) 1px, transparent 1px);
+          background-size: 48px 48px;
+          mask-image: radial-gradient(ellipse at 50% 20%, rgba(0, 0, 0, 0.9) 20%, transparent 75%);
+          -webkit-mask-image: radial-gradient(ellipse at 50% 20%, rgba(0, 0, 0, 0.9) 20%, transparent 75%);
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .ai-scanline-beam {
+          position: absolute;
+          top: -100%;
+          left: 0;
+          width: 100%;
+          height: 120px;
+          background: linear-gradient(
+            to bottom,
+            transparent,
+            rgba(34, 211, 238, 0.07),
+            rgba(34, 211, 238, 0.22),
+            rgba(34, 211, 238, 0.07),
+            transparent
+          );
+          animation: aiScanSweep 7s ease-in-out infinite;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        @keyframes aiScanSweep {
+          0% { top: -35%; opacity: 0; }
+          20% { opacity: 1; }
+          80% { opacity: 1; }
+          100% { top: 115%; opacity: 0; }
+        }
+
+        .ai-pulse-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #22d3ee;
+          box-shadow: 0 0 12px #22d3ee;
+          display: inline-block;
+          animation: aiDotPulse 1.6s infinite ease-in-out;
+        }
+
+        @keyframes aiDotPulse {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.45); opacity: 0.45; }
+        }
+
+        .ai-orbital-core {
+          position: relative;
+          width: 74px;
+          height: 74px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .ai-ring {
+          position: absolute;
+          border-radius: 50%;
+          pointer-events: none;
+        }
+
+        .ai-ring-outer {
+          width: 74px;
+          height: 74px;
+          border: 1.5px dashed rgba(34, 211, 238, 0.55);
+          animation: aiSpinClockwise 12s linear infinite;
+        }
+
+        .ai-ring-middle {
+          width: 56px;
+          height: 56px;
+          border: 1.5px solid transparent;
+          border-top-color: #3b82f6;
+          border-bottom-color: #8b5cf6;
+          animation: aiSpinCounter 7s linear infinite;
+        }
+
+        .ai-ring-inner {
+          width: 40px;
+          height: 40px;
+          border: 1.5px dotted rgba(168, 85, 247, 0.7);
+          animation: aiSpinClockwise 5s linear infinite;
+        }
+
+        .ai-core-center {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(34, 211, 238, 0.35), rgba(15, 23, 42, 0.9));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+          animation: aiCoreBreath 2.5s ease-in-out infinite;
+        }
+
+        @keyframes aiSpinClockwise {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        @keyframes aiSpinCounter {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
+
+        @keyframes aiCoreBreath {
+          0%, 100% { transform: scale(1); box-shadow: 0 0 18px rgba(34, 211, 238, 0.45); }
+          50% { transform: scale(1.12); box-shadow: 0 0 28px rgba(34, 211, 238, 0.85); }
+        }
+
+        .ai-wave-bar {
+          width: 3px;
+          height: 6px;
+          border-radius: 2px;
+          background: linear-gradient(to top, #3b82f6, #22d3ee);
+          animation: aiWaveBounce 1.1s ease-in-out infinite;
+        }
+
+        @keyframes aiWaveBounce {
+          0%, 100% { height: 5px; opacity: 0.45; }
+          50% { height: 18px; opacity: 1; }
+        }
+
+        .ai-log-fade {
+          animation: aiLogSlideIn 0.35s ease-out;
+        }
+
+        @keyframes aiLogSlideIn {
+          from { opacity: 0; transform: translateY(6px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ai-metric-tile {
+          transition: all 0.35s ease;
+        }
+
+        .ai-metric-tile:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 10px 25px rgba(34, 211, 238, 0.18);
+          border-color: rgba(34, 211, 238, 0.55) !important;
+        }
+
+        .ai-snapshot-card:hover .ai-snapshot-img {
+          transform: scale(1.03);
+        }
+
+        .ai-snapshot-img {
+          transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+      `}</style>
     </section>
   );
 };

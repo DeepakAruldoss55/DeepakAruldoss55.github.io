@@ -13,6 +13,7 @@ import Gotop from './components/Gotop';
 import Projects from './components/Projects';
 import DeepShop from './components/DeepShop';
 import Chatbot from './components/Chatbot';
+import InteractiveBackground from './components/InteractiveBackground';
 
 import './App.css';
 
@@ -48,6 +49,9 @@ function App() {
           <div className="blob blob-3"></div>
           <div className="noise-overlay"></div>
         </div>
+
+        {/* Route-Specific Interactive Mouse-Connected Canvas Animation */}
+        <InteractiveBackground />
         
         <Navbar />
         <Routes>
