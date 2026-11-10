@@ -438,6 +438,165 @@ const TECH_STACK_GROUPS = [
   }
 ];
 
+// Isolated sub-component so the 2.4s telemetry ticker never re-renders the main DeepShop page
+const AiTelemetryBar = () => {
+  const [telemetryIdx, setTelemetryIdx] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!document.hidden) {
+        setTelemetryIdx((prev) => (prev + 1) % AI_TELEMETRY_LOGS.length);
+      }
+    }, 2600);
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentLog = AI_TELEMETRY_LOGS[telemetryIdx];
+
+  return (
+    <div
+      className="p-3 rounded-4 mb-4 d-flex align-items-center justify-content-between gap-3"
+      style={{
+        background: "rgba(2, 6, 23, 0.82)",
+        border: "1px solid rgba(34, 211, 238, 0.3)",
+        boxShadow: "inset 0 0 20px rgba(34, 211, 238, 0.08)"
+      }}
+    >
+      <div className="d-flex align-items-center gap-2 overflow-hidden">
+        <span
+          className="badge font-monospace px-2 py-1 flex-shrink-0"
+          style={{
+            background: `${currentLog.color}22`,
+            border: `1px solid ${currentLog.color}`,
+            color: currentLog.color,
+            fontSize: "0.72rem"
+          }}
+        >
+          <i className="bi bi-lightning-charge-fill me-1"></i>
+          {currentLog.stage}
+        </span>
+        <span
+          key={telemetryIdx}
+          className="text-white small font-monospace text-truncate ai-log-fade"
+          style={{ fontSize: "0.82rem" }}
+        >
+          {currentLog.text}
+        </span>
+      </div>
+
+      <div className="d-none d-sm-flex align-items-end gap-1 flex-shrink-0" style={{ height: "18px" }}>
+        {[0, 1, 2, 3, 4, 5, 6, 7].map((bar) => (
+          <span
+            key={bar}
+            className="ai-wave-bar"
+            style={{ animationDelay: `${bar * 0.12}s` }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Isolated sub-component so the 5-stage pipeline animation never re-renders the main DeepShop page
+const AiPipelineFlow = () => {
+  const [activePipelineStep, setActivePipelineStep] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!document.hidden) {
+        setActivePipelineStep((prev) => (prev + 1) % AI_NEURAL_NODES.length);
+      }
+    }, 2600);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="mb-5" data-aos="fade-up" data-aos-delay="100">
+      <div
+        className="glass-v2 p-3 p-md-4 rounded-4 position-relative overflow-hidden"
+        style={{
+          border: "1px solid rgba(59, 130, 246, 0.28)",
+          background: "rgba(2, 6, 23, 0.72)"
+        }}
+      >
+        <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+          <div className="d-flex align-items-center gap-2">
+            <i className="bi bi-broadcast-pin text-info fs-5"></i>
+            <span className="text-white fw-bold small text-uppercase" style={{ letterSpacing: "1.2px" }}>
+              Live Autonomous RAG & Merchant Intelligence Signal Flow
+            </span>
+          </div>
+          <span className="text-info small font-monospace">
+            Active Stage: 0{activePipelineStep + 1} / 05 • Real-Time Vector & Ledger Grounding
+          </span>
+        </div>
+
+        <div className="row g-3 position-relative">
+          {AI_NEURAL_NODES.map((node, idx) => {
+            const isActiveNode = idx === activePipelineStep;
+            return (
+              <div key={node.step} className="col-md-6 col-xl">
+                <div
+                  onClick={() => setActivePipelineStep(idx)}
+                  className="p-3 rounded-4 h-100 position-relative transition-smooth"
+                  style={{
+                    cursor: "pointer",
+                    background: isActiveNode
+                      ? `linear-gradient(135deg, ${node.color}22, rgba(15, 23, 42, 0.9))`
+                      : "rgba(255, 255, 255, 0.025)",
+                    border: isActiveNode
+                      ? `1px solid ${node.color}`
+                      : "1px solid rgba(255, 255, 255, 0.08)",
+                    boxShadow: isActiveNode ? `0 0 25px ${node.color}33` : "none",
+                    transform: isActiveNode ? "translateY(-3px)" : "none"
+                  }}
+                >
+                  <div className="d-flex justify-content-between align-items-center mb-2">
+                    <span
+                      className="badge rounded-pill font-monospace"
+                      style={{
+                        background: `${node.color}22`,
+                        color: node.color,
+                        border: `1px solid ${node.color}55`,
+                        fontSize: "0.7rem"
+                      }}
+                    >
+                      STAGE {node.step}
+                    </span>
+                    <i
+                      className={`bi ${node.icon} fs-5`}
+                      style={{
+                        color: node.color,
+                        filter: isActiveNode ? `drop-shadow(0 0 8px ${node.color})` : "none"
+                      }}
+                    ></i>
+                  </div>
+                  <h6 className="text-white fw-bold mb-1" style={{ fontSize: "0.95rem" }}>
+                    {node.title}
+                  </h6>
+                  <p className="text-white-50 mb-2" style={{ fontSize: "0.75rem", lineHeight: 1.4 }}>
+                    {node.subtitle}
+                  </p>
+                  <div className="d-flex align-items-center justify-content-between pt-2 border-top border-white border-opacity-10">
+                    <span className="font-monospace" style={{ fontSize: "0.7rem", color: node.color }}>
+                      {node.metric}
+                    </span>
+                    {isActiveNode && (
+                      <span className="d-inline-flex align-items-center gap-1 text-info font-monospace" style={{ fontSize: "0.68rem" }}>
+                        <span className="ai-pulse-dot" /> ACTIVE
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const DeepShop = () => {
   const videoRef = useRef(null);
   const videoContainerRef = useRef(null);
@@ -450,38 +609,47 @@ const DeepShop = () => {
   const [isTheaterMode, setIsTheaterMode] = useState(false);
   const [activeArchTab, setActiveArchTab] = useState(ARCHITECTURE_TABS[0].id);
   const [selectedScreenshot, setSelectedScreenshot] = useState(null);
-  const [telemetryIdx, setTelemetryIdx] = useState(0);
-  const [activePipelineStep, setActivePipelineStep] = useState(0);
 
   useEffect(() => {
     AOS.init({ duration: 1000, easing: "ease-out-cubic", once: true });
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  // Cycle AI Telemetry logs & neural pipeline step
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTelemetryIdx((prev) => (prev + 1) % AI_TELEMETRY_LOGS.length);
-      setActivePipelineStep((prev) => (prev + 1) % AI_NEURAL_NODES.length);
-    }, 2400);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Interactive AI Neural Network Synaptic Canvas Animation
+  // Interactive AI Neural Network Synaptic Canvas Animation (Mobile GPU/CPU Optimized)
   useEffect(() => {
     const canvas = neuralCanvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    if (!canvas) return undefined;
+    const ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) return undefined;
 
     let animationFrameId;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
+    let isMobile =
+      width < 768 ||
+      (typeof window.matchMedia === "function" &&
+        window.matchMedia("(pointer: coarse)").matches);
+
+    let isScrolling = false;
+    let scrollTimeout = null;
+
+    const handleScroll = () => {
+      if (!isMobile) return;
+      isScrolling = true;
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 140);
+    };
 
     const handleResize = () => {
       if (!canvas) return;
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
+      isMobile =
+        width < 768 ||
+        (typeof window.matchMedia === "function" &&
+          window.matchMedia("(pointer: coarse)").matches);
     };
 
     const mouse = { x: -9999, y: -9999 };
@@ -493,37 +661,65 @@ const DeepShop = () => {
       mouse.x = -9999;
       mouse.y = -9999;
     };
+    const handleTouchMove = (e) => {
+      if (e.touches && e.touches[0]) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+      }
+    };
 
     window.addEventListener("resize", handleResize, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+    window.addEventListener("touchstart", handleTouchMove, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", handleMouseLeave, { passive: true });
 
     const palette = ["#22d3ee", "#3b82f6", "#8b5cf6", "#38bdf8"];
-    const nodeCount = Math.min(52, Math.max(28, Math.floor(width / 34)));
+    const nodeCount = isMobile
+      ? 11
+      : Math.min(44, Math.max(24, Math.floor(width / 38)));
+    const speedScale = isMobile ? 0.4 : 0.6;
+
     const nodes = Array.from({ length: nodeCount }, (_, idx) => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.65,
-      vy: (Math.random() - 0.5) * 0.65,
-      radius: 1.8 + (idx % 3) * 0.9,
+      vx: (Math.random() - 0.5) * speedScale,
+      vy: (Math.random() - 0.5) * speedScale,
+      radius: 1.8 + (idx % 3) * 0.8,
       color: palette[idx % palette.length],
       pulseOffset: Math.random() * Math.PI * 2
     }));
 
-    // Synaptic data packets traveling between connected nodes
-    const packets = Array.from({ length: 14 }, () => ({
+    const packetCount = isMobile ? 4 : 12;
+    const packets = Array.from({ length: packetCount }, () => ({
       fromIdx: Math.floor(Math.random() * nodeCount),
       toIdx: Math.floor(Math.random() * nodeCount),
       progress: Math.random(),
-      speed: 0.012 + Math.random() * 0.015
+      speed: 0.012 + Math.random() * 0.014
     }));
 
     let tick = 0;
-    const render = () => {
-      tick += 0.03;
+    let lastFrameTime = 0;
+
+    const render = (timestamp) => {
+      animationFrameId = requestAnimationFrame(render);
+
+      if (document.hidden || isScrolling) return;
+
+      const minFrameGap = isMobile ? 38 : 16;
+      if (timestamp - lastFrameTime < minFrameGap) return;
+      lastFrameTime = timestamp;
+
+      tick += isMobile ? 0.04 : 0.03;
       ctx.clearRect(0, 0, width, height);
 
-      // Update & draw nodes
+      const maxLinkDist = isMobile ? 120 : 160;
+      const maxLinkDistSq = maxLinkDist * maxLinkDist;
+      const maxCursorDist = isMobile ? 155 : 210;
+      const maxCursorDistSq = maxCursorDist * maxCursorDist;
+
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
         n.x += n.vx;
@@ -532,14 +728,13 @@ const DeepShop = () => {
         if (n.x < 0 || n.x > width) n.vx *= -1;
         if (n.y < 0 || n.y > height) n.vy *= -1;
 
-        // Draw synaptic connections
         for (let j = i + 1; j < nodes.length; j++) {
           const m = nodes[j];
           const dx = n.x - m.x;
           const dy = n.y - m.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 165) {
-            const alpha = (1 - dist / 165) * 0.22;
+          const distSq = dx * dx + dy * dy;
+          if (distSq < maxLinkDistSq) {
+            const alpha = (1 - distSq / maxLinkDistSq) * 0.22;
             ctx.beginPath();
             ctx.moveTo(n.x, n.y);
             ctx.lineTo(m.x, m.y);
@@ -549,12 +744,11 @@ const DeepShop = () => {
           }
         }
 
-        // Interactive cursor synapse
         const mdx = n.x - mouse.x;
         const mdy = n.y - mouse.y;
-        const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
-        if (mDist < 210) {
-          const alpha = (1 - mDist / 210) * 0.45;
+        const mDistSq = mdx * mdx + mdy * mdy;
+        if (mDistSq < maxCursorDistSq) {
+          const alpha = (1 - mDistSq / maxCursorDistSq) * 0.45;
           ctx.beginPath();
           ctx.moveTo(n.x, n.y);
           ctx.lineTo(mouse.x, mouse.y);
@@ -563,12 +757,13 @@ const DeepShop = () => {
           ctx.stroke();
         }
 
-        // Pulsing neural node halo
-        const pulse = 0.65 + 0.35 * Math.sin(tick + n.pulseOffset);
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.radius * 2.6 * pulse, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(34, 211, 238, 0.08)";
-        ctx.fill();
+        if (!isMobile) {
+          const pulse = 0.65 + 0.35 * Math.sin(tick + n.pulseOffset);
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.radius * 2.5 * pulse, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(34, 211, 238, 0.08)";
+          ctx.fill();
+        }
 
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
@@ -576,7 +771,6 @@ const DeepShop = () => {
         ctx.fill();
       }
 
-      // Draw traveling neural data packets along edges
       for (let p of packets) {
         p.progress += p.speed;
         if (p.progress >= 1) {
@@ -589,31 +783,31 @@ const DeepShop = () => {
         if (a && b) {
           const dx = b.x - a.x;
           const dy = b.y - a.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 280) {
+          const distSq = dx * dx + dy * dy;
+          if (distSq < 75000) {
             const px = a.x + dx * p.progress;
             const py = a.y + dy * p.progress;
             ctx.beginPath();
-            ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+            ctx.arc(px, py, 2.3, 0, Math.PI * 2);
             ctx.fillStyle = "#22d3ee";
-            ctx.shadowColor = "#22d3ee";
-            ctx.shadowBlur = 10;
             ctx.fill();
-            ctx.shadowBlur = 0;
           }
         }
       }
-
-      animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    animationFrameId = requestAnimationFrame(render);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("touchstart", handleTouchMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleMouseLeave);
     };
   }, []);
 
@@ -689,7 +883,6 @@ const DeepShop = () => {
     VIDEO_CHAPTERS.find((c) => c.id === activeChapterId) || VIDEO_CHAPTERS[0];
   const currentArch =
     ARCHITECTURE_TABS.find((t) => t.id === activeArchTab) || ARCHITECTURE_TABS[0];
-  const currentLog = AI_TELEMETRY_LOGS[telemetryIdx];
 
   return (
     <section
@@ -821,47 +1014,7 @@ const DeepShop = () => {
               </p>
 
               {/* Live Animated AI Telemetry Stream Bar */}
-              <div
-                className="p-3 rounded-4 mb-4 d-flex align-items-center justify-content-between gap-3"
-                style={{
-                  background: "rgba(2, 6, 23, 0.82)",
-                  border: "1px solid rgba(34, 211, 238, 0.3)",
-                  boxShadow: "inset 0 0 20px rgba(34, 211, 238, 0.08)"
-                }}
-              >
-                <div className="d-flex align-items-center gap-2 overflow-hidden">
-                  <span
-                    className="badge font-monospace px-2 py-1 flex-shrink-0"
-                    style={{
-                      background: `${currentLog.color}22`,
-                      border: `1px solid ${currentLog.color}`,
-                      color: currentLog.color,
-                      fontSize: "0.72rem"
-                    }}
-                  >
-                    <i className="bi bi-lightning-charge-fill me-1"></i>
-                    {currentLog.stage}
-                  </span>
-                  <span
-                    key={telemetryIdx}
-                    className="text-white small font-monospace text-truncate ai-log-fade"
-                    style={{ fontSize: "0.82rem" }}
-                  >
-                    {currentLog.text}
-                  </span>
-                </div>
-
-                {/* Animated 8-Bar Neural Equalizer */}
-                <div className="d-none d-sm-flex align-items-end gap-1 flex-shrink-0" style={{ height: "18px" }}>
-                  {[0, 1, 2, 3, 4, 5, 6, 7].map((bar) => (
-                    <span
-                      key={bar}
-                      className="ai-wave-bar"
-                      style={{ animationDelay: `${bar * 0.12}s` }}
-                    />
-                  ))}
-                </div>
-              </div>
+              <AiTelemetryBar />
 
               <div className="d-flex flex-wrap gap-3 align-items-center">
                 <button
@@ -976,89 +1129,7 @@ const DeepShop = () => {
         </div>
 
         {/* Live Animated 5-Stage AI Neural Execution Pipeline */}
-        <div className="mb-5" data-aos="fade-up" data-aos-delay="100">
-          <div
-            className="glass-v2 p-3 p-md-4 rounded-4 position-relative overflow-hidden"
-            style={{
-              border: "1px solid rgba(59, 130, 246, 0.28)",
-              background: "rgba(2, 6, 23, 0.72)"
-            }}
-          >
-            <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
-              <div className="d-flex align-items-center gap-2">
-                <i className="bi bi-broadcast-pin text-info fs-5"></i>
-                <span className="text-white fw-bold small text-uppercase" style={{ letterSpacing: "1.2px" }}>
-                  Live Autonomous RAG & Merchant Intelligence Signal Flow
-                </span>
-              </div>
-              <span className="text-info small font-monospace">
-                Active Stage: 0{activePipelineStep + 1} / 05 • Real-Time Vector & Ledger Grounding
-              </span>
-            </div>
-
-            <div className="row g-3 position-relative">
-              {AI_NEURAL_NODES.map((node, idx) => {
-                const isActiveNode = idx === activePipelineStep;
-                return (
-                  <div key={node.step} className="col-md-6 col-xl">
-                    <div
-                      onClick={() => setActivePipelineStep(idx)}
-                      className="p-3 rounded-4 h-100 position-relative transition-smooth"
-                      style={{
-                        cursor: "pointer",
-                        background: isActiveNode
-                          ? `linear-gradient(135deg, ${node.color}22, rgba(15, 23, 42, 0.9))`
-                          : "rgba(255, 255, 255, 0.025)",
-                        border: isActiveNode
-                          ? `1px solid ${node.color}`
-                          : "1px solid rgba(255, 255, 255, 0.08)",
-                        boxShadow: isActiveNode ? `0 0 25px ${node.color}33` : "none",
-                        transform: isActiveNode ? "translateY(-3px)" : "none"
-                      }}
-                    >
-                      <div className="d-flex justify-content-between align-items-center mb-2">
-                        <span
-                          className="badge rounded-pill font-monospace"
-                          style={{
-                            background: `${node.color}22`,
-                            color: node.color,
-                            border: `1px solid ${node.color}55`,
-                            fontSize: "0.7rem"
-                          }}
-                        >
-                          STAGE {node.step}
-                        </span>
-                        <i
-                          className={`bi ${node.icon} fs-5`}
-                          style={{
-                            color: node.color,
-                            filter: isActiveNode ? `drop-shadow(0 0 8px ${node.color})` : "none"
-                          }}
-                        ></i>
-                      </div>
-                      <h6 className="text-white fw-bold mb-1" style={{ fontSize: "0.95rem" }}>
-                        {node.title}
-                      </h6>
-                      <p className="text-white-50 mb-2" style={{ fontSize: "0.75rem", lineHeight: 1.4 }}>
-                        {node.subtitle}
-                      </p>
-                      <div className="d-flex align-items-center justify-content-between pt-2 border-top border-white border-opacity-10">
-                        <span className="font-monospace" style={{ fontSize: "0.7rem", color: node.color }}>
-                          {node.metric}
-                        </span>
-                        {isActiveNode && (
-                          <span className="d-inline-flex align-items-center gap-1 text-info font-monospace" style={{ fontSize: "0.68rem" }}>
-                            <span className="ai-pulse-dot" /> ACTIVE
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+        <AiPipelineFlow />
 
         {/* Interactive Video Player + Timestamped Chapter Navigator */}
         <div id="video-demo" ref={videoContainerRef} className="mb-5" data-aos="fade-up">
@@ -1197,20 +1268,22 @@ const DeepShop = () => {
 
                   <div className="d-flex flex-wrap gap-2">
                     {activeChapter.highlights.map((item, i) => (
-                      <span
+                      <div
                         key={i}
-                        className="badge rounded-pill px-3 py-2 fw-normal text-white"
+                        className="d-inline-flex align-items-start gap-2 px-3 py-2 rounded-3 text-white text-start"
                         style={{
                           background: "rgba(34, 211, 238, 0.1)",
                           border: "1px solid rgba(34, 211, 238, 0.28)",
                           fontSize: "0.78rem",
-                          textTransform: "none",
-                          letterSpacing: "0.2px"
+                          lineHeight: 1.45,
+                          whiteSpace: "normal",
+                          wordBreak: "break-word",
+                          maxWidth: "100%"
                         }}
                       >
-                        <i className="bi bi-check2-circle text-info me-1"></i>
-                        {item}
-                      </span>
+                        <i className="bi bi-check2-circle text-info flex-shrink-0 mt-1"></i>
+                        <span>{item}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -1220,23 +1293,23 @@ const DeepShop = () => {
             {/* Interactive Chapter Playlist Column */}
             <div className={isTheaterMode ? "col-12" : "col-lg-4"}>
               <div
-                className="glass-v2 p-4 h-100 d-flex flex-column"
+                className="glass-v2 p-3 p-sm-4 h-100 d-flex flex-column"
                 style={{
                   borderRadius: "28px",
                   border: "1px solid rgba(59, 130, 246, 0.25)"
                 }}
               >
-                <div className="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-white border-opacity-10">
+                <div className="d-flex justify-content-between align-items-start align-items-sm-center gap-2 mb-3 pb-2 border-bottom border-white border-opacity-10">
                   <div>
-                    <h4 className="text-white fw-bold mb-0" style={{ fontSize: "1.2rem" }}>
+                    <h4 className="text-white fw-bold mb-1" style={{ fontSize: "1.2rem" }}>
                       <i className="bi bi-collection-play-fill text-info me-2"></i>
                       Demo Chapters
                     </h4>
-                    <span className="text-white-50 small">
+                    <span className="text-white-50 small d-block" style={{ lineHeight: 1.35 }}>
                       Click any timestamp to jump directly to that feature
                     </span>
                   </div>
-                  <span className="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 rounded-pill px-3 py-2">
+                  <span className="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 rounded-pill px-3 py-2 flex-shrink-0">
                     7 Scenes
                   </span>
                 </div>
@@ -1264,7 +1337,7 @@ const DeepShop = () => {
                           cursor: "pointer"
                         }}
                       >
-                        <div className="d-flex justify-content-between align-items-center mb-1">
+                        <div className="d-flex flex-wrap justify-content-between align-items-center gap-1 mb-1">
                           <span
                             className="badge rounded-pill px-2 py-1 font-monospace"
                             style={{
@@ -1410,7 +1483,7 @@ const DeepShop = () => {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveArchTab(tab.id)}
-                  className="btn px-4 py-3 rounded-4 fw-bold d-flex align-items-center gap-2 transition-smooth"
+                  className="btn px-4 py-3 rounded-4 fw-bold d-flex align-items-center justify-content-center gap-2 transition-smooth ai-arch-tab-btn"
                   style={{
                     background: active
                       ? "linear-gradient(135deg, #0ea5e9, #6366f1)"
@@ -1422,7 +1495,7 @@ const DeepShop = () => {
                     boxShadow: active ? "0 10px 30px rgba(34, 211, 238, 0.3)" : "none"
                   }}
                 >
-                  <i className={`bi ${tab.icon}`}></i>
+                  <i className={`bi ${tab.icon} flex-shrink-0`}></i>
                   <span>{tab.label}</span>
                 </button>
               );
@@ -1431,17 +1504,17 @@ const DeepShop = () => {
 
           {/* Active Architecture Tab Content Card */}
           <div
-            className="glass-v2 p-4 p-lg-5 position-relative overflow-hidden"
+            className="glass-v2 p-3 p-sm-4 p-lg-5 position-relative overflow-hidden"
             style={{
               borderRadius: "32px",
               border: "1px solid rgba(34, 211, 238, 0.3)"
             }}
           >
             <div className="mb-4">
-              <h3 className="text-white fw-bold mb-2" style={{ fontSize: "1.75rem" }}>
+              <h3 className="text-white fw-bold mb-2" style={{ fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)" }}>
                 {currentArch.title}
               </h3>
-              <p className="text-white-50 mb-0" style={{ fontSize: "1.05rem" }}>
+              <p className="text-white-50 mb-0" style={{ fontSize: "1rem" }}>
                 {currentArch.subtitle}
               </p>
             </div>
@@ -1480,21 +1553,20 @@ const DeepShop = () => {
                 boxShadow: "inset 0 0 30px rgba(34, 211, 238, 0.06)"
               }}
             >
-              <div className="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom border-white border-opacity-10">
+              <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3 pb-2 border-bottom border-white border-opacity-10">
                 <span className="text-info small fw-bold font-monospace d-flex align-items-center gap-2">
-                  <span className="ai-pulse-dot" />
-                  <i className="bi bi-terminal-fill"></i>
-                  {currentArch.codeTitle}
+                  <span className="ai-pulse-dot flex-shrink-0" />
+                  <i className="bi bi-terminal-fill flex-shrink-0"></i>
+                  <span className="text-break">{currentArch.codeTitle}</span>
                 </span>
-                <span className="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 small font-monospace">
+                <span className="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 small font-monospace flex-shrink-0">
                   AI Production Pipeline
                 </span>
               </div>
-              <div className="text-center" style={{ overflowX: "auto" }}>
+              <div className="ai-diagram-scroll">
                 <pre
-                  className="mb-0 text-white font-monospace d-inline-block text-start"
+                  className="mb-0 text-white font-monospace text-start ai-diagram-pre"
                   style={{
-                    fontSize: "0.84rem",
                     lineHeight: 1.55,
                     color: "#e2e8f0"
                   }}
@@ -1696,28 +1768,42 @@ const DeepShop = () => {
 
         .ai-scanline-beam {
           position: absolute;
-          top: -100%;
+          top: 0;
           left: 0;
           width: 100%;
-          height: 120px;
+          height: 110px;
           background: linear-gradient(
             to bottom,
             transparent,
-            rgba(34, 211, 238, 0.07),
-            rgba(34, 211, 238, 0.22),
-            rgba(34, 211, 238, 0.07),
+            rgba(34, 211, 238, 0.06),
+            rgba(34, 211, 238, 0.18),
+            rgba(34, 211, 238, 0.06),
             transparent
           );
-          animation: aiScanSweep 7s ease-in-out infinite;
+          transform: translateY(-120%);
+          will-change: transform;
+          animation: aiScanSweep 8s ease-in-out infinite;
           pointer-events: none;
           z-index: 1;
         }
 
         @keyframes aiScanSweep {
-          0% { top: -35%; opacity: 0; }
+          0% { transform: translateY(-120%); opacity: 0; }
           20% { opacity: 1; }
           80% { opacity: 1; }
-          100% { top: 115%; opacity: 0; }
+          100% { transform: translateY(520%); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+          .ai-scanline-beam {
+            display: none;
+          }
+          .ai-ring-outer,
+          .ai-ring-middle,
+          .ai-ring-inner,
+          .ai-core-center {
+            animation-duration: 18s !important;
+          }
         }
 
         .ai-pulse-dot {
@@ -1839,6 +1925,36 @@ const DeepShop = () => {
 
         .ai-snapshot-img {
           transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .ai-diagram-scroll {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          text-align: center;
+        }
+
+        .ai-diagram-pre {
+          display: inline-block;
+          font-size: 0.84rem;
+        }
+
+        @media (max-width: 991px) {
+          .ai-diagram-scroll {
+            text-align: left;
+          }
+          .ai-diagram-pre {
+            display: block;
+            font-size: 0.72rem;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .ai-arch-tab-btn {
+            width: 100%;
+          }
+          .ai-diagram-pre {
+            font-size: 0.65rem;
+          }
         }
       `}</style>
     </section>

@@ -228,3 +228,27 @@ body {
   opacity: 1 !important;
   box-shadow: 0 0 15px var(--primary-glow);
 }
+
+/* --- Mobile GPU & Battery Optimization --- */
+@media (max-width: 768px) {
+  .blob {
+    width: 360px;
+    height: 360px;
+    filter: blur(80px);
+    animation: none !important;
+  }
+
+  .blob-3,
+  .noise-overlay {
+    display: none !important;
+  }
+
+  .glass-v2 {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .floating-element {
+    animation: none !important;
+  }
+}
