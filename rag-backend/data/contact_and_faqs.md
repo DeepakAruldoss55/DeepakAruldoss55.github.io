@@ -33,7 +33,20 @@ A: Deepak has worked at 3 companies:
 A: Node.js (with TypeScript), Express.js, PHP (Symfony/Laravel/Shopware), Python, MySQL, and MongoDB.
 
 ### Q: Can Deepak build custom Shopware plugins?
-A: Yes! Deepak is an official Shopware 6 Certified Developer and has built multiple published store plugins such as Customer Discount Request, Customer Membership Program, Ticket System, and Order Status Analytics.
+A: Yes! Deepak is an official Shopware 6 Certified Developer and has built multiple store plugins including:
+- **Customer Discount Request (Shopware 6)**: Allows registered users to request custom price discounts and quantities for bulk orders, with merchant backend approval/rejection, min/max quantity and discount limits, and login notifications.
+- **Customer Membership Offer (Shopware 6)**: Categorizes registered users into Silver, Gold, and Platinum tiers based on cumulative purchase milestones, unlocking automatic plan upgrades, next-order cart discounts, product eligibility rules, and admin manual override/freeze locks.
+- **Ticket System (Shopware 6)**: Storefront event ticketing system accessible via a floating Ticket launcher, displaying live available ticket counts, venue locations, date/time slots, checkout integration, and unique ticket IDs (`Ticket-XXXX`) in customer orders.
+- **Order Status Analytics (Shopware 6)**: Interactive Doughnut and Pie chart analytics inside the customer's Orders dashboard with hover tooltips showing exact counts for Open, In Progress, Done, and Cancelled orders synced from Shopware Administration.
+- **Customer Profile Picture (Shopware 6)**: Account Overview avatar upload module enforcing JPG/JPEG/PNG format and 100 KB size validation, rendering a circular avatar in the customer sidebar and syncing with Admin custom fields.
+- **Credit Points (Loyalty / SuperCoins) (Shopware 5)**: Loyalty engine awarding SuperCoins based on order spend or product rules, with storefront credit badges/banners and instant cash discount redemption at checkout.
+- **Adyen Payment Customization (Shopware 5)**: Automatic capture status on order confirmation and partial refund workflows.
+- **Review Synchronization Engine (Shopware 6)**: Real-time cross-shop product review synchronization based on shared global SKUs.
+- **Category Discount Plugin (Shopware 6)**: Category-wide percentage/fixed discounts with promotional banner integration.
+- **Site Performance Optimization (Shopware 6)**: Core Web Vitals, WebP image orchestration, SEO/accessibility overhaul, and lazy loading.
+
+### Q: What is DeepShop (`/deep-shop`)?
+A: **DeepShop** is Deepak's flagship AI-Powered E-Commerce & Enterprise ERP Suite showcased at `/deep-shop` (and on GitHub at `https://github.com/DeepakAruldoss55/eshop-ai`). It unites a React 18 + TypeScript Storefront, a Node.js v20 + Express TypeScript backend with generic domain repositories across 7 entities, a 7-Module Enterprise Admin ERP, and a Python FastAPI + ChromaDB AI microservice featuring a custom 384-dimensional hybrid semantic RAG Shopping Concierge, an Executive Store Health Score (`77/100`) BI Engine, and a stateful Multi-Turn AI Business Copilot with 3-tier LLM failover (Groq → OpenRouter → Offline Deterministic Engine).
 
 ### Q: Is Deepak experienced in CI/CD pipelines or DevOps?
 A: No, Deepak is not experienced in CI/CD pipelines or DevOps engineering. His expertise is focused on Full Stack Web and Backend development (Node.js, TypeScript, React, Express, PHP, and database architecture).

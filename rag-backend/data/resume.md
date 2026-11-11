@@ -16,12 +16,12 @@
 Senior Software Engineer with 8.3 years of experience specializing in full-stack development, primarily using Node.js, TypeScript, React, and Express.js. Experienced in designing scalable web applications, developing secure REST APIs, database architecture, and integrating frontend and backend systems. Strong background in CRM and payment-driven platforms, database optimization, third-party integrations, and system architecture. Additionally, have exposure to AI-driven technologies and their integration into modern web applications. Focused on delivering high-performance, scalable, and maintainable software solutions.
 
 ## Technical Skills on Resume
-- **Core Languages & Frameworks**: Node.js, React, TypeScript, Express.js, Python, FastAPI, PHP, Symfony, Laravel, Shopware 5, Shopware 6
-- **AI & Generative Tech (Beginner Stage, ~30-40% Knowledge)**: Generative AI (40%), RAG (Retrieval-Augmented Generation) (40%), LLM (35%), Prompt Engineering (40%)
-- **Frontend & UI**: React, jQuery, EJS, HTML
-- **Databases & Data Management**: MySQL, MongoDB
-- **APIs & Integrations**: API Development & Integration, REST APIs, JSON
-- **DevOps, Tools & Infrastructure**: GIT, Docker, Linux (Ubuntu)
+- **Core Languages & Frameworks**: Node.js (90%), React (80%), TypeScript (90%), Express.js (90%), Python & FastAPI (70%), PHP & Symfony/Laravel (90%), Shopware 5, Shopware 6
+- **AI & Generative Tech**: Generative AI (50%), RAG Pipelines (55%), LLM Integration (35%), Prompt Engineering (50%)
+- **Frontend & UI**: React, TypeScript, Tailwind CSS, jQuery, EJS (75%), HTML5
+- **Databases & Data Management**: MySQL (90%), MongoDB (70%), ChromaDB (Vector Store)
+- **APIs & Integrations**: API & System Integration (95%), E-commerce Architecture (92%), REST APIs, JSON
+- **DevOps, Tools & Infrastructure**: Docker & Containerization (75%), Linux (Ubuntu) & Git (70%)
 
 ## Work Experience
 

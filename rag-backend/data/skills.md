@@ -4,29 +4,29 @@ What technical skills does Deepak have? What is his tech stack?
 Deepak Aruldoss is a Senior Full Stack Developer and Backend Architect with expertise across three core categories:
 
 ## 1. Modern Stack & Frameworks
-- **Node.js with TypeScript**: Scalable microservices, asynchronous event-driven backend services, RESTful APIs, high-throughput architectures, and strict type safety.
-- **React (Vite) with TypeScript**: Modern single-page applications, component-driven architecture, state management, hooks, and responsive frontend interfaces.
-- **Express.js**: RESTful APIs, middleware pipelines, routing, authentication, and web service architecture.
-- **Embedded JavaScript (EJS)**: Server-side templating, SSR views, and dynamic HTML rendering.
+- **Node.js with TypeScript (90%)**: Scalable microservices, asynchronous event-driven backend services, RESTful APIs, high-throughput architectures, and strict type safety.
+- **React (Vite) with TypeScript (80%)**: Modern single-page applications, component-driven architecture, state management, hooks, and responsive frontend interfaces.
+- **Express.js (90%)**: RESTful APIs, middleware pipelines, routing, authentication, and web service architecture.
+- **Embedded JavaScript (EJS) (75%)**: Server-side templating, SSR views, and dynamic HTML rendering.
 
 ## 2. Data & Infrastructure
-- **MySQL & Relational Databases**: Complex relational schemas, indexing, query optimization, database design, transactions, and performance tuning.
-- **MongoDB (NoSQL)**: Document data models, aggregation pipelines, and high-velocity NoSQL storage.
-- **Docker & Containerization**: Multi-container orchestration, Dockerfiles, and dev/staging/prod environment consistency.
-- **Linux (Ubuntu)**: Basic server environment familiarity, standard Linux commands, and containerized runtime environments.
+- **MySQL & Relational Databases (90%)**: Complex relational schemas, indexing, query optimization, database design, transactions, and performance tuning.
+- **MongoDB (NoSQL) (70%)**: Document data models, aggregation pipelines, and high-velocity NoSQL storage.
+- **Docker & Containerization (75%)**: Multi-container orchestration, Dockerfiles, and dev/staging/prod environment consistency.
+- **Linux (Ubuntu) & Git (70%)**: Server environment familiarity, standard Linux commands, version control, and containerized runtime environments.
 
 ## 3. Backend & Ecosystems
-- **PHP (Symfony / Laravel / Shopware Core)**: Enterprise MVC frameworks, ORM, Shopware 5 & 6 plugin development, and e-commerce platforms (90%).
-- **Python & FastAPI**: Automation scripting, backend utilities, FastAPI web services, data manipulation, and AI/RAG integrations (70%).
-- **API & System Integration**: Payment gateways (Adyen, Novalnet, Stripe), third-party webhooks, CRM/ERP integrations, and external REST APIs (95%).
-- **E-commerce Architecture**: Shopware 5 & 6 architectures, multi-tenant/multi-store systems, pricing engines, and custom extensions (92%).
+- **PHP (Symfony / Laravel / Shopware Core) (90%)**: Enterprise MVC frameworks, ORM, Shopware 5 & 6 plugin development, and e-commerce platforms.
+- **Python & FastAPI (70%)**: Automation scripting, backend utilities, FastAPI web services, data manipulation, and AI/RAG integrations.
+- **API & System Integration (95%)**: Payment gateways (Adyen, Novalnet, Stripe), third-party webhooks, CRM/ERP integrations, and external REST APIs.
+- **E-commerce Architecture (92%)**: Shopware 5 & 6 architectures, multi-tenant/multi-store systems, pricing engines, and custom extensions.
 
-## 4. AI & Generative Tech (Beginner / Foundational Stage: 30% – 40% Proficiency)
-Deepak is at a beginner/foundational stage in AI (around 30% to 40% knowledge) with hands-on exposure to integrating AI-driven technologies into modern web applications:
-- **Generative AI (40%)**: Foundational understanding of generative AI models and integrating AI capabilities into web applications.
-- **RAG (Retrieval-Augmented Generation) (40%)**: Building basic semantic retrieval pipelines using vector databases (like ChromaDB) and embeddings.
-- **Large Language Models (LLM) (35%)**: Integrating cloud and local LLMs (OpenAI-compatible APIs, Groq, Ollama) into backend services.
-- **Prompt Engineering (40%)**: Crafting structured system prompts, context grounding, and conversational guardrails.
+## 4. AI & Generative Tech (Foundational / Hands-On Stage: 35% – 55% Proficiency)
+Deepak has hands-on exposure to integrating AI-driven capabilities into modern web applications (such as the flagship **DeepShop** AI-powered E-Commerce & Enterprise ERP suite):
+- **Generative AI (50%)**: Integrating generative AI models and capabilities into modern web applications and workflows.
+- **RAG Pipelines (55%)**: Building Retrieval-Augmented Generation pipelines using vector databases (ChromaDB) and custom hybrid semantic embeddings.
+- **LLM Integration (35%)**: Integrating cloud and local LLMs (Groq, OpenRouter, OpenAI-compatible APIs, Ollama) with multi-tier failover cascades into backend services.
+- **Prompt Engineering (50%)**: Crafting structured system prompts, live ledger/catalog context grounding, and conversational guardrails.
 
 ## 5. Skills & Tech Stack by Company
 

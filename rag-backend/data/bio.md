@@ -17,7 +17,7 @@
 - **Proficiency**: Fluent in English and Tamil.
 
 ## Professional Summary
-Senior Software Engineer with 8.2 years of experience specializing in Node.js and TypeScript, building scalable CRM and payment-driven platforms. Strong background in designing secure, high-performance REST APIs, integrating third-party services, and optimizing backend systems for reliability and scale. Experienced in full-stack architecture, technical decision-making, and owning production systems end-to-end.
+Senior Software Engineer with 8.3 years of experience specializing in full-stack development using Node.js, TypeScript, React, and Express.js, building scalable CRM, ERP, and payment-driven e-commerce platforms. Strong background in designing secure, high-performance REST APIs, integrating third-party services, and optimizing backend systems for reliability and scale, alongside hands-on exposure to integrating AI-driven capabilities (RAG pipelines, ChromaDB vector search, FastAPI microservices, and multi-tier LLMs) into modern web applications.
 
 
 
