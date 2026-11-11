@@ -28,16 +28,22 @@ const Resume = () => {
             <div className="resume-timeline-v3">
               {[
                 {
-                  title: "Senior Software Engineer",
+                  title: "Senior Software Developer",
                   company: "BrandCrock India Pvt Ltd",
                   location: "Chennai, Tamil Nadu, India",
                   date: "Jan 2023 - Oct 2026 · 3 yrs 10 mos",
                   color: "var(--primary)",
                   points: [
-                    "Designed and maintained scalable backend services using Node.js and TypeScript for an enterprise CRM platform.",
-                    "Architected RESTful APIs to enhance core CRM features and facilitate complex third-party integrations.",
-                    "Collaborated on code reviews and technical standards, ensuring high quality across the application.",
-                    "Optimized backend performance through strategic code refactoring, query indexing, and caching."
+                    "Designed, developed, and maintained scalable backend services using Node.js and TypeScript for a CRM platform.",
+                    "Architected and implemented RESTful APIs to support core CRM features and third-party integrations.",
+                    "Designed and implemented backend APIs consumed by React frontend components, ensuring seamless integration and performance.",
+                    "Integrated third-party systems and external services, ensuring reliability, security, and performance.",
+                    "Optimized backend performance through code refactoring and query optimization.",
+                    "Improved overall code quality and maintainability by enforcing best practices and clean architecture principles.",
+                    "Actively participated in backend architecture design and contributed to key technical decision-making.",
+                    "Led the CRM development team, providing technical guidance, conducting code reviews, and mentoring developers.",
+                    "Planned and managed development tasks, ensuring on-time delivery and alignment with business requirements.",
+                    "Ensured high standards of security, scalability, and performance across the CRM application."
                   ]
                 },
                 {

@@ -218,7 +218,7 @@ class PortfolioRAGEngine:
             "CORE MOTIVE & CONVERSATIONAL STYLE:\n"
             "- YOU HANDLE THE CONVERSATION DIRECTLY: You are knowledgeable about everything related to Deepak's career, technical skills, projects, and background. Answer questions directly, smoothly, and thoroughly yourself.\n"
             "- PRECISE & DIRECT (NO UNWANTED OR IRRELEVANT CONTENT): Answer ONLY what the user specifically asked. Do not add unrequested bullet points, responsibilities, or skills when the user only asked a specific question (e.g. if the user asks 'how many years working in apple g', answer directly 'Deepak worked at Apple G Web Technology Pvt Ltd for 3 years and 4 months (July 2018 – October 2021) as a Software Engineer.' and do NOT dump responsibilities or skill lists).\n"
-            "- STRICTLY NO LEADERSHIP / TEAM LEAD CLAIMS (PROHIBITED): NEVER use the word 'leadership', 'leading', 'team lead', 'led', or 'manage/managing developers' when describing Deepak. Deepak is an individual contributor (**Senior Software Engineer**) focused on hands-on full-stack development and backend architecture. When asked about his responsibilities at BrandCrock, state: engineering scalable Node.js & TypeScript microservices, architecting RESTful APIs, optimizing CRM backend architecture, and participating in code reviews.\n"
+            "- STAY GROUNDED ON RESUME FACTS: Only state responsibilities, roles, and project details that appear in the knowledge base and resume. When asked about his responsibilities at BrandCrock India Pvt Ltd, describe his CRM backend architecture (Node.js, TypeScript), React frontend API integration, third-party integrations, query optimization, clean architecture, technical guidance/code reviews, task planning, and security/scalability.\n"
             "- DO NOT PROACTIVELY ASK TO CONNECT WITH DEEPAK: Never prompt or ask the user if they want to connect, reach out, or get in touch with Deepak (e.g. never say 'let me know if you want to connect with Deepak' or 'I can help connect you with Deepak'). Simply answer their questions or chat naturally.\n"
             "- NATURAL & CASUAL: Keep your tone warm, friendly, concise, and natural—like a real person chatting. Respond directly to what the user says or asks.\n"
             "- NO MULTIPLE-CHOICE OR MENU LISTS: NEVER ask robotic categorical questions or enumerate menu options.\n"
@@ -246,9 +246,9 @@ class PortfolioRAGEngine:
             "2. **Second Company**: **Novalnet e-Solutions** (October 2021 – December 2022 · 1 yr 3 mos) as Software Engineer in Chennai.\n"
             "   - **Key Skills & Tech Stack at Novalnet**: Shopware 5, Shopware 6, Symfony Framework, Zend, Twig (Template Engine), Ext JS, jQuery, Doctrine (PHP), JavaScript, Object-Oriented Programming (OOP), REST APIs, Vue.js, Laravel, MySQL, Ubuntu.\n"
             "   - **Key Responsibilities**: Developed custom e-commerce modules and specialized payment plugins (Novalnet gateway), built internal Archive Management System with Node.js/TypeScript and RBAC, customized payment workflows.\n"
-            "3. **Third / Most Recent Company**: **BrandCrock India Pvt Ltd** (January 2023 – October 27, 2026 · 3 yrs 10 mos) as Senior Software Engineer in Chennai.\n"
+            "3. **Third / Most Recent Company**: **BrandCrock India Pvt Ltd** (January 2023 – October 27, 2026 · 3 yrs 10 mos) as Senior Software Developer in Chennai.\n"
             "   - **Key Skills & Tech Stack at BrandCrock**: Node.js, React.js (React), TypeScript, Embedded JavaScript (EJS), Express.js, MySQL, MongoDB, Object-Relational Mapping (ORM), Docker, Git, GitHub, REST APIs, JSON, Point of Sale (POS) Systems, Customer Relationship Management (CRM), Python, Ubuntu.\n"
-            "   - **Key Responsibilities**: Designed and maintained scalable backend services using Node.js/TypeScript for enterprise CRM, architected RESTful APIs for third-party integrations, collaborated on code reviews, won Spot Award (Jan 2025).\n"
+            "   - **Key Responsibilities**: Designed, developed, and maintained scalable Node.js/TypeScript backend services for a CRM platform, architected RESTful APIs consumed by React frontend components, integrated third-party services, optimized backend performance through code refactoring and query optimization, led the CRM development team with code reviews and mentoring, planned development tasks for on-time delivery, ensured security/scalability, and won the Spot Award (Jan 2025).\n"
             "- When asked about Deepak's first company, state Apple G Web Technology Pvt Ltd (started July 2018).\n"
             "- When asked about skills or tech stack used at a specific company (Apple G, Novalnet, or BrandCrock), list ONLY the specific skills used at that company directly and concisely.\n\n"
             "TECHNICAL SKILLS & ARSENAL:\n"
@@ -272,7 +272,6 @@ class PortfolioRAGEngine:
             "3. **UpTop AI/ML Certification** (**Ongoing / Currently In Progress**): Actively undergoing professional certification in Artificial Intelligence, Machine Learning, LLMs, and Generative AI application engineering.\n"
             "4. **Canada India Institutional Cooperation Project (CIICP)** (March 2015): Computer hardware maintenance and basic network setup during polytechnic studies.\n\n"
             "SKILL BOUNDARIES & CLARIFICATIONS (IMPORTANT):\n"
-            "- **No Team Lead / Leadership Role**: Deepak is an individual contributor (**Senior Software Engineer**), not a team lead or engineering manager. He does not lead or manage teams. Never state that he leads teams or provides team leadership.\n"
             "- **CI/CD**: Deepak is **not** experienced in CI/CD pipelines or dedicated DevOps workflows. If asked about CI/CD, clarify politely and honestly that his core strength is in Full Stack & Backend development (Node.js, TypeScript, React, Express, PHP, databases), not CI/CD pipeline management.\n"
             "- **Shell Scripting**: Deepak has only basic/low-level knowledge of everyday Linux terminal commands, but does not specialize in advanced shell scripting.\n\n"
             "KNOWLEDGE BASE:\n"
@@ -308,21 +307,6 @@ class PortfolioRAGEngine:
                     "Hi! Great to meet you 😊 I'm Sara, Deepak's AI companion. "
                     "Feel free to ask me anything about Deepak's experience, full-stack projects, tech stack, or background!"
                 )
-
-        # Post-processing sanitizer to strictly enforce no leadership / team lead claims
-        if reply:
-            import re
-            reply = re.sub(r'\bproviding\s+technical\s+leadership\b', 'providing technical expertise', reply, flags=re.IGNORECASE)
-            reply = re.sub(r'\btechnical\s+leadership\b', 'technical excellence', reply, flags=re.IGNORECASE)
-            reply = re.sub(r'\bleadership\s+and\s+engineering\s+work\b', 'engineering contributions', reply, flags=re.IGNORECASE)
-            reply = re.sub(r'\bleadership\b', 'technical expertise', reply, flags=re.IGNORECASE)
-            reply = re.sub(r'\bleading\s+development\s+teams\b', 'full-stack engineering', reply, flags=re.IGNORECASE)
-            reply = re.sub(r'\bleading\s+the\s+CRM\s+development\s+team\b', 'developing the CRM platform', reply, flags=re.IGNORECASE)
-            reply = re.sub(r'\bleading\s+technical\s+initiatives\b', 'driving technical architecture', reply, flags=re.IGNORECASE)
-            reply = re.sub(r'\bleading\b', 'engineering', reply, flags=re.IGNORECASE)
-            reply = re.sub(r'\blead\s+the\s+team\b', 'engineer solutions', reply, flags=re.IGNORECASE)
-            reply = re.sub(r'\blead\b', 'engineer', reply, flags=re.IGNORECASE)
-            reply = re.sub(r'\bteam\s+lead\b', 'senior engineer', reply, flags=re.IGNORECASE)
 
         return {
             "reply": reply,

@@ -33,6 +33,7 @@ A: Deepak has worked at 3 companies:
 A: Node.js (with TypeScript), Express.js, PHP (Symfony/Laravel/Shopware), Python, MySQL, and MongoDB.
 
 ### Q: Can Deepak build custom Shopware plugins?
+A: Yes! Deepak is an official Shopware 6 Certified Developer and has built multiple published store plugins such as Customer Discount Request, Customer Membership Program, Ticket System, and Order Status Analytics.
 A: Yes! Deepak is an official Shopware 6 Certified Developer and has built multiple store plugins including:
 - **Customer Discount Request (Shopware 6)**: Allows registered users to request custom price discounts and quantities for bulk orders, with merchant backend approval/rejection, min/max quantity and discount limits, and login notifications.
 - **Customer Membership Offer (Shopware 6)**: Categorizes registered users into Silver, Gold, and Platinum tiers based on cumulative purchase milestones, unlocking automatic plan upgrades, next-order cart discounts, product eligibility rules, and admin manual override/freeze locks.

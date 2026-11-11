@@ -54,7 +54,7 @@ Deepak Aruldoss has worked at 3 companies across his career:
   - Collaborated with cross-functional teams to deliver reliable e-commerce integrations and automated platforms.
 
 ## 3. Third / Most Recent Company: BrandCrock India Pvt Ltd
-- **Role**: Senior Software Engineer (Full-time)
+- **Role**: Senior Software Developer / Senior Software Engineer (Full-time)
 - **Period**: January 2023 – October 27, 2026 (3 years 10 months)
 - **Location**: Chennai, Tamil Nadu, India (On-site)
 - **Primary Skills & Technologies**:
@@ -69,13 +69,19 @@ Deepak Aruldoss has worked at 3 companies across his career:
   - REST APIs & JSON
   - Point of Sale (POS) Systems
   - Customer Relationship Management (CRM)
-  - Python (Programming Language)
+  - Python & FastAPI
   - Ubuntu (Linux)
 - **Key Responsibilities & Accomplishments**:
-  - Designed and maintained scalable backend services using Node.js and TypeScript for an enterprise CRM platform.
-  - Architected RESTful APIs to enhance core CRM features and facilitate complex third-party integrations.
-  - Collaborated on code reviews and technical standards, ensuring high standards of code quality.
-  - Optimized backend performance through strategic code refactoring, query indexing, and caching.
+  - Designed, developed, and maintained scalable backend services using Node.js and TypeScript for a CRM platform.
+  - Architected and implemented RESTful APIs to support core CRM features and third-party integrations.
+  - Designed and implemented backend APIs consumed by React frontend components, ensuring seamless integration and performance.
+  - Integrated third-party systems and external services, ensuring reliability, security, and performance.
+  - Optimized backend performance through code refactoring and query optimization.
+  - Improved overall code quality and maintainability by enforcing best practices and clean architecture principles.
+  - Actively participated in backend architecture design and contributed to key technical decision-making.
+  - Led the CRM development team, providing technical guidance, conducting code reviews, and mentoring developers.
+  - Planned and managed development tasks, ensuring on-time delivery and alignment with business requirements.
+  - Ensured high standards of security, scalability, and performance across the CRM application.
   - Recipient of the prestigious **Spot Award (January 2025)** for outstanding technical excellence and scalable backend architecture.
 
 ## Academic Background & Education
