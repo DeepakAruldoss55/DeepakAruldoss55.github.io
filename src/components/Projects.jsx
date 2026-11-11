@@ -9,12 +9,12 @@ const projects = [
     platform: "Node.js, React",
     domain: "ERP / Business Logic",
     type: "Senior Architect",
-    description: `Architected and engineered a high-performance, scalable CRM ecosystem powering complex business workflows. Focused on modular backend services, real-time monitoring, and seamless cross-platform data synchronization.`,
+    description: `Designed, developed, and maintained scalable backend services using Node.js and TypeScript for an enterprise CRM platform. Architected secure RESTful APIs consumed by React frontend components, integrated third-party services, and improved performance through query optimization.`,
     keyFeatures: [
-      "High-load Distributed Architecture",
-      "Real-time Logic & POS Engine Integration",
-      "Scalable RESTful API Ecosystem",
-      "React/TypeScript Frontend Orchestration"
+      "Scalable Node.js & TypeScript Backend Architecture",
+      "RESTful API Design & Third-Party System Integration",
+      "Seamless React Frontend Integration & High Security",
+      "Code Refactoring, Query Optimization & Code Reviews"
     ]
   },
   {
@@ -22,48 +22,78 @@ const projects = [
     platform: "Shopware 6",
     domain: "Ecommerce",
     type: "Plugin",
-    description: `Allows registered users to negotiate price discounts dynamically. Shop owners can approve/reject proposals with real-time notifications. Features granular backend controls for min/max quantity and percentage limits.`,
-    link: "https://store.shopware.com/en/brand27683468217m/customer-discount-request.html",
+    description: `Allows registered users to request custom price discounts and quantities for bulk product orders. Merchants can review, approve, or reject proposals from a dedicated backend section, configure per-product min/max order quantities and discount percentage limits, and notify customers upon login.`,
+    keyFeatures: [
+      "User-Created Custom Discounted Prices & Quantities",
+      "Merchant Proposal Approval & Login Notifications",
+      "Granular Min/Max Quantity & Discount Limit Controls",
+      "Bulk Sales Support for Wholesalers & Retailers"
+    ]
   },
   {
-    title: "Customer Membership Program",
+    title: "Customer Membership Offer",
     platform: "Shopware 6",
     domain: "Ecommerce",
     type: "Plugin",
-    description: `Tiered loyalty system (Silver, Gold, Platinum) where users qualify for dynamic cart discounts based on lifetime purchase milestones. Includes admin manual overrides and automated level upgrades.`,
-    link: "https://store.shopware.com/en/brand53235685891m/customer-membership-program.html"
+    description: `Categorizes registered users into Silver, Gold, and Platinum membership tiers based on cumulative purchase milestones. Automatically upgrades user plans to unlock higher cart discount percentages on subsequent orders, with backend controls for product eligibility and manual plan locking.`,
+    keyFeatures: [
+      "Tiered Silver, Gold & Platinum Loyalty Milestones",
+      "Automated Plan Upgrades & Next-Order Cart Discounts",
+      "Backend Product Eligibility & Plan Criteria Control",
+      "Manual Admin Plan Override, Upgrade & Freeze Locks"
+    ]
   },
   {
     title: "Ticket System",
     platform: "Shopware 6",
     domain: "Ecommerce",
     type: "Plugin",
-    description: `Event management and ticketing infrastructure. Allows creating events with start/end times and managing real-time inventory for ticket sales on the digital storefront.`,
-    link: "https://store.shopware.com/en/brand11399667561m/ticket-system.html"
+    description: `Provides a dedicated storefront event ticketing system accessible via a floating Ticket launcher. Displays scheduled events with live available ticket counts, venue locations, date/time slots, and quantity selectors, integrating with checkout and generating unique ticket IDs in customer orders.`,
+    keyFeatures: [
+      "Floating Storefront Ticket Launcher & Event Hub",
+      "Live Available Ticket Inventory, Venue & Time Slots",
+      "Seamless Cart & Checkout Quantity Integration",
+      "Automated Unique Ticket ID Generation in Orders"
+    ]
   },
   {
     title: "Order Status Analytics",
     platform: "Shopware 6",
     domain: "Ecommerce",
     type: "Plugin",
-    description: `Advanced visualization of order progress. Provides customers with transparent views of lifecycle stages (Open, In Progress, Done, Cancelled) to foster trust and saturation.`,
-    link: "https://store.shopware.com/en/brand86225088288m/order-status-analytics.html"
+    description: `Renders interactive order analytics directly inside the customer's Orders account section. Allows users to toggle dynamically between Doughnut and Pie charts with hover tooltips to track real-time order counts across Open, In Progress, Done, and Cancelled lifecycle stages synced from admin.`,
+    keyFeatures: [
+      "Interactive Doughnut & Pie Chart Type Switcher",
+      "Color-Coded Open, In Progress, Done & Cancelled",
+      "Hover Tooltips with Exact Per-Status Order Counts",
+      "Real-Time Sync with Shopware Admin Order Statuses"
+    ]
   },
   {
     title: "Customer Profile Picture",
     platform: "Shopware 6",
     domain: "Ecommerce",
     type: "Plugin",
-    description: `User-facing upload module for profile personalization. Supports JPG/JPEG/PNG with automated size validation and account-level image management.`,
-    link: "https://store.shopware.com/en/brand19607501195m/customer-profile-picture.html"
+    description: `Enables registered customers to personalize their Shopware 6 account by uploading a profile avatar from the Account Overview page. Enforces JPG, JPEG, and PNG format and 100 KB size validation, displaying the circular avatar in the account sidebar and syncing with Admin custom fields.`,
+    keyFeatures: [
+      "Account Overview Profile Picture Upload & Update",
+      "Strict JPG/JPEG/PNG Format & 100 KB Size Validation",
+      "Persistent Circular Avatar in Customer Sidebar",
+      "Admin Customer Profile Custom Field Synchronization"
+    ]
   },
   {
     title: "Credit Points (Loyalty)",
     platform: "Shopware 5",
     domain: "Ecommerce",
     type: "Plugin",
-    description: `Calculates and awards credit points as SuperCoins' based on purchase value. Points are redeemable as cash discounts for future orders, driving customer retention.`,
-    link: "https://store.shopware.com/en/brand29157832267/credit-points.html"
+    description: `Awards customer loyalty credit points as SuperCoins based on order spend or product rules, enabling instant cash discount redemption during checkout on future purchases.`,
+    keyFeatures: [
+      "SuperCoins Loyalty Point Engine",
+      "Global & Per-Product Point Rules",
+      "Checkout Cash Discount Redemption",
+      "Storefront Credit Badges & Banners"
+    ]
   },
   {
     title: "Adyen Payment Customization",
