@@ -1242,7 +1242,7 @@ const DeepShop = () => {
                     <span className="d-inline-block rounded-circle bg-warning" style={{ width: "10px", height: "10px" }}></span>
                     <span className="d-inline-block rounded-circle bg-success" style={{ width: "10px", height: "10px" }}></span>
                     <span className="text-white-50 small ms-2 font-monospace">
-                      deepshop.mp4 • 1080p AI Demo Stream
+                      1080p AI Demo Stream
                     </span>
                   </div>
                   <div className="d-flex align-items-center gap-2">

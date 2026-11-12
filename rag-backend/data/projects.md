@@ -8,7 +8,7 @@ Deepak Aruldoss has engineered over 30+ production projects across AI-Powered E-
 - **GitHub Repository**: https://github.com/DeepakAruldoss55/eshop-ai
 - **Portfolio Showcase URL**: `/deep-shop` (accessible from the `/projects` page)
 - **Role**: Full-Stack & Applied AI Engineer
-- **Interactive Demo Video (`deepshop.mp4` — 05:47 HD Walkthrough with 7 Timestamped Chapters)**:
+- **Interactive Demo Video (`DEMO` — 05:47 HD Walkthrough with 7 Timestamped Chapters)**:
   1. **00:00 — Next-Gen Storefront, Instant Search & Department Filtering**: Showcases the high-conversion React 18 + TypeScript storefront with spotlight hero deals, 6 curated departments, popular tag pills (`#ANC`, `#Flagship`, `#SpatialAudio`), multi-criteria sorting, and dynamic customer profile switching (Deepak, Sara, Shifa).
   2. **00:45 — Admin ERP: Category & Product Master Catalog (`CAT-01` / `PRD-01`)**: Transitions into the 7-module Enterprise Admin ERP, demonstrating full CRUD category taxonomy management and the 15-SKU product master inventory table with automated profit margin percentages, unit cost tracking, and stock level health badges.
   3. **01:35 — Sales Orders & Invoices + Live Carrier Shipment Tracking**: Walks through the transactional Sales Orders & Invoices engine (`ORD-01`) and Logistics & Shipments tracker (`SHP-01`), highlighting itemized tax/shipping breakdowns, fulfillment state transitions (`DELIVERED`, `SHIPPED`, `PROCESSING`), and real-time carrier tracking numbers.

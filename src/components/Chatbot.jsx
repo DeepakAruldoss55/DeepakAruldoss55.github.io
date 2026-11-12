@@ -200,7 +200,6 @@ const generateClientResponse = (query, chatHistory = []) => {
         "• Designed, developed, and maintained scalable backend services using **Node.js and TypeScript** for an enterprise CRM platform.\n" +
         "• Architected and implemented **RESTful APIs** consumed by **React** frontend components and integrated third-party systems.\n" +
         "• Optimized backend performance through code refactoring and query optimization while enforcing clean architecture principles.\n" +
-        "• Led the CRM development team, providing technical guidance, conducting code reviews, mentoring developers, and ensuring on-time delivery.\n" +
         "• Built custom **Shopware 6 & 5 plugins** and **Odoo 17** extensions, and won the **Technical Excellence Spot Award (January 2025)**."
       );
     }
