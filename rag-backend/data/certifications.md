@@ -9,9 +9,15 @@
 - **Organization**: BrandCrock India Pvt Ltd
 - **Description**: Awarded for outstanding technical excellence, engineering highly scalable Node.js & TypeScript microservices, and optimizing enterprise CRM backend architecture.
 
-## 3. UpTop AI/ML Certification
-- **Status**: Ongoing / Currently In Progress
-- **Description**: Professional certification program focusing on Artificial Intelligence and Machine Learning (AI/ML), LLM application engineering, and Generative AI systems.
+## 3. Artificial Intelligence & Machine Learning Course (Uptor / LMES)
+- **Date Issued**: November 12, 2026
+- **Certificate Number**: AIML1002
+- **Issuing Body**: Uptor (LMES)
+- **Description**: Successfully completed the Artificial Intelligence and Machine Learning certification covering:
+  - **Data Science & Machine Learning**: Pandas, NumPy, Scikit-learn, Seaborn
+  - **Deep Learning**: PyTorch, Deep Learning, Transformers
+  - **Generative AI & LLMs**: OpenAI, LLMs, Prompt Engineering
+  - **Advanced AI Concepts**: Vector Databases, RAG, Fine-tuning, QLoRA, Agent Systems
 
 ## 4. Canada India Institutional Cooperation Project (Hardware & Networking)
 - **Date Issued**: March 2015

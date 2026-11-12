@@ -421,14 +421,14 @@ const generateClientResponse = (query, chatHistory = []) => {
   }
 
   // 9a. AI / GENERATIVE AI / RAG / LLM SPECIFIC INTENT
-  if (/\b(ai|artificial intelligence|generative ai|genai|rag|llm|llms|prompt engineering|fastapi)\b/.test(q)) {
+  if (/\b(ai|artificial intelligence|machine learning|ml|deep learning|pytorch|pandas|numpy|scikit-learn|seaborn|transformers|qlora|fine-tuning|agent systems|generative ai|genai|rag|llm|llms|prompt engineering|fastapi)\b/.test(q)) {
     return (
-      "Deepak has hands-on exposure (**35%–55% proficiency**) in AI-driven technologies and their practical integration into modern web applications (demonstrated in his flagship **DeepShop** ecosystem at **/deep-shop**):\n\n" +
-      "• **RAG Pipelines (55%):** Retrieval-Augmented Generation with ChromaDB vector search & custom 384-dim hybrid semantic embeddings\n" +
-      "• **Generative AI (50%):** Integrating generative AI capabilities, executive BI synthesis, and AI copilots into web workflows\n" +
-      "• **Prompt Engineering (50%):** Structured system prompts, live catalog/ledger grounding, and anti-hallucination guardrails\n" +
-      "• **LLM Integration (35%):** Multi-tier cloud & local LLM orchestration (Groq, OpenRouter, Ollama, deterministic failover)\n" +
-      "• **Python & FastAPI (70%):** High-performance asynchronous microservices serving AI & RAG pipelines"
+      "Deepak has completed the **Uptor (LMES) Artificial Intelligence & Machine Learning Certification** (Nov 2026, Cert `#AIML1002`) and applies AI/RAG engineering in his flagship **DeepShop** project (**/deep-shop**):\n\n" +
+      "• **Data Science & Machine Learning:** Pandas, NumPy, Scikit-learn, Seaborn\n" +
+      "• **Deep Learning:** PyTorch, Deep Learning, Transformers\n" +
+      "• **Generative AI & LLMs:** OpenAI, LLMs, Prompt Engineering (50%)\n" +
+      "• **Advanced AI Concepts:** Vector Databases (ChromaDB), RAG Pipelines (55%), Fine-tuning, QLoRA, Agent Systems\n" +
+      "• **Backend Serving:** Python & FastAPI (70%)"
     );
   }
 
@@ -497,12 +497,12 @@ const generateClientResponse = (query, chatHistory = []) => {
   }
 
   // 13. CERTIFICATIONS & AWARDS
-  if (/certif|award|honor|spot award|shopware certified|uptop|ciicp/.test(q)) {
+  if (/certif|award|honor|spot award|shopware certified|uptor|uptop|aiml1002|ciicp/.test(q)) {
     return (
       "Here are Deepak's key **Certifications & Honors**:\n\n" +
+      "• **Artificial Intelligence & Machine Learning (November 2026 — Uptor / LMES, Cert #AIML1002):** Covers Data Science & ML (Pandas, NumPy, Scikit-learn, Seaborn), Deep Learning (PyTorch, Transformers), Generative AI & LLMs (OpenAI, Prompt Engineering), and Advanced AI (Vector Databases, RAG, Fine-tuning, QLoRA, Agent Systems).\n" +
       "• **Technical Excellence - Spot Award Winner (January 2025):** Awarded by BrandCrock India Pvt Ltd for exceptional technical excellence and scalable Node.js & TypeScript backend architecture.\n" +
       "• **Shopware 6 Certified Developer (May 2023):** Validated mastery of Shopware 6 core architecture, plugin systems, template engines, and event-driven logic.\n" +
-      "• **UpTop AI/ML Certification (In Progress):** Advancing practical expertise in AI/ML, LLM integration, and RAG pipelines.\n" +
       "• **Canada India Institutional Cooperation Project (CIICP) (March 2015):** Certification in Computer Hardware, Servicing, and Networking."
     );
   }

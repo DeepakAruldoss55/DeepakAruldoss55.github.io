@@ -41,6 +41,7 @@ const Resume = () => {
                     "Optimized backend performance through code refactoring and query optimization.",
                     "Improved overall code quality and maintainability by enforcing best practices and clean architecture principles.",
                     "Actively participated in backend architecture design and contributed to key technical decision-making.",
+                    "Led the CRM development team, providing technical guidance, conducting code reviews, and mentoring developers.",
                     "Planned and managed development tasks, ensuring on-time delivery and alignment with business requirements.",
                     "Ensured high standards of security, scalability, and performance across the CRM application."
                   ]
