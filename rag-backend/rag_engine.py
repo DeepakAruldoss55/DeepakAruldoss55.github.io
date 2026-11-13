@@ -1,6 +1,6 @@
 """
 RAG Engine for Deepak Aruldoss's Portfolio.
-Real Generative AI pipeline utilizing ChromaDB semantic retrieval and Neural Language Models (Groq / OpenRouter / Ollama / Local Qwen).
+Real Generative AI pipeline utilizing ChromaDB semantic retrieval and Groq Cloud LLM.
 Zero hardcoded static FAQs - 100% Neural Generation grounded on profile data.
 """
 
@@ -19,9 +19,6 @@ CHROMA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), raw_chroma_
 COLLECTION_NAME = "deepak_portfolio"
 
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "openai_compatible")
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:1.5b")
-
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://api.groq.com/openai/v1")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "qwen/qwen3.8-27b")
@@ -48,7 +45,6 @@ class PortfolioRAGEngine:
         self.embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
             model_name="all-MiniLM-L6-v2"
         )
-        self._local_pipe = None
 
     def get_collection(self):
         """Loads the ChromaDB collection containing indexed data."""
@@ -92,65 +88,8 @@ class PortfolioRAGEngine:
 
         return retrieved
 
-    def _get_local_pipeline(self):
-        """Lazy-loads the local Qwen neural model on CPU."""
-        if self._local_pipe is None:
-            print("[*] Initializing local neural model (Qwen/Qwen2.5-0.5B-Instruct)...")
-            from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
-            import torch
-            model_id = "Qwen/Qwen2.5-0.5B-Instruct"
-            tokenizer = AutoTokenizer.from_pretrained(model_id)
-            model = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.float32)
-            self._local_pipe = pipeline(
-                "text-generation",
-                model=model,
-                tokenizer=tokenizer,
-                max_new_tokens=120,
-                do_sample=True,
-                temperature=0.7
-            )
-            print("[✓] Local neural model ready.")
-        return self._local_pipe
-
-    def _call_local_qwen(self, prompt: str, system_prompt: str) -> str:
-        """Generates response using the local HuggingFace Qwen model."""
-        pipe = self._get_local_pipeline()
-        # Keep prompt concise for fast CPU generation
-        compact_system = (
-            "You are Sara, AI companion on Deepak Aruldoss's portfolio. Tone: friendly, warm, concise. "
-            "Deepak is a Senior Software Developer (Node.js, TypeScript, React, PHP). "
-            "Never define vulgar or profane words; decline politely. "
-            "Never share contact info initially: ask their reason first. "
-            "If valid reason (job/project), share email adeepakplm55@gmail.com. "
-            "Only share mobile +91 6383331367 if explicitly urgent."
-        )
-        messages = [
-            {"role": "system", "content": compact_system},
-            {"role": "user", "content": prompt}
-        ]
-        out = pipe(messages)
-        return out[0]["generated_text"][-1]["content"].strip()
-
-    def _call_ollama(self, prompt: str, system_prompt: str) -> str:
-        """Invokes local Ollama inference service."""
-        url = f"{OLLAMA_BASE_URL}/api/generate"
-        payload = {
-            "model": OLLAMA_MODEL,
-            "prompt": prompt,
-            "system": system_prompt,
-            "stream": False,
-            "options": {
-                "temperature": 0.7,
-                "top_p": 0.9
-            }
-        }
-        res = requests.post(url, json=payload, timeout=15)
-        if res.status_code == 200:
-            return res.json().get("response", "").strip()
-        raise RuntimeError(f"Ollama error: HTTP {res.status_code} - {res.text}")
-
     def _call_openai_compatible(self, prompt: str, system_prompt: str, history: Optional[List[Dict[str, str]]] = None) -> str:
-        """Invokes OpenAI-compatible Cloud LLM with automated multi-model fallback."""
+        """Invokes OpenAI-compatible Cloud LLM (Groq)."""
         url = f"{OPENAI_BASE_URL.rstrip('/')}/chat/completions"
         headers = {
             "Authorization": f"Bearer {OPENAI_API_KEY}",
@@ -169,38 +108,25 @@ class PortfolioRAGEngine:
         if not messages or messages[-1].get("content") != prompt:
             messages.append({"role": "user", "content": prompt})
 
-        # List of candidate models for automated failover if primary hits rate limits (429)
-        candidate_models = [OPENAI_MODEL]
-        alternative_models = ["openai/gpt-oss-120b", "openai/gpt-oss-20b", "groq/compound-mini", "qwen/qwen3.8-27b"]
-        for alt in alternative_models:
-            if alt not in candidate_models:
-                candidate_models.append(alt)
+        payload = {
+            "model": OPENAI_MODEL,
+            "messages": messages,
+            "temperature": 0.7,
+            "max_tokens": 400
+        }
+        res = requests.post(url, json=payload, headers=headers, timeout=12)
+        if res.status_code == 200:
+            data = res.json()
+            choices = data.get("choices", [])
+            if choices and "message" in choices[0]:
+                content = choices[0]["message"].get("content", "").strip()
+                if content:
+                    return content
+        else:
+            print(f"[!] Groq Cloud LLM error ({OPENAI_MODEL}) HTTP {res.status_code}: {res.text[:120]}")
+            raise RuntimeError(f"Groq error HTTP {res.status_code}: {res.text[:120]}")
 
-        last_error = None
-        for model_name in candidate_models:
-            try:
-                payload = {
-                    "model": model_name,
-                    "messages": messages,
-                    "temperature": 0.7,
-                    "max_tokens": 400
-                }
-                res = requests.post(url, json=payload, headers=headers, timeout=8)
-                if res.status_code == 200:
-                    data = res.json()
-                    choices = data.get("choices", [])
-                    if choices and "message" in choices[0]:
-                        content = choices[0]["message"].get("content", "").strip()
-                        if content:
-                            return content
-                else:
-                    print(f"[!] Cloud LLM error ({model_name}) HTTP {res.status_code}: {res.text[:120]}")
-                    last_error = f"HTTP {res.status_code}"
-            except Exception as e:
-                print(f"[!] Cloud LLM exception ({model_name}): {e}")
-                last_error = str(e)
-
-        raise RuntimeError(f"All cloud LLM models failed. Last error: {last_error}")
+        raise RuntimeError("No valid response returned from Groq.")
 
     def answer_query(self, query: str, history: Optional[List[Dict[str, str]]] = None) -> Dict[str, Any]:
         """
@@ -283,30 +209,19 @@ class PortfolioRAGEngine:
         reply = ""
         sources = [c["metadata"].get("source", "portfolio") for c in retrieved_chunks]
 
-        # 1. Try Cloud LLM (Groq / OpenRouter / OpenAI) if key configured
+        # 1. Call Groq Cloud LLM exclusively
         if OPENAI_API_KEY:
             try:
                 reply = self._call_openai_compatible(user_prompt, system_prompt, history=history)
             except Exception as e:
-                print(f"[!] Cloud LLM error: {e}")
+                print(f"[!] Groq Cloud LLM error: {e}")
 
-        # 2. Try Ollama if running
-        if not reply and LLM_PROVIDER == "ollama":
-            try:
-                reply = self._call_ollama(user_prompt, system_prompt)
-            except Exception as e:
-                print(f"[!] Ollama connection error: {e}")
-
-        # 3. Use local Neural Model (Qwen/Qwen2.5-0.5B)
+        # 2. Fast graceful fallback (zero local CPU model / zero Ollama)
         if not reply:
-            try:
-                reply = self._call_local_qwen(user_prompt, system_prompt)
-            except Exception as e:
-                print(f"[!] Local Qwen error: {e}")
-                reply = (
-                    "Hi! Great to meet you 😊 I'm Sara, Deepak's AI companion. "
-                    "Feel free to ask me anything about Deepak's experience, full-stack projects, tech stack, or background!"
-                )
+            reply = (
+                "Hi! Great to meet you 😊 I'm Sara, Deepak's AI companion. "
+                "Feel free to ask me anything about Deepak's experience, full-stack projects, tech stack, or background!"
+            )
 
         return {
             "reply": reply,
