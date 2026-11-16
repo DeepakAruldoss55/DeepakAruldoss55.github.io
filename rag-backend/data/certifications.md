@@ -13,7 +13,8 @@
 - **Date Issued**: November 12, 2026
 - **Certificate Number**: AIML1002
 - **Issuing Body**: Uptor (LMES)
-- **Description**: Successfully completed the Artificial Intelligence and Machine Learning certification covering:
+- **Final Score**: 95% (Graduated with an outstanding 95% score)
+- **Description**: Successfully completed the Artificial Intelligence and Machine Learning certification with a 95% score covering:
   - **Data Science & Machine Learning**: Pandas, NumPy, Scikit-learn, Seaborn
   - **Deep Learning**: PyTorch, Deep Learning, Transformers
   - **Generative AI & LLMs**: OpenAI, LLMs, Prompt Engineering

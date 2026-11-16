@@ -105,23 +105,58 @@ const Navbar = () => {
       <nav id="navmenu" className={`navmenu ${isMobileNavVisible ? 'mobile-show' : ''}`}>
         <ul className="d-flex align-items-center gap-2 mb-0">
           {location.pathname === "/" ? (
-            navItems.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={item.href}
-                  className={`nav-link ${activeSection === item.id ? "active" : ""}`}
-                  onClick={(e) => handleNavClick(e, item.id)}
+            <>
+              {navItems.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={item.href}
+                    className={`nav-link ${activeSection === item.id ? "active" : ""}`}
+                    onClick={(e) => handleNavClick(e, item.id)}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <Link
+                  to="/blog"
+                  className="nav-link"
+                  onClick={() => setIsMobileNavVisible(false)}
                 >
-                  {item.label}
-                </a>
+                  Blog
+                </Link>
               </li>
-            ))
+            </>
           ) : (
-            <li>
-              <Link to="/" className="nav-link btn glass-v2 px-4 py-2" style={{ borderRadius: '12px' }}>
-                <i className="bi bi-arrow-left me-2"></i>Back Home
-              </Link>
-            </li>
+            <>
+              <li>
+                <Link to="/" className="nav-link btn glass-v2 px-4 py-2" style={{ borderRadius: '12px' }}>
+                  <i className="bi bi-arrow-left me-2"></i>Back Home
+                </Link>
+              </li>
+              {location.pathname !== "/blog" && (
+                <li>
+                  <Link
+                    to="/blog"
+                    className="nav-link"
+                    onClick={() => setIsMobileNavVisible(false)}
+                  >
+                    Blog
+                  </Link>
+                </li>
+              )}
+              {location.pathname !== "/projects" && (
+                <li>
+                  <Link
+                    to="/projects"
+                    className="nav-link"
+                    onClick={() => setIsMobileNavVisible(false)}
+                  >
+                    Projects
+                  </Link>
+                </li>
+              )}
+            </>
           )}
         </ul>
       </nav>

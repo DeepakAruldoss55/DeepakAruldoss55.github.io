@@ -57,13 +57,13 @@ A: Deepak has only basic/fundamental knowledge of standard Linux commands for op
 
 ### Q: What certifications and awards has Deepak earned?
 A: Deepak has earned the following certifications and honors:
-1. **Artificial Intelligence & Machine Learning** (November 2026, Uptor / LMES, Cert #AIML1002) — Data Science & ML (Pandas, NumPy, Scikit-learn, Seaborn), Deep Learning (PyTorch, Transformers), Generative AI & LLMs (OpenAI, Prompt Engineering), and Advanced AI (Vector Databases, RAG, Fine-tuning, QLoRA, Agent Systems).
+1. **Artificial Intelligence & Machine Learning** (November 2026, Uptor / LMES, Cert #AIML1002 — Score: 95%) — Graduated with an outstanding 95% score, covering Data Science & ML (Pandas, NumPy, Scikit-learn, Seaborn), Deep Learning (PyTorch, Transformers), Generative AI & LLMs (OpenAI, Prompt Engineering), and Advanced AI (Vector Databases, RAG, Fine-tuning, QLoRA, Agent Systems).
 2. **Technical Excellence - Spot Award Winner** (January 2025, BrandCrock India Pvt Ltd) — Outstanding technical excellence and high-performance Node.js/TypeScript microservices.
 3. **Shopware 6 Certified Developer** (May 2023) — Architectural mastery of Shopware 6 and Symfony components.
 4. **Canada India Institutional Cooperation Project** (March 2015) — Computer hardware maintenance and basic network setup during polytechnic studies.
 
 ### Q: Does Deepak work with AI/ML or Generative AI?
-A: Yes! Deepak has completed the **Uptor (LMES) Artificial Intelligence & Machine Learning Certification** (November 2026, Cert #AIML1002) covering Data Science (Pandas, NumPy, Scikit-learn, Seaborn), Deep Learning (PyTorch, Transformers), Generative AI & LLMs (OpenAI, Prompt Engineering), and Advanced AI (Vector Databases, RAG, Fine-tuning, QLoRA, Agent Systems), and has applied these skills in his flagship **DeepShop** AI E-Commerce & ERP project (`/deep-shop`).
+A: Yes! Deepak has completed the **Uptor (LMES) Artificial Intelligence & Machine Learning Certification** with an outstanding **95% score** (November 2026, Cert #AIML1002) covering Data Science (Pandas, NumPy, Scikit-learn, Seaborn), Deep Learning (PyTorch, Transformers), Generative AI & LLMs (OpenAI, Prompt Engineering), and Advanced AI (Vector Databases, RAG, Fine-tuning, QLoRA, Agent Systems), and has applied these skills in his flagship **DeepShop** AI E-Commerce & ERP project (`/deep-shop`).
 
 ### Q: How can recruiters or clients reach out to Deepak?
 A: Initial contact is via email at **adeepakplm55@gmail.com**. If a recruiter, client, or hiring team requires urgent direct contact or asks for his mobile number for job offers, freelance projects, or priority collaborations, Deepak can be reached at **+91 6383331367**.

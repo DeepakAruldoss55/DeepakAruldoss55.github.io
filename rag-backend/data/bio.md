@@ -19,5 +19,8 @@
 ## Professional Summary
 Senior Software Engineer with 8.3 years of experience specializing in full-stack development using Node.js, TypeScript, React, and Express.js, building scalable CRM, ERP, and payment-driven e-commerce platforms. Strong background in designing secure, high-performance REST APIs, integrating third-party services, and optimizing backend systems for reliability and scale, alongside hands-on exposure to integrating AI-driven capabilities (RAG pipelines, ChromaDB vector search, FastAPI microservices, and multi-tier LLMs) into modern web applications.
 
+## Technical Writing & Engineering Blog
+Deepak maintains an official Engineering Blog on his portfolio website at `/blog` (currently in editorial production with a "Coming Soon" pipeline). Upcoming topics include Enterprise CRM backends in Node.js & TypeScript, Shopware 6 plugin architecture, production RAG pipelines, and full-stack systems evolution. Visitors can preview upcoming article outlines and subscribe for notifications at `/blog`.
+
 
 

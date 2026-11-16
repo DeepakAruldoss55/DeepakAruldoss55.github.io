@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import Gotop from './components/Gotop';
 import Projects from './components/Projects';
 import DeepShop from './components/DeepShop';
+import Blog from './components/Blog';
 import Chatbot from './components/Chatbot';
 import InteractiveBackground from './components/InteractiveBackground';
 
@@ -64,6 +65,7 @@ function App() {
             <Platforms />
           </>} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/deep-shop" element={<DeepShop />} />
           <Route path="/deepshop" element={<DeepShop />} />
         </Routes>

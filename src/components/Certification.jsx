@@ -7,14 +7,15 @@ const certifications = [
   {
     id: "ai-ml",
     title: "Artificial Intelligence & Machine Learning",
-    issuer: "Uptor (LMES) • Cert #AIML1002",
+    issuer: "Uptor (LMES) • Cert #AIML1002 • Score: 95%",
     date: "November 2026",
-    badge: "AI & ML",
+    badge: "AI & ML • 95% SCORE",
+    score: "95%",
     accent: "#38bdf8",
     description:
-      "Completed Uptor (LMES) AI & ML Certification covering Data Science & ML (Pandas, NumPy, Scikit-learn, Seaborn), Deep Learning (PyTorch, Transformers), Generative AI & LLMs (OpenAI, Prompt Engineering), and Advanced AI (Vector Databases, RAG, Fine-tuning, QLoRA, Agent Systems).",
+      "Graduated with an outstanding 95% score in the Uptor (LMES) AI & ML Certification. Mastered Data Science & ML (Pandas, NumPy, Scikit-learn, Seaborn), Deep Learning (PyTorch, Transformers), Generative AI & LLMs (OpenAI, Prompt Engineering), and Advanced AI (Vector Databases, RAG, Fine-tuning, QLoRA, Agent Systems).",
     image: "/static/media/img/Certificate/Artificial_Intelligence_And_Machine_Learning.jpg",
-    alt: "Uptor Artificial Intelligence and Machine Learning Certification"
+    alt: "Uptor Artificial Intelligence and Machine Learning Certification - 95% Score"
   },
   {
     id: "shopware-6",
@@ -253,18 +254,34 @@ const Certification = () => {
                     <h3 className="text-white fw-bold mb-0" style={{ fontSize: "1.35rem" }}>
                       {activeCert.title}
                     </h3>
-                    <span
-                      className="badge rounded-pill px-3 py-2"
-                      style={{
-                        background: `${activeCert.accent}1f`,
-                        color: activeCert.accent,
-                        border: `1px solid ${activeCert.accent}4d`,
-                        fontSize: "0.75rem"
-                      }}
-                    >
-                      <i className="bi bi-calendar-check me-1"></i>
-                      {activeCert.date}
-                    </span>
+                    <div className="d-flex align-items-center gap-2">
+                      {activeCert.score && (
+                        <span
+                          className="badge rounded-pill px-3 py-2 fw-bold"
+                          style={{
+                            background: "rgba(34, 197, 94, 0.16)",
+                            color: "#4ade80",
+                            border: "1px solid rgba(34, 197, 94, 0.4)",
+                            fontSize: "0.75rem"
+                          }}
+                        >
+                          <i className="bi bi-award-fill me-1"></i>
+                          Score: {activeCert.score}
+                        </span>
+                      )}
+                      <span
+                        className="badge rounded-pill px-3 py-2"
+                        style={{
+                          background: `${activeCert.accent}1f`,
+                          color: activeCert.accent,
+                          border: `1px solid ${activeCert.accent}4d`,
+                          fontSize: "0.75rem"
+                        }}
+                      >
+                        <i className="bi bi-calendar-check me-1"></i>
+                        {activeCert.date}
+                      </span>
+                    </div>
                   </div>
                   <p className="text-white-50 mb-0" style={{ lineHeight: 1.7, fontSize: "0.95rem" }}>
                     {activeCert.description}
@@ -309,6 +326,19 @@ const Certification = () => {
                     >
                       {lightboxCert.badge}
                     </span>
+                    {lightboxCert.score && (
+                      <span
+                        className="badge px-2 py-1 fw-bold"
+                        style={{
+                          background: "rgba(34, 197, 94, 0.2)",
+                          color: "#4ade80",
+                          border: "1px solid rgba(34, 197, 94, 0.4)",
+                          fontSize: "0.72rem"
+                        }}
+                      >
+                        <i className="bi bi-award-fill me-1"></i>Score: {lightboxCert.score}
+                      </span>
+                    )}
                     <span className="text-white-50 small">
                       {lightboxCert.issuer} • {lightboxCert.date}
                     </span>
