@@ -601,7 +601,6 @@ const DeepShop = () => {
   const videoRef = useRef(null);
   const videoContainerRef = useRef(null);
   const neuralCanvasRef = useRef(null);
-  const chaptersListRef = useRef(null);
   const [activeChapterId, setActiveChapterId] = useState(VIDEO_CHAPTERS[0].id);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(347);
@@ -614,56 +613,6 @@ const DeepShop = () => {
   useEffect(() => {
     AOS.init({ duration: 1000, easing: "ease-out-cubic", once: true });
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
-
-  // Seamless scroll-chaining from Demo Chapters list to page when reaching top/bottom boundary
-  useEffect(() => {
-    const el = chaptersListRef.current;
-    if (!el) return undefined;
-
-    let lastTouchY = 0;
-
-    const handleTouchStart = (e) => {
-      if (e.touches && e.touches.length === 1) {
-        lastTouchY = e.touches[0].clientY;
-      }
-    };
-
-    const handleTouchMove = (e) => {
-      if (!e.touches || e.touches.length !== 1) return;
-      const currentY = e.touches[0].clientY;
-      const deltaY = lastTouchY - currentY;
-      lastTouchY = currentY;
-
-      const atTop = el.scrollTop <= 1;
-      const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 2;
-
-      if ((atBottom && deltaY > 0) || (atTop && deltaY < 0)) {
-        if (e.cancelable) e.preventDefault();
-        window.scrollBy({ top: deltaY, left: 0, behavior: "auto" });
-      }
-    };
-
-    const handleWheel = (e) => {
-      const deltaY = e.deltaY;
-      const atTop = el.scrollTop <= 1;
-      const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 2;
-
-      if ((atBottom && deltaY > 0) || (atTop && deltaY < 0)) {
-        if (e.cancelable) e.preventDefault();
-        window.scrollBy({ top: deltaY, left: 0, behavior: "auto" });
-      }
-    };
-
-    el.addEventListener("touchstart", handleTouchStart, { passive: true });
-    el.addEventListener("touchmove", handleTouchMove, { passive: false });
-    el.addEventListener("wheel", handleWheel, { passive: false });
-
-    return () => {
-      el.removeEventListener("touchstart", handleTouchStart);
-      el.removeEventListener("touchmove", handleTouchMove);
-      el.removeEventListener("wheel", handleWheel);
-    };
   }, []);
 
   // Interactive AI Neural Network Synaptic Canvas Animation (Mobile GPU/CPU Optimized)
@@ -1366,12 +1315,9 @@ const DeepShop = () => {
                 </div>
 
                 <div
-                  ref={chaptersListRef}
-                  className="d-flex flex-column gap-2 overflow-auto pe-1"
+                  className="d-flex flex-column gap-2 pe-1 deepshop-chapters-scroll"
                   style={{
-                    maxHeight: isTheaterMode ? "420px" : "600px",
-                    overscrollBehaviorY: "auto",
-                    WebkitOverflowScrolling: "touch"
+                    maxHeight: isTheaterMode ? "420px" : undefined
                   }}
                 >
                   {VIDEO_CHAPTERS.map((ch, idx) => {
@@ -1981,6 +1927,25 @@ const DeepShop = () => {
 
         .ai-snapshot-img {
           transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .deepshop-chapters-scroll {
+          max-height: 560px;
+          overflow-y: auto;
+          overscroll-behavior-y: auto;
+          -webkit-overflow-scrolling: touch;
+          touch-action: pan-y;
+          scrollbar-width: thin;
+        }
+
+        @media (max-width: 991px) {
+          .deepshop-chapters-scroll {
+            max-height: 380px;
+            overflow-y: auto;
+            overscroll-behavior-y: auto;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
+          }
         }
 
         .ai-diagram-scroll {
