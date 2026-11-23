@@ -279,8 +279,25 @@ const Projects = () => {
                 Explore the dedicated engineering showcase featuring a full 5:47 interactive video walkthrough, 7 timestamped chapters, a 384-dimensional ChromaDB Customer RAG Concierge, an Executive Store Health Score (77/100) BI Engine, a Multi-Turn AI Business Copilot, and a 7-module Enterprise ERP suite.
               </p>
               <div className="d-flex flex-wrap gap-3">
-                <Link to="/deep-shop" className="btn btn-premium px-4 py-3 rounded-4 d-inline-flex align-items-center gap-2">
-                  <i className="bi bi-play-circle-fill fs-5"></i> Open Dedicated Demo Page
+                <a
+                  href="https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-premium px-4 py-3 rounded-4 d-inline-flex align-items-center gap-2"
+                >
+                  <i className="bi bi-bag-check-fill fs-5"></i> Live Storefront <i className="bi bi-box-arrow-up-right ms-1" style={{ fontSize: "0.75rem" }}></i>
+                </a>
+                <a
+                  href="https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/admin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn glass-v2 text-white px-4 py-3 rounded-4 fw-bold d-inline-flex align-items-center gap-2"
+                  style={{ border: "1px solid rgba(168, 85, 247, 0.45)", background: "rgba(168, 85, 247, 0.15)" }}
+                >
+                  <i className="bi bi-gear-wide-connected fs-5 text-primary"></i> Live Admin Panel <i className="bi bi-box-arrow-up-right ms-1" style={{ fontSize: "0.75rem" }}></i>
+                </a>
+                <Link to="/deep-shop" className="btn glass-v2 text-white px-4 py-3 rounded-4 fw-bold d-inline-flex align-items-center gap-2" style={{ border: "1px solid rgba(34, 211, 238, 0.45)", background: "rgba(34, 211, 238, 0.12)" }}>
+                  <i className="bi bi-play-circle-fill fs-5 text-info"></i> Video Walkthrough
                 </Link>
                 <a
                   href="https://github.com/DeepakAruldoss55/eshop-ai"
@@ -289,7 +306,7 @@ const Projects = () => {
                   className="btn glass-v2 text-white px-4 py-3 rounded-4 fw-bold d-inline-flex align-items-center gap-2"
                   style={{ border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)" }}
                 >
-                  <i className="bi bi-github fs-5"></i> GitHub Repository
+                  <i className="bi bi-github fs-5"></i> GitHub Repo
                 </a>
               </div>
             </div>

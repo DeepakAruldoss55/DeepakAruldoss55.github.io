@@ -225,6 +225,8 @@ const generateClientResponse = (query, chatHistory = []) => {
     }
     return (
       "**DeepShop** is Deepak's flagship **AI-Powered E-Commerce & Enterprise ERP Suite** (showcased on **/deep-shop** via the **/projects** page):\n\n" +
+      "• **🛍️ Live Storefront Demo:** **https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/**\n" +
+      "• **⚙️ Live Admin Panel:** **https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/admin**\n" +
       "• **Frontend Storefront & 7-Module Admin ERP:** Built with **React 18 + Vite + TypeScript + Tailwind CSS**, featuring 6 departments, instant tag/search filtering, cart & checkout, Fiscal P&L Statement, Operating Expenses Ledger, and CRM LTV segmentation.\n" +
       "• **Core Commerce Backend:** **Node.js (v20) + Express + TypeScript** engineered with a generic domain repository layer (`Repository<T>`) across 7 domain entities.\n" +
       "• **Customer RAG AI Concierge:** **Python + FastAPI + ChromaDB** powered by a custom **384-dimensional hybrid semantic embedder**, live order/shipment status injection, and interactive in-chat product cards (`[SUGGEST_PRODUCT]`).\n" +

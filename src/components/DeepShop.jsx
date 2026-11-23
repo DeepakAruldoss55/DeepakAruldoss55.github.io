@@ -945,6 +945,24 @@ const DeepShop = () => {
 
           <div className="d-flex align-items-center gap-2 flex-wrap">
             <a
+              href="https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-sm glass-v2 text-white px-3 py-2 rounded-pill small fw-semibold d-inline-flex align-items-center gap-1"
+              style={{ border: "1px solid rgba(14, 165, 233, 0.5)", background: "rgba(14, 165, 233, 0.2)" }}
+            >
+              <i className="bi bi-shop text-info"></i> Live Storefront <i className="bi bi-box-arrow-up-right ms-1" style={{ fontSize: "0.68rem" }}></i>
+            </a>
+            <a
+              href="https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/admin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-sm glass-v2 text-white px-3 py-2 rounded-pill small fw-semibold d-inline-flex align-items-center gap-1"
+              style={{ border: "1px solid rgba(168, 85, 247, 0.5)", background: "rgba(168, 85, 247, 0.2)" }}
+            >
+              <i className="bi bi-sliders text-primary"></i> Live Admin Panel <i className="bi bi-box-arrow-up-right ms-1" style={{ fontSize: "0.68rem" }}></i>
+            </a>
+            <a
               href="#video-demo"
               className="btn btn-sm glass-v2 text-white px-3 py-2 rounded-pill small fw-semibold"
               style={{ border: "1px solid rgba(34,211,238,0.25)" }}
@@ -1015,6 +1033,51 @@ const DeepShop = () => {
 
               {/* Live Animated AI Telemetry Stream Bar */}
               <AiTelemetryBar />
+
+              {/* Live Cloud Deployment Links */}
+              <div
+                className="d-flex flex-wrap gap-2 align-items-center p-2 px-3 rounded-4 mb-4"
+                style={{
+                  background: "rgba(2, 6, 23, 0.75)",
+                  border: "1px solid rgba(34, 211, 238, 0.45)",
+                  boxShadow: "0 0 25px rgba(34, 211, 238, 0.18)"
+                }}
+              >
+                <span className="text-info fw-bold small me-2 d-inline-flex align-items-center gap-2">
+                  <span className="spinner-grow spinner-grow-sm text-success" style={{ width: "9px", height: "9px" }}></span>
+                  Live Cloud Deployment:
+                </span>
+                <a
+                  href="https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-sm px-3 py-2 rounded-pill fw-bold text-white d-inline-flex align-items-center gap-2"
+                  style={{
+                    background: "linear-gradient(135deg, #0284c7, #0ea5e9)",
+                    boxShadow: "0 0 16px rgba(14, 165, 233, 0.5)",
+                    border: "none",
+                    fontSize: "0.85rem"
+                  }}
+                >
+                  <i className="bi bi-bag-check-fill"></i> Storefront Demo
+                  <i className="bi bi-box-arrow-up-right" style={{ fontSize: "0.7rem" }}></i>
+                </a>
+                <a
+                  href="https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/admin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-sm px-3 py-2 rounded-pill fw-bold text-white d-inline-flex align-items-center gap-2"
+                  style={{
+                    background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+                    boxShadow: "0 0 16px rgba(168, 85, 247, 0.5)",
+                    border: "none",
+                    fontSize: "0.85rem"
+                  }}
+                >
+                  <i className="bi bi-gear-wide-connected"></i> Admin Panel
+                  <i className="bi bi-box-arrow-up-right" style={{ fontSize: "0.7rem" }}></i>
+                </a>
+              </div>
 
               <div className="d-flex flex-wrap gap-3 align-items-center">
                 <button
@@ -1671,12 +1734,30 @@ const DeepShop = () => {
           </p>
           <div className="d-flex flex-wrap justify-content-center gap-3">
             <a
-              href="https://github.com/DeepakAruldoss55/eshop-ai"
+              href="https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-premium px-4 py-3 rounded-4 d-inline-flex align-items-center gap-2"
             >
-              <i className="bi bi-github fs-5"></i> Explore GitHub Repository
+              <i className="bi bi-bag-check-fill fs-5"></i> Live Storefront <i className="bi bi-box-arrow-up-right ms-1" style={{ fontSize: "0.75rem" }}></i>
+            </a>
+            <a
+              href="https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/admin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn glass-v2 text-white px-4 py-3 rounded-4 fw-bold d-inline-flex align-items-center gap-2"
+              style={{ border: "1px solid rgba(168, 85, 247, 0.45)", background: "rgba(168, 85, 247, 0.15)" }}
+            >
+              <i className="bi bi-gear-wide-connected fs-5 text-primary"></i> Live Admin Panel <i className="bi bi-box-arrow-up-right ms-1" style={{ fontSize: "0.75rem" }}></i>
+            </a>
+            <a
+              href="https://github.com/DeepakAruldoss55/eshop-ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn glass-v2 text-white px-4 py-3 rounded-4 fw-bold d-inline-flex align-items-center gap-2"
+              style={{ border: "1px solid rgba(255,255,255,0.2)" }}
+            >
+              <i className="bi bi-github fs-5"></i> GitHub Repository
             </a>
             <Link
               to="/projects"

@@ -5,6 +5,8 @@ Deepak Aruldoss has engineered over 30+ production projects across AI-Powered E-
 ## 0. DeepShop — AI-Powered E-Commerce & Enterprise ERP Suite (Flagship Showcase at `/deep-shop`)
 - **Platform**: React 18, TypeScript, Vite, Tailwind CSS, Node.js (v20), Express, Python, FastAPI, ChromaDB, Multi-Tier LLMs (Groq / OpenRouter / Offline Engine)
 - **Domain**: AI E-Commerce, RAG Concierge & Enterprise ERP Business Intelligence
+- **Live Storefront Demo**: https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/
+- **Live Admin ERP Panel**: https://3000-agraczlsmaovqae4dltfgt2nte.instabox.tech/admin
 - **GitHub Repository**: https://github.com/DeepakAruldoss55/eshop-ai
 - **Portfolio Showcase URL**: `/deep-shop` (accessible from the `/projects` page)
 - **Role**: Full-Stack & Applied AI Engineer
