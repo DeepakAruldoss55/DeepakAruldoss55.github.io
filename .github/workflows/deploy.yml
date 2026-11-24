@@ -33,6 +33,7 @@ jobs:
       - name: Build production bundle
         env:
           CI: false
+          REACT_APP_RAG_API_URL: ${{ vars.REACT_APP_RAG_API_URL }}
         run: npm run build
 
       - name: Deploy build to gh-pages branch

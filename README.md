@@ -36,46 +36,26 @@ Unlike traditional static FAQ bots or menu trees, **Sara** is a custom RAG-power
 
 ## 🚀 Quick Start (Local Development)
 
-### 1. Install Dependencies
+### 1. Install Frontend Dependencies
 
 ```bash
-# Install frontend dependencies
 npm install
-
-# Setup Python virtual environment & backend dependencies
-cd rag-backend
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-cd ..
 ```
 
-### 2. Configure Environment
+### 2. Configure AI Service URL (Optional)
 
-Create a `.env` file in `rag-backend/`:
-```env
-LLM_PROVIDER=openai_compatible
-OPENAI_BASE_URL=https://api.groq.com/openai/v1
-OPENAI_API_KEY=your_groq_api_key_here
-OPENAI_MODEL=qwen/qwen3.8-27b
-CHROMA_PERSIST_DIR=./chroma_db
-PORT=8000
-```
+The FastAPI + ChromaDB RAG AI service has been split into the standalone **`portfolio-ai`** repository ([DeepakAruldoss55/portfolio-ai](https://github.com/DeepakAruldoss55/portfolio-ai)) so it can be hosted independently (e.g., on Instabox).
 
-### 3. Ingest Knowledge Base
+- In local development, the chatbot automatically connects to `http://localhost:8000` if `portfolio-ai` is running locally.
+- For production (GitHub Pages), set the GitHub Actions repository variable `REACT_APP_RAG_API_URL` to your deployed `portfolio-ai` HTTPS URL (e.g., `https://8000-<your-box>.instabox.tech`).
+- If the remote AI service is unreachable, the chat widget automatically falls back to its built-in client-side assistant.
 
-```bash
-cd rag-backend
-./venv/bin/python ingest.py
-cd ..
-```
-
-### 4. Run Full Stack (Frontend + Backend)
+### 3. Run Frontend
 
 ```bash
 npm run dev
 ```
-> React runs at `http://localhost:3000` & FastAPI runs at `http://localhost:8000`.
+> React runs at `http://localhost:3000`.
 
 ---
 

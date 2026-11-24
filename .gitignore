@@ -13,17 +13,6 @@
 .env
 .env.*
 !.env.example
-rag-backend/.env
-rag-backend/.env.*
-!rag-backend/.env.example
-
-# Python backend runtime
-rag-backend/venv/
-rag-backend/__pycache__/
-rag-backend/chroma_db/
-chroma_db/
-*.pyc
-__pycache__/
 
 # IDE & workspace artifacts
 .vscode/
