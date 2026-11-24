@@ -1,20 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Chatbot.css";
 
+const DEFAULT_RAG_API_URL = "https://8001-agraczlsmaovqae4dltfgt2nte.instabox.tech";
+
 const getApiEndpoints = () => {
-  if (process.env.REACT_APP_RAG_API_URL) {
-    return [process.env.REACT_APP_RAG_API_URL];
-  }
-  if (typeof window !== "undefined" && window.location.protocol === "https:" && !window.location.hostname.includes("localhost")) {
-    // On HTTPS static hosting (e.g. GitHub Pages) with no cloud API URL set
-    return [];
-  }
-  const currentHost = typeof window !== "undefined" && window.location.hostname ? window.location.hostname : "localhost";
-  return [
-    `http://${currentHost}:8000`,
-    "http://127.0.0.1:8000",
-    "http://localhost:8000"
-  ];
+  const configuredUrl = (process.env.REACT_APP_RAG_API_URL || DEFAULT_RAG_API_URL).replace(/\/+$/, "");
+  return [configuredUrl];
 };
 
 // Experience calculator (July 2018 – October 27, 2026)
